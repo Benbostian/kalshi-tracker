@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Kalshi Tracker</title>
+<meta name="description" content="Live Kalshi sports market odds and notable line moves." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>" />
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0d1117;
+    --bg-elev: #161b22;
+    --bg-elev-2: #1c2128;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --text-faint: #6e7681;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --amber: #d29922;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+
+  header.top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(13, 17, 23, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px 0 16px;
+  }
+  .brand-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .brand {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .brand span { color: var(--text-dim); font-weight: 400; }
+  #last-updated {
+    font-size: 11px;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  nav.tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  nav.tabs button {
+    flex: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-dim);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  nav.tabs button.active {
+    background: var(--bg-elev-2);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 14px 16px 60px 16px;
+  }
+
+  .disclaimer {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    margin-bottom: 14px;
+  }
+  .disclaimer strong { color: var(--amber); }
+  .disclaimer button {
+    display: block;
+    margin-top: 6px;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 12px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .toolbar input[type="text"] {
+    flex: 1;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+  .toolbar label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    padding: 0 4px;
+  }
+
+  .state-msg {
+    color: var(--text-faint);
+    font-size: 13.5px;
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  .move-card, .event-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+
+  .move-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: var(--bg-elev-2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .move-time { margin-left: auto; font-size: 11.5px; color: var(--text-faint); }
+  .move-title { font-size: 14.5px; font-weight: 600; margin-bottom: 3px; }
+  .move-reason { font-size: 13px; color: var(--text-dim); }
+  .move-reason.up { color: var(--green); }
+  .move-reason.down { color: var(--red); }
+
+  .event-date {
+    font-size: 11px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .outcomes { display: flex; flex-direction: column; gap: 6px; }
+  .outcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 10px;
+    background: var(--bg-elev-2);
+    border-radius: 7px;
+  }
+  .outcome-name { font-size: 14px; font-weight: 500; }
+  .outcome-price { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .outcome-vol { font-size: 10.5px; color: var(--text-faint); font-weight: 400; margin-left: 6px; }
+
+  footer {
+    max-width: 720px;
+    margin: 20px auto 0 auto;
+    padding: 0 16px 30px 16px;
+    font-size: 11.5px;
+    color: var(--text-faint);
+    text-align: center;
+  }
+  footer a { color: var(--text-faint); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    margin: 18px 0 8px 2px;
+  }
+  .section-label:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand-row">
+    <div class="brand">Kalshi Tracker <span>· sharp money odds</span></div>
+    <div id="last-updated">loading…</div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-tab="moves" class="active">Notable Moves</button>
+    <button data-tab="nfl">NFL</button>
+    <button data-tab="cfb">CFB</button>
+    <button data-tab="mlb">MLB</button>
+    <button data-tab="soccer">Soccer</button>
+    <button data-tab="tennis">Tennis</button>
+  </nav>
+</header>
+
+<main>
+  <div class="disclaimer" id="disclaimer">
+    Informational only, not betting advice. Kalshi prices reflect what traders on that exchange are willing to pay,
+    not a guarantee of any outcome &mdash; treat a flagged move as a clue worth looking into, not a signal to act on.
+    Any real money involved is your own decision and your own risk.
+    <button id="hide-disclaimer">Got it, hide this</button>
+  </div>
+
+  <div class="toolbar" id="sport-toolbar" style="display:none;">
+    <input type="text" id="search" placeholder="Filter by team…" />
+    <label><input type="checkbox" id="active-only" checked /> Traded only</label>
+  </div>
+
+  <div id="content">
+    <div class="state-msg">loading…</div>
+  </div>
+</main>
+
+<footer>
+  Data from Kalshi's public Trade API, tracked hourly. ·
+  <a href="https://github.com/Benbostian/kalshi-tracker" target="_blank" rel="noopener">source</a>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var SUPABASE_URL = "https://mwfaxyqprmveviqdcrcj.supabase.co";
+  var ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im13ZmF4eXFwcm12ZXZpcWRjcmNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzNTc0NTQsImV4cCI6MjEwNTkzMzQ1NH0.N_Fm4skK-CmDhELH50kz5TkOY58x_UIfO-UuXctGrgw";
+  var REFRESH_MS = 3 * 60 * 1000;
+
+  var contentEl = document.getElementById("content");
+  var lastUpdatedEl = document.getElementById("last-updated");
+  var toolbarEl = document.getElementById("sport-toolbar");
+  var searchEl = document.getElementById("search");
+  var activeOnlyEl = document.getElementById("active-only");
+
+  var state = {
+    tab: "moves",
+    cache: {}, // tab -> rows
+  };
+
+  // ---- disclaimer dismiss (per-browser convenience only) ----
+  try {
+    if (localStorage.getItem("kt_hide_disclaimer") === "1") {
+      document.getElementById("disclaimer").style.display = "none";
+    }
+  } catch (e) {}
+  document.getElementById("hide-disclaimer").addEventListener("click", function () {
+    document.getElementById("disclaimer").style.display = "none";
+    try { localStorage.setItem("kt_hide_disclaimer", "1"); } catch (e) {}
+  });
+
+  // ---- tabs ----
+  document.getElementById("tabs").addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-tab]");
+    if (!btn) return;
+    setTab(btn.getAttribute("data-tab"));
+  });
+
+  function setTab(tab) {
+    state.tab = tab;
+    document.querySelectorAll("nav.tabs button").forEach(function (b) {
+      b.classList.toggle("active", b.getAttribute("data-tab") === tab);
+    });
+    toolbarEl.style.display = tab === "moves" ? "none" : "flex";
+    render();
+    loadTab(tab);
+  }
+
+  searchEl.addEventListener("input", render);
+  activeOnlyEl.addEventListener("change", render);
+
+  // ---- data fetching ----
+  function supaFetch(path) {
+    return fetch(SUPABASE_URL + "/rest/v1/" + path, {
+      headers: {
+        apikey: ANON_KEY,
+        Authorization: "Bearer " + ANON_KEY,
+      },
+    }).then(function (res) {
+      if (!res.ok) throw new Error("Supabase request failed: " + res.status);
+      return res.json();
+    });
+  }
+
+  function loadTab(tab) {
+    if (state.cache[tab]) {
+      render();
+    } else {
+      contentEl.innerHTML = '<div class="state-msg">loading…</div>';
+    }
+    var req =
+      tab === "moves"
+        ? supaFetch("notable_moves?select=*&order=logged_at.desc&limit=75")
+        : supaFetch(
+            "latest_market_snapshot?select=*&sport=eq." +
+              encodeURIComponent(tab) +
+              (tab === "soccer" ? "" : "&market_type=eq.game") +
+              "&order=market_ticker.asc&limit=2000"
+          );
+    req
+      .then(function (rows) {
+        state.cache[tab] = rows;
+        if (state.tab === tab) render();
+        touchUpdated();
+      })
+      .catch(function (err) {
+        if (state.tab === tab) {
+          contentEl.innerHTML =
+            '<div class="state-msg">Couldn\'t load data right now.<br>' + escapeHtml(err.message) + "</div>";
+        }
+      });
+  }
+
+  function touchUpdated() {
+    lastUpdatedEl.textContent = "checked " + timeAgo(new Date());
+  }
+
+  function refreshAll() {
+    Object.keys(state.cache).forEach(function (tab) {
+      delete state.cache[tab];
+    });
+    loadTab(state.tab);
+  }
+
+  // ---- rendering ----
+  function render() {
+    if (state.tab === "moves") {
+      renderMoves(state.cache.moves || null);
+    } else {
+      renderSport(state.tab, state.cache[state.tab] || null);
+    }
+  }
+
+  function renderMoves(rows) {
+    if (rows === null) {
+      contentEl.innerHTML = '<div class="state-msg">loading…</div>';
+      return;
+    }
+    if (rows.length === 0) {
+      contentEl.innerHTML = '<div class="state-msg">No notable moves flagged yet. Check back after the next hourly cycle.</div>';
+      return;
+    }
+    var html = rows.map(renderMoveCard).join("");
+    contentEl.innerHTML = html;
+  }
+
+  function renderMoveCard(m) {
+    var isUp = (m.price_delta_cents || 0) > 0;
+    var isDown = (m.price_delta_cents || 0) < 0;
+    var cls = isUp ? "up" : isDown ? "down" : "";
+    var reasonBits = [];
+    if (m.reason) reasonBits.push(escapeHtml(m.reason));
+    if (m.price_delta_cents) {
+      reasonBits.push(
+        (isUp ? "▲ +" : "▼ ") + m.price_delta_cents + "c (" + m.prev_price_cents + "¢ → " + m.curr_price_cents + "¢)"
+      );
+    }
+    if (m.volume_delta) {
+      reasonBits.push("vol " + m.prev_volume + " → " + m.curr_volume);
+    }
+    return (
+      '<div class="move-card">' +
+      '<div class="move-top">' +
+      '<span class="badge">' + escapeHtml((m.sport || "").toUpperCase()) + "</span>" +
+      '<span class="badge">' + escapeHtml(prettyMarketType(m.market_type)) + "</span>" +
+      '<span class="move-time">' + timeAgo(new Date(m.logged_at)) + "</span>" +
+      "</div>" +
+      '<div class="move-title">' + escapeHtml(m.title || m.market_ticker) + "</div>" +
+      '<div class="move-reason ' + cls + '">' + reasonBits.join(" · ") + "</div>" +
+      "</div>"
+    );
+  }
+
+  function renderSport(sport, rows) {
+    if (rows === null) {
+      contentEl.innerHTML = '<div class="state-msg">loading…</div>';
+      return;
+    }
+    if (rows.length === 0) {
+      contentEl.innerHTML = '<div class="state-msg">No markets tracked for this sport right now.</div>';
+      return;
+    }
+
+    var query = searchEl.value.trim().toLowerCase();
+    var activeOnly = activeOnlyEl.checked;
+
+    // group by event_ticker
+    var events = {};
+    var order = [];
+    rows.forEach(function (r) {
+      if (!events[r.event_ticker]) {
+        events[r.event_ticker] = [];
+        order.push(r.event_ticker);
+      }
+      events[r.event_ticker].push(r);
+    });
+
+    var cards = order
+      .map(function (ticker) {
+        return { ticker: ticker, rows: events[ticker], date: dateFromTicker(ticker) };
+      })
+      .filter(function (ev) {
+        if (activeOnly && !ev.rows.some(function (r) { return (r.volume || 0) > 0; })) return false;
+        if (query) {
+          var hay = ev.rows.map(function (r) { return (r.title || "").toLowerCase(); }).join(" ");
+          if (hay.indexOf(query) === -1) return false;
+        }
+        return true;
+      })
+      .sort(function (a, b) {
+        if (a.date && b.date) return a.date - b.date;
+        if (a.date) return -1;
+        if (b.date) return 1;
+        return a.ticker.localeCompare(b.ticker);
+      });
+
+    if (cards.length === 0) {
+      contentEl.innerHTML = '<div class="state-msg">No matches. Try clearing the filter or turning off "Traded only".</div>';
+      return;
+    }
+
+    contentEl.innerHTML = cards.map(renderEventCard).join("");
+  }
+
+  function renderEventCard(ev) {
+    var dateLabel = ev.date ? formatDate(ev.date) : "";
+    var outcomes = ev.rows
+      .slice()
+      .sort(function (a, b) { return (b.last_price_cents || 0) - (a.last_price_cents || 0); })
+      .map(function (r) {
+        return (
+          '<div class="outcome">' +
+          '<span class="outcome-name">' + escapeHtml(r.title || r.market_ticker) + "</span>" +
+          '<span class="outcome-price">' + priceLabel(r) + '<span class="outcome-vol">' + volLabel(r) + "</span></span>" +
+          "</div>"
+        );
+      })
+      .join("");
+    return (
+      '<div class="event-card">' +
+      (dateLabel ? '<div class="event-date">' + escapeHtml(dateLabel) + "</div>" : "") +
+      '<div class="outcomes">' + outcomes + "</div>" +
+      "</div>"
+    );
+  }
+
+  function priceLabel(r) {
+    if (r.last_price_cents && r.last_price_cents > 0) return r.last_price_cents + "%";
+    if (r.yes_bid_cents != null && r.yes_ask_cents != null) return r.yes_bid_cents + "-" + r.yes_ask_cents + "%";
+    return "—";
+  }
+  function volLabel(r) {
+    var v = r.volume || 0;
+    if (v === 0) return "no trades";
+    if (v >= 1000) return (v / 1000).toFixed(1) + "k vol";
+    return v + " vol";
+  }
+
+  function prettyMarketType(mt) {
+    if (!mt) return "";
+    return mt.replace(/_/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  }
+
+  var MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  function dateFromTicker(ticker) {
+    var m = ticker.match(/(\d{2})(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\d{2})/);
+    if (!m) return null;
+    var yy = parseInt(m[1], 10);
+    var mon = MONTHS.indexOf(m[2]);
+    var dd = parseInt(m[3], 10);
+    if (mon === -1) return null;
+    return new Date(Date.UTC(2000 + yy, mon, dd));
+  }
+  function formatDate(d) {
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return days[d.getUTCDay()] + " " + months[d.getUTCMonth()] + " " + d.getUTCDate();
+  }
+
+  function timeAgo(date) {
+    var seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+    if (seconds < 60) return "just now";
+    var minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return minutes + "m ago";
+    var hours = Math.floor(minutes / 60);
+    if (hours < 24) return hours + "h ago";
+    var days = Math.floor(hours / 24);
+    return days + "d ago";
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // ---- init ----
+  loadTab("moves");
+  setInterval(refreshAll, REFRESH_MS);
+})();
+</script>
+
+</body>
+</html>
