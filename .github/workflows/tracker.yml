@@ -31,7 +31,13 @@ jobs:
         continue-on-error: true
 
       - name: Run tracking cycle
+        # KALSHI_INGEST_TOKEN authorizes posting price/notable-move rows to
+        # the Supabase edge function behind the dashboard. If this secret is
+        # ever missing/unset, the script just skips the Supabase post and
+        # keeps writing CSVs as before -- it won't fail the run.
         run: python3 kalshi_tracker.py run
+        env:
+          KALSHI_INGEST_TOKEN: ${{ secrets.KALSHI_INGEST_TOKEN }}
 
       - name: Commit updated data files
         run: |
