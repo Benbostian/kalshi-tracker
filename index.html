@@ -172,7 +172,9 @@
     border: 1px solid var(--border);
   }
   .move-time { margin-left: auto; font-size: 11.5px; color: var(--text-faint); }
-  .move-title { font-size: 14.5px; font-weight: 600; margin-bottom: 3px; }
+  .move-matchup { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .move-title { font-size: 13px; font-weight: 500; color: var(--text-dim); margin-bottom: 3px; }
+  .move-title.no-matchup { font-size: 14.5px; font-weight: 600; color: var(--text); }
   .move-reason { font-size: 13px; color: var(--text-dim); }
   .move-reason.up { color: var(--green); }
   .move-reason.down { color: var(--red); }
@@ -276,6 +278,7 @@
   var state = {
     tab: "moves",
     cache: {}, // tab -> rows
+    matchupMap: null, // "sport|dateteamchunk" -> "Team A vs Team B", built from game-level rows
   };
 
   // ---- disclaimer dismiss (per-browser convenience only) ----
@@ -322,6 +325,27 @@
     });
   }
 
+  // Rows that define a matchup label: the moneyline ("game") market for
+  // nfl/cfb/mlb, and every row for soccer/tennis (those sports only have
+  // game-level markets to begin with). Used to look up "Team A vs Team B"
+  // for a notable move, which otherwise only carries its own strike's
+  // ticker (e.g. a spread or total line) with no team names attached.
+  function fetchMatchupMap() {
+    return supaFetch(
+      "latest_market_snapshot?select=sport,event_ticker,title&or=(market_type.eq.game,sport.eq.soccer,sport.eq.tennis)&limit=4000"
+    ).then(function (rows) {
+      var map = {};
+      rows.forEach(function (r) {
+        var name = teamNameFromTitle(r.title);
+        if (!name || !r.event_ticker) return;
+        var key = r.sport + "|" + gameChunkFromEventTicker(r.event_ticker);
+        if (!map[key]) map[key] = [];
+        if (map[key].indexOf(name) === -1) map[key].push(name);
+      });
+      return map;
+    });
+  }
+
   function loadTab(tab) {
     if (state.cache[tab]) {
       render();
@@ -330,7 +354,13 @@
     }
     var req =
       tab === "moves"
-        ? supaFetch("notable_moves?select=*&order=logged_at.desc&limit=75")
+        ? Promise.all([
+            supaFetch("notable_moves?select=*&order=logged_at.desc&limit=75"),
+            state.matchupMap ? Promise.resolve(state.matchupMap) : fetchMatchupMap(),
+          ]).then(function (results) {
+            state.matchupMap = results[1];
+            return results[0];
+          })
         : supaFetch(
             "latest_market_snapshot?select=*&sport=eq." +
               encodeURIComponent(tab) +
@@ -359,6 +389,7 @@
     Object.keys(state.cache).forEach(function (tab) {
       delete state.cache[tab];
     });
+    state.matchupMap = null;
     loadTab(state.tab);
   }
 
@@ -398,6 +429,14 @@
     if (m.volume_delta) {
       reasonBits.push("vol " + m.prev_volume + " → " + m.curr_volume);
     }
+
+    var matchup = null;
+    var chunk = gameChunkFromMarketTicker(m.market_ticker);
+    if (chunk && state.matchupMap) {
+      var names = state.matchupMap[m.sport + "|" + chunk];
+      if (names && names.length) matchup = names.slice(0, 2).join(" vs ");
+    }
+
     return (
       '<div class="move-card">' +
       '<div class="move-top">' +
@@ -405,7 +444,10 @@
       '<span class="badge">' + escapeHtml(prettyMarketType(m.market_type)) + "</span>" +
       '<span class="move-time">' + timeAgo(new Date(m.logged_at)) + "</span>" +
       "</div>" +
-      '<div class="move-title">' + escapeHtml(m.title || m.market_ticker) + "</div>" +
+      (matchup ? '<div class="move-matchup">' + escapeHtml(matchup) + "</div>" : "") +
+      '<div class="move-title' + (matchup ? "" : " no-matchup") + '">' +
+      escapeHtml(m.title || m.market_ticker) +
+      "</div>" +
       '<div class="move-reason ' + cls + '">' + reasonBits.join(" · ") + "</div>" +
       "</div>"
     );
@@ -499,6 +541,28 @@
   function prettyMarketType(mt) {
     if (!mt) return "";
     return mt.replace(/_/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  }
+
+  // ---- matchup lookup helpers ----
+  // Kalshi tickers encode the same game identically across market families
+  // sharing one event (e.g. KXNFLGAME-26OCT01PITCLE and
+  // KXNFLTOTAL-26OCT01PITCLE-38 share the "26OCT01PITCLE" chunk), so a
+  // spread/total notable move can be matched back to its game's team names
+  // even though notable_moves itself doesn't store them.
+  function teamNameFromTitle(title) {
+    if (!title) return null;
+    var m = title.match(/^(.*)\swins$/i);
+    return m ? m[1] : null; // excludes "Tie is the result" and other formats
+  }
+  function gameChunkFromEventTicker(eventTicker) {
+    var i = eventTicker.indexOf("-");
+    return i === -1 ? null : eventTicker.slice(i + 1);
+  }
+  function gameChunkFromMarketTicker(marketTicker) {
+    if (!marketTicker) return null;
+    var parts = marketTicker.split("-");
+    if (parts.length < 3) return null;
+    return parts.slice(1, -1).join("-");
   }
 
   var MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
