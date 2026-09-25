@@ -178,6 +178,11 @@
     color: var(--amber);
     border-color: rgba(210, 153, 34, 0.4);
   }
+  .badge.live {
+    background: rgba(248, 81, 73, 0.15);
+    color: var(--red);
+    border-color: rgba(248, 81, 73, 0.4);
+  }
   .move-time { margin-left: auto; font-size: 11.5px; color: var(--text-faint); }
   .move-matchup { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
   .move-game-date { font-size: 11px; font-weight: 400; color: var(--text-faint); }
@@ -186,6 +191,11 @@
   .move-reason { font-size: 13px; color: var(--text-dim); }
   .move-reason.up { color: var(--green); }
   .move-reason.down { color: var(--red); }
+  .move-comoved {
+    font-size: 11.5px;
+    color: var(--accent);
+    margin-top: 4px;
+  }
 
   .move-explain { margin-top: 6px; }
   .move-explain summary {
@@ -612,20 +622,44 @@
     html += '<div class="section-sub">Fast, decisive price moves on real volume -- classic "the market knows something" steam.</div>';
     html +=
       repricings.length > 0
-        ? repricings.map(renderMoveCard).join("")
+        ? repricings.map(function (m) { return renderMoveCard(m, findCoMovedMarketTypes(recent, m)); }).join("")
         : '<div class="state-msg">No large re-pricings in the last 48 hours.</div>';
 
     html += '<div class="section-label">Heaviest quiet volume</div>';
     html += '<div class="section-sub">Volume spikes that didn\'t move the price much -- size getting absorbed quietly.</div>';
     html +=
       quietVolume.length > 0
-        ? quietVolume.map(renderMoveCard).join("")
+        ? quietVolume.map(function (m) { return renderMoveCard(m, findCoMovedMarketTypes(recent, m)); }).join("")
         : '<div class="state-msg">No quiet volume spikes in the last 48 hours.</div>';
 
     contentEl.innerHTML = html;
   }
 
-  function renderMoveCard(m) {
+  // "Moved together" cross-market signal: other market types (e.g. TOTAL when
+  // `m` is a SPREAD move) for the SAME game that also flagged a notable move
+  // within a few hours of this one. Two independent signals lining up on the
+  // same game is more interesting than either alone. Scoped to the Sharp
+  // Money tab's wider 48h/400-row pool, not the Notable Moves feed's smaller
+  // one, so the correlated counterpart is actually likely to be present.
+  var CO_MOVE_WINDOW_MS = 3 * 60 * 60 * 1000;
+
+  function findCoMovedMarketTypes(pool, m) {
+    var chunk = gameChunkFromMarketTicker(m.market_ticker);
+    if (!chunk) return [];
+    var mTime = new Date(m.logged_at).getTime();
+    var found = {};
+    pool.forEach(function (other) {
+      if (other === m) return;
+      if (other.sport !== m.sport) return;
+      if (other.market_type === m.market_type) return;
+      if (gameChunkFromMarketTicker(other.market_ticker) !== chunk) return;
+      if (Math.abs(new Date(other.logged_at).getTime() - mTime) > CO_MOVE_WINDOW_MS) return;
+      found[other.market_type] = true;
+    });
+    return Object.keys(found);
+  }
+
+  function renderMoveCard(m, coMoved) {
     var isUp = (m.price_delta_cents || 0) > 0;
     var isDown = (m.price_delta_cents || 0) < 0;
     var cls = isUp ? "up" : isDown ? "down" : "";
@@ -665,6 +699,9 @@
       (isSteam
         ? '<span class="badge steam" title="Heavy volume flagged this on its own, but the price barely moved -- money came in quietly instead of pushing the line.">🔥 Steam</span>'
         : "") +
+      (m.is_live
+        ? '<span class="badge live" title="Game was in progress when this move was flagged -- the explanation below is the live score, not researched news.">🔴 Live</span>'
+        : "") +
       '<span class="move-time" title="' + escapeHtml(loggedDate.toISOString()) + '">' +
       escapeHtml(formatDateTime(loggedDate)) +
       "</span>" +
@@ -679,6 +716,9 @@
       escapeHtml(m.title || m.market_ticker) +
       "</div>" +
       '<div class="move-reason ' + cls + '">' + reasonBits.join(" · ") + " · " + timeAgo(loggedDate) + "</div>" +
+      (coMoved && coMoved.length
+        ? '<div class="move-comoved">🔗 ' + escapeHtml(coMoved.map(prettyMarketType).join(", ")) + " moved too, same window</div>"
+        : "") +
       renderExplain(m) +
       "</div>"
     );

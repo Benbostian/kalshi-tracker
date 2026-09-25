@@ -217,6 +217,119 @@ def team_name_for_code(sport, code):
 
 
 # ---------------------------------------------------------------------------
+# Live score lookup (ESPN's public, unauthenticated scoreboard endpoints) --
+# used to auto-explain a notable move on a game that's currently in progress,
+# since "the score changed" is almost always the real explanation for an
+# in-game price move and doesn't need a news search. No API key required.
+#
+# Matching a Kalshi market to an ESPN event is by team abbreviation, which is
+# only as good as parse_teams_from_ticker() above: reliable for NFL/MLB
+# (TEAM_NAME_MAPS gives a real map to split on), best-effort for CFB/soccer
+# (no map for those sports yet -- see PROJECT_LOG.md "Open questions"), and
+# tennis is skipped entirely (ESPN's tennis scoreboard is organized by
+# tournament, not a simple two-competitor-per-event shape, and doesn't match
+# cleanly against Kalshi's per-match tickers). A miss just means the move
+# falls back to the normal "Not yet researched." explanation -- never worse
+# than before this feature existed.
+# ---------------------------------------------------------------------------
+ESPN_SCOREBOARD_URLS = {
+    "nfl": ["https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"],
+    "cfb": ["https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?groups=80&limit=300"],
+    "mlb": ["https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"],
+    "soccer": [
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/scoreboard",
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/scoreboard",
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/scoreboard",
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/scoreboard",
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard",
+        "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/scoreboard",
+    ],
+    # "tennis" intentionally omitted -- see note above.
+}
+
+# A handful of team-code spellings that differ between Kalshi's tickers and
+# ESPN's team.abbreviation for the same team. Deliberately small -- add to
+# this as real mismatches turn up rather than trying to guess them all.
+ESPN_CODE_ALIASES = {
+    "WAS": "WSH",
+}
+
+
+def _code_variants(code):
+    variants = {code}
+    if code in ESPN_CODE_ALIASES:
+        variants.add(ESPN_CODE_ALIASES[code])
+    for kalshi_code, espn_code in ESPN_CODE_ALIASES.items():
+        if espn_code == code:
+            variants.add(kalshi_code)
+    return variants
+
+
+def fetch_live_games(sport):
+    """Best-effort: GET the ESPN scoreboard(s) for `sport` and return a dict
+    keyed by frozenset({team_code, team_code}) -> a short human-readable
+    "PIT 17, CLE 10 -- 3rd Qtr 8:42" string, one entry per game ESPN
+    currently reports as in progress (status.type.state == 'in'). Every
+    alias spelling from ESPN_CODE_ALIASES is indexed too, so a lookup with
+    either spelling finds the game. Any request/parsing failure for one
+    scoreboard is logged and skipped -- this is a nice-to-have layered on
+    top of core tracking, never something that should break a run."""
+    urls = ESPN_SCOREBOARD_URLS.get(sport)
+    if not urls:
+        return {}
+    live = {}
+    for url in urls:
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+        except Exception as e:  # noqa: BLE001 -- deliberately broad, see docstring
+            print(f"[warn] live-score fetch failed for {sport} ({url}): {e}", file=sys.stderr)
+            continue
+
+        for event in data.get("events") or []:
+            status_type = ((event.get("status") or {}).get("type")) or {}
+            if status_type.get("state") != "in":
+                continue
+            detail = status_type.get("shortDetail") or status_type.get("detail") or ""
+
+            competitions = event.get("competitions") or []
+            if not competitions:
+                continue
+            competitors = competitions[0].get("competitors") or []
+            if len(competitors) != 2:
+                continue
+
+            codes, parts = [], []
+            for c in competitors:
+                code = ((c.get("team") or {}).get("abbreviation") or "").upper()
+                if not code:
+                    codes = []
+                    break
+                codes.append(code)
+                score = c.get("score")
+                parts.append(f"{code} {score}" if score not in (None, "") else code)
+            if len(codes) != 2:
+                continue
+
+            text = ", ".join(parts) + (f" -- {detail}" if detail else "")
+            for a in _code_variants(codes[0]):
+                for b in _code_variants(codes[1]):
+                    live[frozenset((a, b))] = text
+    return live
+
+
+def live_score_explanation(live_games, team_codes):
+    """team_codes: the (best-effort) codes parse_teams_from_ticker() pulled
+    from a Kalshi ticker. Returns the matching live-game score text, or None
+    if there's no live game for exactly that pair of teams."""
+    if not live_games or len(team_codes) != 2:
+        return None
+    return live_games.get(frozenset(c.upper() for c in team_codes))
+
+
+# ---------------------------------------------------------------------------
 # Thin HTTP client -- Kalshi's public market-data endpoints need no auth.
 # ---------------------------------------------------------------------------
 
@@ -358,7 +471,8 @@ PRICE_LOG_HEADER = [
 MOVES_LOG_HEADER = [
     "logged_at_utc", "sport", "market_type", "market_ticker", "title",
     "reason", "prev_price_cents", "curr_price_cents", "price_delta_cents",
-    "prev_volume", "curr_volume", "volume_delta",
+    "prev_volume", "curr_volume", "volume_delta", "is_live", "explanation",
+    "explanation_source", "explanation_updated_at",
 ]
 
 
@@ -410,9 +524,11 @@ def _append_csv(path, header, row):
 
 
 def _move_row(now, sport, market_type, ticker, title, reason, prev_price, curr_price,
-              price_delta, prev_vol, curr_vol, vol_delta):
+              price_delta, prev_vol, curr_vol, vol_delta, is_live=False, explanation=None,
+              explanation_source=None, explanation_updated_at=None):
     return [now.isoformat(), sport, market_type, ticker, title, reason, prev_price,
-            curr_price, price_delta, prev_vol, curr_vol, vol_delta]
+            curr_price, price_delta, prev_vol, curr_vol, vol_delta, is_live, explanation,
+            explanation_source, explanation_updated_at]
 
 
 def _row_to_supabase_dict(header, row):
@@ -453,7 +569,8 @@ def _post_batch_to_supabase(table, rows):
             print(f"[warn] Supabase ingest failed for {table}: {e}", file=sys.stderr)
 
 
-def track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves, supabase_price_rows):
+def track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves, supabase_price_rows,
+                  live_games=None):
     ticker = market.get("ticker")
     title = market.get("title") or market.get("_event_title")
     yes_bid = _cents(market.get("yes_bid_dollars"))
@@ -462,7 +579,17 @@ def track_market(sport, market_type, series_ticker, market, last_snapshot, now, 
     volume = int(float(market.get("volume_fp") or market.get("volume") or 0))
     open_interest = int(float(market.get("open_interest_fp") or market.get("open_interest") or 0))
     status = market.get("status")
-    team_codes = ",".join(parse_teams_from_ticker(ticker, sport)) if ticker else ""
+    parsed_teams = parse_teams_from_ticker(ticker, sport) if ticker else []
+    team_codes = ",".join(parsed_teams)
+
+    # If this market's game is currently live per ESPN, any notable move
+    # flagged below gets auto-explained by the live score instead of being
+    # left for manual/Cowork research -- see fetch_live_games() above.
+    live_text = live_score_explanation(live_games or {}, parsed_teams)
+    is_live = live_text is not None
+    move_explanation = f"Live: {live_text}" if live_text else None
+    move_explanation_source = "live_score_auto" if live_text else None
+    move_explanation_updated_at = now.isoformat() if live_text else None
 
     price_row = [
         now.isoformat(), sport, market_type, series_ticker, ticker,
@@ -481,14 +608,20 @@ def track_market(sport, market_type, series_ticker, market, last_snapshot, now, 
         if abs(price_delta) >= PRICE_MOVE_THRESHOLD_CENTS:
             moves.append(_move_row(now, sport, market_type, ticker, title,
                                     f"price moved {price_delta:+d}c", prev["price"], last_price,
-                                    price_delta, prev_volume, volume, volume_delta))
+                                    price_delta, prev_volume, volume, volume_delta,
+                                    is_live=is_live, explanation=move_explanation,
+                                    explanation_source=move_explanation_source,
+                                    explanation_updated_at=move_explanation_updated_at))
 
         if volume >= MIN_VOLUME_FOR_SPIKE and prev_volume > 0:
             if volume_delta >= prev_volume * (VOLUME_SPIKE_MULTIPLIER - 1):
                 spike_x = volume / prev_volume if prev_volume else 0
                 moves.append(_move_row(now, sport, market_type, ticker, title,
                                         f"volume spike x{spike_x:.1f}", prev["price"], last_price,
-                                        price_delta, prev_volume, volume, volume_delta))
+                                        price_delta, prev_volume, volume, volume_delta,
+                                        is_live=is_live, explanation=move_explanation,
+                                        explanation_source=move_explanation_source,
+                                        explanation_updated_at=move_explanation_updated_at))
 
     if ticker:
         last_snapshot[ticker] = {"price": last_price, "volume": volume, "logged_at": now.isoformat()}
@@ -506,6 +639,9 @@ def run_tracking_cycle(sports=None):
         if not tickers:
             print(f"[warn] unknown sport '{sport}', skipping", file=sys.stderr)
             continue
+        # Fetched once per sport per cycle (not per market/market_type) --
+        # see fetch_live_games() for what this covers and its limitations.
+        live_games = fetch_live_games(sport)
         for market_type, series_ticker in tickers.items():
             try:
                 events = get_events_for_series(series_ticker, status="open", with_nested_markets=True)
@@ -514,7 +650,7 @@ def run_tracking_cycle(sports=None):
                 continue
             for market in _flatten_markets_from_events(events):
                 track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves,
-                              supabase_price_rows)
+                              supabase_price_rows, live_games=live_games)
 
     _save_snapshot(last_snapshot)
     for move in moves:
