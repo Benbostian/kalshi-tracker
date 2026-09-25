@@ -201,6 +201,34 @@
   .move-explain-body.empty { color: var(--text-faint); font-style: italic; }
   .move-explain-meta { font-size: 10.5px; color: var(--text-faint); margin-top: 4px; }
 
+  .opening-odds { margin-top: 8px; }
+  .opening-odds summary {
+    font-size: 12px;
+    color: var(--accent);
+    cursor: pointer;
+    list-style: none;
+  }
+  .opening-odds summary::-webkit-details-marker { display: none; }
+  .opening-odds summary::before { content: "▸ "; }
+  .opening-odds[open] summary::before { content: "▾ "; }
+  .opening-odds-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 7px 2px 0 2px;
+  }
+  .opening-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12.5px;
+  }
+  .opening-name { color: var(--text-dim); }
+  .opening-delta { color: var(--text-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .opening-delta.up { color: var(--green); }
+  .opening-delta.down { color: var(--red); }
+
   .event-date {
     display: flex;
     align-items: center;
@@ -378,14 +406,25 @@
   }
 
   // Game-level snapshot rows for one sport (moneyline only, except soccer
-  // which only has game-level markets to begin with).
-  function sportQueryUrl(sport) {
+  // which only has game-level markets to begin with). `table` lets the same
+  // filter shape be reused against opening_market_snapshot (earliest logged
+  // price per ticker) for the "odds movement" dropdown.
+  function sportQueryUrl(sport, table) {
     return (
-      "latest_market_snapshot?select=*&sport=eq." +
+      (table || "latest_market_snapshot") +
+      "?select=*&sport=eq." +
       encodeURIComponent(sport) +
       (sport === "soccer" ? "" : "&market_type=eq.game") +
       "&order=market_ticker.asc&limit=2000"
     );
+  }
+
+  function buildOpeningMap(rows) {
+    var map = {};
+    rows.forEach(function (r) {
+      map[r.market_ticker] = r;
+    });
+    return map;
   }
 
   function loadTab(tab) {
@@ -404,23 +443,33 @@
         return results[0];
       });
     } else if (tab === "live") {
-      req = Promise.all(
-        LIVE_SPORTS.map(function (sport) {
-          return supaFetch(sportQueryUrl(sport));
-        })
-      ).then(function (results) {
-        var merged = [];
-        results.forEach(function (rows) {
-          merged = merged.concat(rows);
-        });
-        return merged;
+      req = Promise.all([
+        Promise.all(
+          LIVE_SPORTS.map(function (sport) {
+            return supaFetch(sportQueryUrl(sport));
+          })
+        ),
+        Promise.all(
+          LIVE_SPORTS.map(function (sport) {
+            return supaFetch(sportQueryUrl(sport, "opening_market_snapshot"));
+          })
+        ),
+      ]).then(function (results) {
+        var rows = [].concat.apply([], results[0]);
+        var openingRows = [].concat.apply([], results[1]);
+        return { rows: rows, opening: buildOpeningMap(openingRows) };
       });
     } else {
-      req = supaFetch(sportQueryUrl(tab));
+      req = Promise.all([
+        supaFetch(sportQueryUrl(tab)),
+        supaFetch(sportQueryUrl(tab, "opening_market_snapshot")),
+      ]).then(function (results) {
+        return { rows: results[0], opening: buildOpeningMap(results[1]) };
+      });
     }
     req
-      .then(function (rows) {
-        state.cache[tab] = rows;
+      .then(function (data) {
+        state.cache[tab] = data;
         if (state.tab === tab) render();
         touchUpdated();
       })
@@ -449,9 +498,11 @@
     if (state.tab === "moves") {
       renderMoves(state.cache.moves || null);
     } else if (state.tab === "live") {
-      renderLive(state.cache.live || null);
+      var live = state.cache.live;
+      renderLive(live ? live.rows : null, live ? live.opening : null);
     } else {
-      renderSport(state.tab, state.cache[state.tab] || null);
+      var data = state.cache[state.tab];
+      renderSport(state.tab, data ? data.rows : null, data ? data.opening : null);
     }
   }
 
@@ -528,7 +579,7 @@
     return '<details class="move-explain"><summary>Why did this move?</summary>' + body + "</details>";
   }
 
-  function renderSport(sport, rows) {
+  function renderSport(sport, rows, opening) {
     if (rows === null) {
       contentEl.innerHTML = '<div class="state-msg">loading…</div>';
       return;
@@ -579,13 +630,17 @@
       return;
     }
 
-    contentEl.innerHTML = cards.map(renderEventCard).join("");
+    contentEl.innerHTML = cards
+      .map(function (ev) {
+        return renderEventCard(ev, opening);
+      })
+      .join("");
   }
 
   // Today's games only, combined across every sport -- kept separate from
   // the per-sport tabs (which show future-only games) per the request to
   // "keep live games and future games separate."
-  function renderLive(rows) {
+  function renderLive(rows, opening) {
     if (rows === null) {
       contentEl.innerHTML = '<div class="state-msg">loading…</div>';
       return;
@@ -630,15 +685,20 @@
       return;
     }
 
-    contentEl.innerHTML = cards.map(renderEventCard).join("");
+    contentEl.innerHTML = cards
+      .map(function (ev) {
+        return renderEventCard(ev, opening);
+      })
+      .join("");
   }
 
-  function renderEventCard(ev) {
+  function renderEventCard(ev, opening) {
     var dateLabel = ev.date ? formatDate(ev.date) : "";
     var sportBadge = ev.sport ? '<span class="badge">' + escapeHtml(ev.sport.toUpperCase()) + "</span>" : "";
-    var outcomes = ev.rows
+    var sortedRows = ev.rows
       .slice()
-      .sort(function (a, b) { return (b.last_price_cents || 0) - (a.last_price_cents || 0); })
+      .sort(function (a, b) { return (b.last_price_cents || 0) - (a.last_price_cents || 0); });
+    var outcomes = sortedRows
       .map(function (r) {
         return (
           '<div class="outcome">' +
@@ -652,7 +712,44 @@
       '<div class="event-card">' +
       (sportBadge || dateLabel ? '<div class="event-date">' + sportBadge + escapeHtml(dateLabel) + "</div>" : "") +
       '<div class="outcomes">' + outcomes + "</div>" +
+      renderOpeningOdds(sortedRows, opening) +
       "</div>"
+    );
+  }
+
+  // "Odds movement" dropdown: opening price (the earliest we logged for this
+  // specific market, via opening_market_snapshot) vs current, per outcome.
+  // For NFL this lands right around when that week's board opened (shortly
+  // after the prior week wrapped); for MLB it's per game/series the same
+  // way -- one mechanism covers both asks without hardcoding weekday/timezone
+  // cutovers. Labeled with the real timestamp rather than claiming an exact
+  // "start of week."
+  function renderOpeningOdds(rows, opening) {
+    if (!opening) return "";
+    var lines = [];
+    var earliest = null;
+    rows.forEach(function (r) {
+      var o = opening[r.market_ticker];
+      if (!o || o.last_price_cents == null || r.last_price_cents == null) return;
+      var openedAt = new Date(o.logged_at);
+      if (!earliest || openedAt < earliest) earliest = openedAt;
+      var delta = r.last_price_cents - o.last_price_cents;
+      var cls = delta > 0 ? "up" : delta < 0 ? "down" : "";
+      var arrow = delta > 0 ? "▲ +" : delta < 0 ? "▼ " : "– ";
+      lines.push(
+        '<div class="opening-row">' +
+        '<span class="opening-name">' + escapeHtml(r.title || r.market_ticker) + "</span>" +
+        '<span class="opening-delta ' + cls + '">' +
+        o.last_price_cents + "% → " + r.last_price_cents + "% (" + arrow + Math.abs(delta) + ")" +
+        "</span></div>"
+      );
+    });
+    if (lines.length === 0) return "";
+    var label = earliest ? "since " + formatDateTime(earliest) : "since tracking began";
+    return (
+      '<details class="opening-odds"><summary>Odds movement (' + escapeHtml(label) + ")</summary>" +
+      '<div class="opening-odds-body">' + lines.join("") + "</div>" +
+      "</details>"
     );
   }
 
