@@ -1,0 +1,42 @@
+name: Kalshi hourly tracker
+
+on:
+  schedule:
+    # Hourly, off the top of the hour. Runs year-round; the sports without
+    # open markets just log nothing that cycle (see PROJECT_LOG.md setup
+    # checklist re: seasons).
+    - cron: "7 * * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify configured series tickers
+        # Informational only -- don't let one retired/renamed ticker (e.g. an
+        # off-season soccer league) block every hourly run. Check the Actions
+        # log occasionally and fix SERIES_TICKERS_BY_SPORT if this goes red.
+        run: python3 kalshi_tracker.py verify
+        continue-on-error: true
+
+      - name: Run tracking cycle
+        run: python3 kalshi_tracker.py run
+
+      - name: Commit updated data files
+        run: |
+          git config user.name "kalshi-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Update tracker data"
+          git push
