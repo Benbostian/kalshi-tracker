@@ -29,6 +29,7 @@ Usage:
 import argparse
 import csv
 import json
+import os
 import re
 import sys
 import time
@@ -45,6 +46,20 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 PRICE_LOG_PATH = DATA_DIR / "price_log.csv"
 MOVES_LOG_PATH = DATA_DIR / "notable_moves.csv"
 SNAPSHOT_CACHE_PATH = DATA_DIR / "last_snapshot.json"
+
+# ---------------------------------------------------------------------------
+# Supabase ingest (optional) -- the live data store behind the dashboard.
+# The URL isn't sensitive (it's just where the function lives); the token
+# is, and comes from the KALSHI_INGEST_TOKEN env var (a GitHub Actions
+# secret) rather than being written here. The edge function itself holds
+# the real Supabase service-role key server-side -- this script only ever
+# sees the narrow single-purpose ingest token, never a database credential.
+# If the env var isn't set (e.g. running locally), Supabase posting is
+# skipped silently and the script behaves exactly as before (CSV-only).
+# ---------------------------------------------------------------------------
+SUPABASE_INGEST_URL = "https://mwfaxyqprmveviqdcrcj.supabase.co/functions/v1/ingest-tracker-data"
+SUPABASE_INGEST_TOKEN_ENV = "KALSHI_INGEST_TOKEN"
+SUPABASE_BATCH_SIZE = 500
 
 # Notable-move thresholds -- tune these once you've seen a week or two of
 # real data and know what's noise vs. signal for each market type.
@@ -400,7 +415,45 @@ def _move_row(now, sport, market_type, ticker, title, reason, prev_price, curr_p
             curr_price, price_delta, prev_vol, curr_vol, vol_delta]
 
 
-def track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves):
+def _row_to_supabase_dict(header, row):
+    """CSV header + row -> a JSON-able dict with Supabase's column names
+    (the only difference is logged_at_utc -> logged_at)."""
+    d = dict(zip(header, row))
+    if "logged_at_utc" in d:
+        d["logged_at"] = d.pop("logged_at_utc")
+    return d
+
+
+def _post_batch_to_supabase(table, rows):
+    """POST rows to the ingest-tracker-data edge function, chunked to keep
+    request bodies reasonable. Silently does nothing if KALSHI_INGEST_TOKEN
+    isn't set (e.g. local runs) -- this is additive to CSV logging, never a
+    replacement, so a missing/failed Supabase post never breaks a run."""
+    token = os.environ.get(SUPABASE_INGEST_TOKEN_ENV)
+    if not token or not rows:
+        return
+    for i in range(0, len(rows), SUPABASE_BATCH_SIZE):
+        chunk = rows[i:i + SUPABASE_BATCH_SIZE]
+        body = json.dumps({"table": table, "rows": chunk}).encode("utf-8")
+        req = urllib.request.Request(
+            SUPABASE_INGEST_URL, data=body, method="POST",
+            headers={
+                "Content-Type": "application/json",
+                "x-ingest-token": token,
+                "User-Agent": USER_AGENT,
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                resp.read()
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode("utf-8", errors="replace")
+            print(f"[warn] Supabase ingest failed for {table} (HTTP {e.code}): {detail}", file=sys.stderr)
+        except (urllib.error.URLError, TimeoutError) as e:
+            print(f"[warn] Supabase ingest failed for {table}: {e}", file=sys.stderr)
+
+
+def track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves, supabase_price_rows):
     ticker = market.get("ticker")
     title = market.get("title") or market.get("_event_title")
     yes_bid = _cents(market.get("yes_bid_dollars"))
@@ -411,11 +464,13 @@ def track_market(sport, market_type, series_ticker, market, last_snapshot, now, 
     status = market.get("status")
     team_codes = ",".join(parse_teams_from_ticker(ticker, sport)) if ticker else ""
 
-    _append_csv(PRICE_LOG_PATH, PRICE_LOG_HEADER, [
+    price_row = [
         now.isoformat(), sport, market_type, series_ticker, ticker,
         market.get("_event_ticker"), title, team_codes, yes_bid, yes_ask,
         last_price, volume, open_interest, status,
-    ])
+    ]
+    _append_csv(PRICE_LOG_PATH, PRICE_LOG_HEADER, price_row)
+    supabase_price_rows.append(_row_to_supabase_dict(PRICE_LOG_HEADER, price_row))
 
     prev = last_snapshot.get(ticker) if ticker else None
     if prev and last_price is not None and prev.get("price") is not None:
@@ -444,6 +499,7 @@ def run_tracking_cycle(sports=None):
     now = datetime.now(timezone.utc)
     last_snapshot = _load_last_snapshot()
     moves = []
+    supabase_price_rows = []
 
     for sport in sports:
         tickers = SERIES_TICKERS_BY_SPORT.get(sport)
@@ -457,11 +513,15 @@ def run_tracking_cycle(sports=None):
                 print(f"[warn] {sport}/{market_type} ({series_ticker}): {e}", file=sys.stderr)
                 continue
             for market in _flatten_markets_from_events(events):
-                track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves)
+                track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves,
+                              supabase_price_rows)
 
     _save_snapshot(last_snapshot)
     for move in moves:
         _append_csv(MOVES_LOG_PATH, MOVES_LOG_HEADER, move)
+
+    _post_batch_to_supabase("price_log", supabase_price_rows)
+    _post_batch_to_supabase("notable_moves", [_row_to_supabase_dict(MOVES_LOG_HEADER, m) for m in moves])
 
     print(f"[{now.isoformat()}] logged snapshot; {len(moves)} notable move(s) flagged.")
     for move in moves:
