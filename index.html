@@ -469,8 +469,14 @@
     }
     var req;
     if (tab === "moves") {
+      // Live-game moves are excluded here: while a game is in progress, almost
+      // every score/possession change re-triggers a notable move on its
+      // markets, which would otherwise flood this feed with noise for a game
+      // that's already fully visible (score + odds) on the Live tab. They're
+      // not lost -- just not duplicated here. See is_live / live_score_auto
+      // in kalshi_tracker.py.
       req = Promise.all([
-        supaFetch("notable_moves?select=*&order=logged_at.desc&limit=75"),
+        supaFetch("notable_moves?select=*&is_live=eq.false&order=logged_at.desc&limit=75"),
         state.matchupMap ? Promise.resolve(state.matchupMap) : fetchMatchupMap(),
       ]).then(function (results) {
         state.matchupMap = results[1];
