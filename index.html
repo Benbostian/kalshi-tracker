@@ -182,7 +182,29 @@
   .move-reason.up { color: var(--green); }
   .move-reason.down { color: var(--red); }
 
+  .move-explain { margin-top: 6px; }
+  .move-explain summary {
+    font-size: 12px;
+    color: var(--accent);
+    cursor: pointer;
+    list-style: none;
+  }
+  .move-explain summary::-webkit-details-marker { display: none; }
+  .move-explain summary::before { content: "▸ "; }
+  .move-explain[open] summary::before { content: "▾ "; }
+  .move-explain-body {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.45;
+    padding: 6px 2px 0 2px;
+  }
+  .move-explain-body.empty { color: var(--text-faint); font-style: italic; }
+  .move-explain-meta { font-size: 10.5px; color: var(--text-faint); margin-top: 4px; }
+
   .event-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-size: 11px;
     color: var(--text-faint);
     text-transform: uppercase;
@@ -233,6 +255,7 @@
   </div>
   <nav class="tabs" id="tabs">
     <button data-tab="moves" class="active">Notable Moves</button>
+    <button data-tab="live">Live</button>
     <button data-tab="nfl">NFL</button>
     <button data-tab="cfb">CFB</button>
     <button data-tab="mlb">MLB</button>
@@ -280,9 +303,14 @@
 
   var state = {
     tab: "moves",
-    cache: {}, // tab -> rows
+    cache: {}, // tab -> rows ("live" cache holds merged rows across all sports)
     matchupMap: null, // "sport|dateteamchunk" -> "Team A vs Team B", built from game-level rows
   };
+
+  // Sports combined into the "Live" tab (today's games). Per-sport tabs show
+  // only strictly-future games so the two stay mutually exclusive, per the
+  // request to "keep live games and future games separate."
+  var LIVE_SPORTS = ["nfl", "cfb", "mlb", "soccer", "tennis"];
 
   // ---- disclaimer dismiss (per-browser convenience only) ----
   try {
@@ -349,27 +377,47 @@
     });
   }
 
+  // Game-level snapshot rows for one sport (moneyline only, except soccer
+  // which only has game-level markets to begin with).
+  function sportQueryUrl(sport) {
+    return (
+      "latest_market_snapshot?select=*&sport=eq." +
+      encodeURIComponent(sport) +
+      (sport === "soccer" ? "" : "&market_type=eq.game") +
+      "&order=market_ticker.asc&limit=2000"
+    );
+  }
+
   function loadTab(tab) {
     if (state.cache[tab]) {
       render();
     } else {
       contentEl.innerHTML = '<div class="state-msg">loading…</div>';
     }
-    var req =
-      tab === "moves"
-        ? Promise.all([
-            supaFetch("notable_moves?select=*&order=logged_at.desc&limit=75"),
-            state.matchupMap ? Promise.resolve(state.matchupMap) : fetchMatchupMap(),
-          ]).then(function (results) {
-            state.matchupMap = results[1];
-            return results[0];
-          })
-        : supaFetch(
-            "latest_market_snapshot?select=*&sport=eq." +
-              encodeURIComponent(tab) +
-              (tab === "soccer" ? "" : "&market_type=eq.game") +
-              "&order=market_ticker.asc&limit=2000"
-          );
+    var req;
+    if (tab === "moves") {
+      req = Promise.all([
+        supaFetch("notable_moves?select=*&order=logged_at.desc&limit=75"),
+        state.matchupMap ? Promise.resolve(state.matchupMap) : fetchMatchupMap(),
+      ]).then(function (results) {
+        state.matchupMap = results[1];
+        return results[0];
+      });
+    } else if (tab === "live") {
+      req = Promise.all(
+        LIVE_SPORTS.map(function (sport) {
+          return supaFetch(sportQueryUrl(sport));
+        })
+      ).then(function (results) {
+        var merged = [];
+        results.forEach(function (rows) {
+          merged = merged.concat(rows);
+        });
+        return merged;
+      });
+    } else {
+      req = supaFetch(sportQueryUrl(tab));
+    }
     req
       .then(function (rows) {
         state.cache[tab] = rows;
@@ -400,6 +448,8 @@
   function render() {
     if (state.tab === "moves") {
       renderMoves(state.cache.moves || null);
+    } else if (state.tab === "live") {
+      renderLive(state.cache.live || null);
     } else {
       renderSport(state.tab, state.cache[state.tab] || null);
     }
@@ -463,8 +513,19 @@
       escapeHtml(m.title || m.market_ticker) +
       "</div>" +
       '<div class="move-reason ' + cls + '">' + reasonBits.join(" · ") + " · " + timeAgo(loggedDate) + "</div>" +
+      renderExplain(m) +
       "</div>"
     );
+  }
+
+  // Collapsible "why did this move?" disclosure, sourced from the
+  // notable_moves.explanation column (researched separately, not fabricated
+  // here). Honest fallback when a move hasn't been researched yet.
+  function renderExplain(m) {
+    var body = m.explanation
+      ? '<div class="move-explain-body">' + escapeHtml(m.explanation) + "</div>"
+      : '<div class="move-explain-body empty">Not yet researched.</div>';
+    return '<details class="move-explain"><summary>Why did this move?</summary>' + body + "</details>";
   }
 
   function renderSport(sport, rows) {
@@ -496,6 +557,9 @@
         return { ticker: ticker, rows: events[ticker], date: dateFromTicker(ticker) };
       })
       .filter(function (ev) {
+        // Future only -- today's games live on the "Live" tab instead, and
+        // past/settled games aren't useful here either.
+        if (ev.date && ev.date.getTime() <= todayUTCMs()) return false;
         if (activeOnly && !ev.rows.some(function (r) { return (r.volume || 0) > 0; })) return false;
         if (query) {
           var hay = ev.rows.map(function (r) { return (r.title || "").toLowerCase(); }).join(" ");
@@ -511,7 +575,58 @@
       });
 
     if (cards.length === 0) {
-      contentEl.innerHTML = '<div class="state-msg">No matches. Try clearing the filter or turning off "Traded only".</div>';
+      contentEl.innerHTML = '<div class="state-msg">No upcoming games. Try clearing the filter, turning off "Traded only", or check the Live tab for today\'s games.</div>';
+      return;
+    }
+
+    contentEl.innerHTML = cards.map(renderEventCard).join("");
+  }
+
+  // Today's games only, combined across every sport -- kept separate from
+  // the per-sport tabs (which show future-only games) per the request to
+  // "keep live games and future games separate."
+  function renderLive(rows) {
+    if (rows === null) {
+      contentEl.innerHTML = '<div class="state-msg">loading…</div>';
+      return;
+    }
+
+    var query = searchEl.value.trim().toLowerCase();
+    var activeOnly = activeOnlyEl.checked;
+    var todayMs = todayUTCMs();
+
+    var events = {};
+    var order = [];
+    rows.forEach(function (r) {
+      var key = r.sport + "|" + r.event_ticker;
+      if (!events[key]) {
+        events[key] = { sport: r.sport, ticker: r.event_ticker, rows: [] };
+        order.push(key);
+      }
+      events[key].rows.push(r);
+    });
+
+    var cards = order
+      .map(function (key) {
+        var ev = events[key];
+        ev.date = dateFromTicker(ev.ticker);
+        return ev;
+      })
+      .filter(function (ev) {
+        if (!ev.date || ev.date.getTime() !== todayMs) return false;
+        if (activeOnly && !ev.rows.some(function (r) { return (r.volume || 0) > 0; })) return false;
+        if (query) {
+          var hay = ev.rows.map(function (r) { return (r.title || "").toLowerCase(); }).join(" ");
+          if (hay.indexOf(query) === -1) return false;
+        }
+        return true;
+      })
+      .sort(function (a, b) {
+        return a.sport.localeCompare(b.sport) || a.ticker.localeCompare(b.ticker);
+      });
+
+    if (cards.length === 0) {
+      contentEl.innerHTML = '<div class="state-msg">No games live today. Try turning off "Traded only", or check a sport tab for upcoming games.</div>';
       return;
     }
 
@@ -520,6 +635,7 @@
 
   function renderEventCard(ev) {
     var dateLabel = ev.date ? formatDate(ev.date) : "";
+    var sportBadge = ev.sport ? '<span class="badge">' + escapeHtml(ev.sport.toUpperCase()) + "</span>" : "";
     var outcomes = ev.rows
       .slice()
       .sort(function (a, b) { return (b.last_price_cents || 0) - (a.last_price_cents || 0); })
@@ -534,7 +650,7 @@
       .join("");
     return (
       '<div class="event-card">' +
-      (dateLabel ? '<div class="event-date">' + escapeHtml(dateLabel) + "</div>" : "") +
+      (sportBadge || dateLabel ? '<div class="event-date">' + sportBadge + escapeHtml(dateLabel) + "</div>" : "") +
       '<div class="outcomes">' + outcomes + "</div>" +
       "</div>"
     );
@@ -577,6 +693,13 @@
     var parts = marketTicker.split("-");
     if (parts.length < 3) return null;
     return parts.slice(1, -1).join("-");
+  }
+
+  // UTC-midnight timestamp for "today", matching the UTC-midnight convention
+  // dateFromTicker() uses, so game dates and "today" compare cleanly.
+  function todayUTCMs() {
+    var now = new Date();
+    return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   }
 
   var MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
