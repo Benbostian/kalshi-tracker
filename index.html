@@ -157,6 +157,8 @@
   .move-top {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 4px;
     gap: 8px;
     margin-bottom: 4px;
   }
@@ -173,6 +175,7 @@
   }
   .move-time { margin-left: auto; font-size: 11.5px; color: var(--text-faint); }
   .move-matchup { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .move-game-date { font-size: 11px; font-weight: 400; color: var(--text-faint); }
   .move-title { font-size: 13px; font-weight: 500; color: var(--text-dim); margin-bottom: 3px; }
   .move-title.no-matchup { font-size: 14.5px; font-weight: 600; color: var(--text); }
   .move-reason { font-size: 13px; color: var(--text-dim); }
@@ -437,18 +440,29 @@
       if (names && names.length) matchup = names.slice(0, 2).join(" vs ");
     }
 
+    var loggedDate = new Date(m.logged_at);
+    var gameDate = dateFromTicker(m.market_ticker);
+    var gameDateLabel = gameDate ? formatDate(gameDate) : "";
+
     return (
       '<div class="move-card">' +
       '<div class="move-top">' +
       '<span class="badge">' + escapeHtml((m.sport || "").toUpperCase()) + "</span>" +
       '<span class="badge">' + escapeHtml(prettyMarketType(m.market_type)) + "</span>" +
-      '<span class="move-time">' + timeAgo(new Date(m.logged_at)) + "</span>" +
+      '<span class="move-time" title="' + escapeHtml(loggedDate.toISOString()) + '">' +
+      escapeHtml(formatDateTime(loggedDate)) +
+      "</span>" +
       "</div>" +
-      (matchup ? '<div class="move-matchup">' + escapeHtml(matchup) + "</div>" : "") +
+      (matchup
+        ? '<div class="move-matchup">' +
+          escapeHtml(matchup) +
+          (gameDateLabel ? ' <span class="move-game-date">· game ' + escapeHtml(gameDateLabel) + "</span>" : "") +
+          "</div>"
+        : "") +
       '<div class="move-title' + (matchup ? "" : " no-matchup") + '">' +
       escapeHtml(m.title || m.market_ticker) +
       "</div>" +
-      '<div class="move-reason ' + cls + '">' + reasonBits.join(" · ") + "</div>" +
+      '<div class="move-reason ' + cls + '">' + reasonBits.join(" · ") + " · " + timeAgo(loggedDate) + "</div>" +
       "</div>"
     );
   }
@@ -579,6 +593,16 @@
     var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     return days[d.getUTCDay()] + " " + months[d.getUTCMonth()] + " " + d.getUTCDate();
+  }
+
+  // Compact absolute date+time in the viewer's own local time zone, e.g.
+  // "9/25, 1:28 PM" -- shown on every notable move so it can be matched up
+  // against news from that day/time, since "18m ago" stops being useful to
+  // look things up by once a move is more than a few hours old.
+  function formatDateTime(d) {
+    var datePart = (d.getMonth() + 1) + "/" + d.getDate();
+    var timePart = d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+    return datePart + ", " + timePart;
   }
 
   function timeAgo(date) {
