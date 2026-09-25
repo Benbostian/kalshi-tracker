@@ -277,6 +277,24 @@
     margin: 18px 0 8px 2px;
   }
   .section-label:first-child { margin-top: 0; }
+  .section-sub {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    margin: -6px 0 10px 2px;
+    line-height: 1.4;
+  }
+
+  .sharp-note {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    margin-bottom: 14px;
+  }
+  .sharp-note strong { color: var(--text); }
 </style>
 </head>
 <body>
@@ -288,6 +306,7 @@
   </div>
   <nav class="tabs" id="tabs">
     <button data-tab="moves" class="active">Notable Moves</button>
+    <button data-tab="sharp">Sharp Money</button>
     <button data-tab="live">Live</button>
     <button data-tab="nfl">NFL</button>
     <button data-tab="cfb">CFB</button>
@@ -368,7 +387,7 @@
     document.querySelectorAll("nav.tabs button").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-tab") === tab);
     });
-    toolbarEl.style.display = tab === "moves" ? "none" : "flex";
+    toolbarEl.style.display = tab === "moves" || tab === "sharp" ? "none" : "flex";
     render();
     loadTab(tab);
   }
@@ -447,6 +466,16 @@
         state.matchupMap = results[1];
         return results[0];
       });
+    } else if (tab === "sharp") {
+      // Wider pool than the Notable Moves feed so there's enough history to
+      // rank within the lookback window (see renderSharp).
+      req = Promise.all([
+        supaFetch("notable_moves?select=*&order=logged_at.desc&limit=400"),
+        state.matchupMap ? Promise.resolve(state.matchupMap) : fetchMatchupMap(),
+      ]).then(function (results) {
+        state.matchupMap = results[1];
+        return results[0];
+      });
     } else if (tab === "live") {
       req = Promise.all([
         Promise.all(
@@ -505,6 +534,8 @@
     } else if (state.tab === "live") {
       var live = state.cache.live;
       renderLive(live ? live.rows : null, live ? live.opening : null);
+    } else if (state.tab === "sharp") {
+      renderSharp(state.cache.sharp || null);
     } else {
       var data = state.cache[state.tab];
       renderSport(state.tab, data ? data.rows : null, data ? data.opening : null);
@@ -521,6 +552,76 @@
       return;
     }
     var html = rows.map(renderMoveCard).join("");
+    contentEl.innerHTML = html;
+  }
+
+  var SHARP_LOOKBACK_MS = 48 * 60 * 60 * 1000;
+  var SHARP_MIN_VOLUME = 50; // matches MIN_VOLUME_FOR_SPIKE in kalshi_tracker.py
+  var SHARP_MAX_PER_SECTION = 8;
+
+  function renderSharp(rows) {
+    if (rows === null) {
+      contentEl.innerHTML = '<div class="state-msg">loading…</div>';
+      return;
+    }
+
+    var cutoff = Date.now() - SHARP_LOOKBACK_MS;
+    var recent = rows.filter(function (m) {
+      return new Date(m.logged_at).getTime() >= cutoff;
+    });
+
+    var repricings = recent
+      .filter(function (m) {
+        return /^price moved/.test(m.reason || "") && (m.curr_volume || 0) >= SHARP_MIN_VOLUME;
+      })
+      .sort(function (a, b) {
+        return Math.abs(b.price_delta_cents || 0) - Math.abs(a.price_delta_cents || 0);
+      })
+      .slice(0, SHARP_MAX_PER_SECTION);
+
+    var quietVolume = recent
+      .filter(function (m) {
+        return /^volume spike/.test(m.reason || "") && Math.abs(m.price_delta_cents || 0) < 5;
+      })
+      .sort(function (a, b) {
+        var ratioA = a.prev_volume ? a.curr_volume / a.prev_volume : 0;
+        var ratioB = b.prev_volume ? b.curr_volume / b.prev_volume : 0;
+        return ratioB - ratioA;
+      })
+      .slice(0, SHARP_MAX_PER_SECTION);
+
+    var note =
+      '<div class="sharp-note">' +
+      "<strong>How to read this:</strong> two signals worth watching separately. " +
+      '"Biggest re-pricings" is the market moving fast on real size -- the price itself jumped. ' +
+      '"Heaviest quiet volume" is the opposite: a burst of volume big enough to flag on its own, but the price barely budged (see the 🔥 Steam badge) -- money got absorbed instead of moving the line. ' +
+      "Window: last 48 hours. Liquidity floor: " +
+      SHARP_MIN_VOLUME +
+      "+ contracts, to filter out thin markets. This can't tell confident money apart from balanced public action without outside odds data -- treat it as a starting point for your own research, not a signal to bet on." +
+      "</div>";
+
+    if (repricings.length === 0 && quietVolume.length === 0) {
+      contentEl.innerHTML =
+        note +
+        '<div class="state-msg">No qualifying moves in the last 48 hours. Check back after more games get tracked.</div>';
+      return;
+    }
+
+    var html = note;
+    html += '<div class="section-label">Biggest re-pricings</div>';
+    html += '<div class="section-sub">Fast, decisive price moves on real volume -- classic "the market knows something" steam.</div>';
+    html +=
+      repricings.length > 0
+        ? repricings.map(renderMoveCard).join("")
+        : '<div class="state-msg">No large re-pricings in the last 48 hours.</div>';
+
+    html += '<div class="section-label">Heaviest quiet volume</div>';
+    html += '<div class="section-sub">Volume spikes that didn\'t move the price much -- size getting absorbed quietly.</div>';
+    html +=
+      quietVolume.length > 0
+        ? quietVolume.map(renderMoveCard).join("")
+        : '<div class="state-msg">No quiet volume spikes in the last 48 hours.</div>';
+
     contentEl.innerHTML = html;
   }
 
