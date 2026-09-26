@@ -4385,3 +4385,745 @@ logged_at_utc,sport,market_type,market_ticker,title,reason,prev_price_cents,curr
 2026-09-26T15:21:43.051406+00:00,tennis,atp_match,KXATPMATCH-26SEP27HARHUR-HAR,Lloyd Harris wins,volume spike x14.5,36,36,0,59,853,794,False,,,
 2026-09-26T15:21:43.051406+00:00,tennis,wta_match,KXWTAMATCH-26SEP27JOIBIR-JOI,Maya Joint wins,volume spike x7.4,61,62,1,3004,22080,19076,False,,,
 2026-09-26T15:21:43.051406+00:00,tennis,wta_match,KXWTAMATCH-26SEP27JOIBIR-BIR,Kimberly Birrell wins,volume spike x3.2,41,41,0,1388,4410,3022,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,game,KXNFLGAME-26SEP27CARCLE-CLE,Cleveland wins,volume spike x3.6,45,45,0,40888,148346,107458,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,spread,KXNFLSPREAD-26SEP27NEJAC-JAC3,JAC Jaguars wins by over 2.5 points?,volume spike x3.2,54,54,0,79975,259871,179896,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,spread,KXNFLSPREAD-26SEP27TENNYG-NYG18,NY Giants wins by over 17.5 points?,price moved +12c,0,12,12,0,7,7,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,spread,KXNFLSPREAD-26SEP27MINTB-MIN14,MIN Vikings wins by over 13.5 points?,price moved -8c,24,16,-8,3833,3862,29,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,spread,KXNFLSPREAD-26SEP27LVNO-NO4,NO Saints wins by over 3.5 points?,volume spike x3.7,47,48,1,75884,277407,201523,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,spread,KXNFLSPREAD-26SEP28PHICHI-CHI7,CHI Bears wins by over 6.5 points?,volume spike x9.5,18,18,0,123,1174,1051,False,,,
+2026-09-26T16:22:35.807060+00:00,nfl,total,KXNFLTOTAL-26SEP27SEAWAS-40,Full Game: over 39.5 points scored?,volume spike x35.3,52,50,-2,2849,100446,97597,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26PREMRST-MRST,Marist wins,price moved +13c,72,85,13,3437,15083,11646,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26PREMRST-MRST,Marist wins,volume spike x4.4,72,85,13,3437,15083,11646,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26PREMRST-PRE,Presbyterian wins,price moved -12c,29,17,-12,2416,12380,9964,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26PREMRST-PRE,Presbyterian wins,volume spike x5.1,29,17,-12,2416,12380,9964,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26TEXTENN-TENN,Tennessee wins,price moved -11c,36,25,-11,991662,1964563,972901,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26TEXTENN-TEX,Texas wins,price moved +9c,66,75,9,1098406,2108994,1010588,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26UNHSHU-SHU,Sacred Heart wins,price moved +8c,54,62,8,32409,35525,3116,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26UNHSHU-UNH,New Hampshire wins,price moved -9c,49,40,-9,21552,40980,19428,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26CLMBGTWN-GTWN,Georgetown wins,volume spike x29.1,31,32,1,1531,44545,43014,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26CLMBGTWN-CLMB,Columbia wins,volume spike x6.1,70,69,-1,1837,11176,9339,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26BALLKENT-KENT,Kent St. wins,price moved +6c,57,63,6,38276,94003,55727,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26BALLKENT-BALL,Ball St. wins,price moved -6c,44,38,-6,48787,74372,25585,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26COLOBAY-BAY,Baylor wins,price moved -8c,77,69,-8,52820,108651,55831,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26COLOBAY-COLO,Colorado wins,price moved +8c,24,32,8,143442,369268,225826,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26CSUUTSA-UTSA,UTSA wins,price moved -24c,85,61,-24,19841,43798,23957,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26CSUUTSA-CSU,Colorado St. wins,price moved +23c,16,39,23,74109,257608,183499,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26CSUUTSA-CSU,Colorado St. wins,volume spike x3.5,16,39,23,74109,257608,183499,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26LEHPENN-PENN,Penn wins,volume spike x5.8,21,22,1,6660,38703,32043,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26UNLVAKR-AKR,Akron wins,volume spike x4.0,18,19,1,12451,49226,36775,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26WAKELOU-LOU,Louisville wins,price moved -12c,82,70,-12,170100,239581,69481,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26WAKELOU-WAKE,Wake Forest wins,price moved +12c,19,31,12,71879,167154,95275,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26SEP26TXSOALCN-TXSO,Texas Southern wins,volume spike x4.1,41,40,-1,490,2010,1520,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT01UNTTLSA-TLSA,Tulsa wins,price moved -22c,67,45,-22,114,203,89,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT01UNTTLSA-UNT,North Texas wins,price moved +21c,40,61,21,59,106,47,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT02MTSTIDHO-MTST,Montana St. wins,price moved +32c,62,94,32,884,895,11,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03NAVYAFA-NAVY,Navy wins,price moved -29c,63,34,-29,287,296,9,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03BAYASU-ASU,Arizona St. wins,price moved -20c,72,52,-20,448,465,17,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03BAYASU-BAY,Baylor wins,price moved +31c,30,61,31,103,129,26,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03FLAMIZZ-MIZZ,Missouri wins,price moved -8c,45,37,-8,270,295,25,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03FLAMIZZ-FLA,Florida wins,price moved +6c,56,62,6,2687,2778,91,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03MICHMINN-MINN,Minnesota wins,price moved -6c,30,24,-6,456,706,250,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03PURILL-ILL,Illinois wins,price moved -30c,92,62,-30,2,8,6,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03PURILL-PUR,Purdue wins,price moved +26c,0,26,26,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03STANWAKE-STAN,Stanford wins,price moved +52c,0,52,52,0,9,9,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03TEMUSF-USF,South Florida wins,price moved +31c,54,85,31,4,21,17,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03TOLBALL-BALL,Ball St. wins,price moved -9c,42,33,-9,4,26,22,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03TOLBALL-TOL,Toledo wins,price moved +93c,0,93,93,0,31,31,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,game,KXNCAAFGAME-26OCT03WOFFUR-FUR,Furman wins,price moved -6c,92,86,-6,2,7,5,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT21,Kent St. wins by over 20.5 points,price moved +12c,0,12,12,0,540,540,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT15,Kent St. wins by over 14.5 points,price moved +20c,0,20,20,0,5,5,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT11,Kent St. wins by over 10.5 points,price moved +22c,0,22,22,0,15,15,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT10,Kent St. wins by over 9.5 points,price moved +29c,0,29,29,0,78,78,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT5,Kent St. wins by over 4.5 points,price moved +7c,41,48,7,4135,4144,9,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT4,Kent St. wins by over 3.5 points,price moved +6c,43,49,6,13750,22382,8632,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-KENT3,Kent St. wins by over 2.5 points,volume spike x4.4,52,53,1,14875,66000,51125,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL4,Ball St. wins by over 3.5 points,price moved +33c,0,33,33,0,14,14,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL5,Ball St. wins by over 4.5 points,price moved +26c,0,26,26,0,5,5,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL6,Ball St. wins by over 5.5 points,price moved +25c,0,25,25,0,3,3,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL7,Ball St. wins by over 6.5 points,volume spike x20.6,26,22,-4,18,371,353,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL8,Ball St. wins by over 7.5 points,price moved +23c,0,23,23,0,6,6,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL10,Ball St. wins by over 9.5 points,price moved +14c,0,14,14,0,5,5,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BALLKENT-BALL14,Ball St. wins by over 13.5 points,price moved +14c,0,14,14,0,1,1,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT70,Pittsburgh wins by over 69.5 points,price moved +8c,12,20,8,824,917,93,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT64,Pittsburgh wins by over 63.5 points,price moved +7c,22,29,7,555,755,200,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT61,Pittsburgh wins by over 60.5 points,volume spike x10.2,30,33,3,149,1514,1365,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT55,Pittsburgh wins by over 54.5 points,price moved +7c,50,57,7,19255,35147,15892,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT52,Pittsburgh wins by over 51.5 points,price moved +6c,58,64,6,3883,20490,16607,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT52,Pittsburgh wins by over 51.5 points,volume spike x5.3,58,64,6,3883,20490,16607,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BUCKPITT-PITT49,Pittsburgh wins by over 48.5 points,volume spike x3.0,66,67,1,295,886,591,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY24,Baylor wins by over 23.5 points,price moved +14c,0,14,14,0,221,221,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY22,Baylor wins by over 21.5 points,volume spike x548.5,20,17,-3,2,1097,1095,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY21,Baylor wins by over 20.5 points,price moved +6c,25,31,6,297,1368,1071,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY21,Baylor wins by over 20.5 points,volume spike x4.6,25,31,6,297,1368,1071,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY18,Baylor wins by over 17.5 points,price moved +27c,0,27,27,0,576,576,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY15,Baylor wins by over 14.5 points,price moved -10c,35,25,-10,1714,3776,2062,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY14,Baylor wins by over 13.5 points,price moved -6c,42,36,-6,1940,5308,3368,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY12,Baylor wins by over 11.5 points,price moved -9c,42,33,-9,1235,4044,2809,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY12,Baylor wins by over 11.5 points,volume spike x3.3,42,33,-9,1235,4044,2809,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY11,Baylor wins by over 10.5 points,price moved -13c,45,32,-13,18836,51700,32864,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY10,Baylor wins by over 9.5 points,price moved -10c,49,39,-10,473622,572387,98765,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY8,Baylor wins by over 7.5 points,price moved -12c,53,41,-12,5735,40246,34511,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY8,Baylor wins by over 7.5 points,volume spike x7.0,53,41,-12,5735,40246,34511,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY7,Baylor wins by over 6.5 points,price moved -11c,60,49,-11,7947,27016,19069,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY7,Baylor wins by over 6.5 points,volume spike x3.4,60,49,-11,7947,27016,19069,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY6,Baylor wins by over 5.5 points,price moved -12c,63,51,-12,2009,2806,797,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY5,Baylor wins by over 4.5 points,price moved -14c,66,52,-14,16,2053,2037,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY5,Baylor wins by over 4.5 points,volume spike x128.3,66,52,-14,16,2053,2037,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY4,Baylor wins by over 3.5 points,price moved -9c,65,56,-9,27,1321,1294,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY4,Baylor wins by over 3.5 points,volume spike x48.9,65,56,-9,27,1321,1294,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY3,Baylor wins by over 2.5 points,price moved -9c,74,65,-9,338,366,28,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY2,Baylor wins by over 1.5 points,price moved -7c,73,66,-7,35,232,197,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-BAY2,Baylor wins by over 1.5 points,volume spike x6.6,73,66,-7,35,232,197,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-COLO2,Colorado wins by over 1.5 points,price moved +30c,0,30,30,0,3166,3166,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-COLO3,Colorado wins by over 2.5 points,price moved +5c,22,27,5,44,59,15,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-COLO4,Colorado wins by over 3.5 points,price moved +5c,17,22,5,46,56,10,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26COLOBAY-COLO11,Colorado wins by over 10.5 points,price moved +10c,0,10,10,0,586,586,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA31,UTSA wins by over 30.5 points,price moved -9c,15,6,-9,12250,12895,645,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA28,UTSA wins by over 27.5 points,price moved +7c,0,7,7,0,85,85,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA25,UTSA wins by over 24.5 points,price moved +12c,0,12,12,0,139,139,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA24,UTSA wins by over 23.5 points,price moved -13c,27,14,-13,33,272,239,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA24,UTSA wins by over 23.5 points,volume spike x8.2,27,14,-13,33,272,239,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA22,UTSA wins by over 21.5 points,price moved -19c,33,14,-19,18,94,76,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA22,UTSA wins by over 21.5 points,volume spike x5.2,33,14,-19,18,94,76,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA21,UTSA wins by over 20.5 points,price moved -13c,34,21,-13,4,125,121,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA21,UTSA wins by over 20.5 points,volume spike x31.2,34,21,-13,4,125,121,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA18,UTSA wins by over 17.5 points,price moved -21c,40,19,-21,47,997,950,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA18,UTSA wins by over 17.5 points,volume spike x21.2,40,19,-21,47,997,950,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA17,UTSA wins by over 16.5 points,price moved -22c,43,21,-22,3551,5857,2306,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA15,UTSA wins by over 14.5 points,price moved -25c,47,22,-25,12626,36984,24358,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA14,UTSA wins by over 13.5 points,price moved -29c,53,24,-29,51580,60564,8984,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA13,UTSA wins by over 12.5 points,price moved -33c,57,24,-33,3401,7214,3813,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA12,UTSA wins by over 11.5 points,price moved -33c,58,25,-33,2105,3553,1448,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA11,UTSA wins by over 10.5 points,price moved -28c,58,30,-28,376,3763,3387,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA11,UTSA wins by over 10.5 points,volume spike x10.0,58,30,-28,376,3763,3387,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA10,UTSA wins by over 9.5 points,price moved -29c,63,34,-29,41,4902,4861,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA10,UTSA wins by over 9.5 points,volume spike x119.6,63,34,-29,41,4902,4861,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA8,UTSA wins by over 7.5 points,price moved +31c,0,31,31,0,2140,2140,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA7,UTSA wins by over 6.5 points,price moved -31c,71,40,-31,59,5454,5395,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA7,UTSA wins by over 6.5 points,volume spike x92.4,71,40,-31,59,5454,5395,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA6,UTSA wins by over 5.5 points,price moved +42c,0,42,42,0,1050,1050,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA5,UTSA wins by over 4.5 points,price moved +46c,0,46,46,0,1701,1701,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA4,UTSA wins by over 3.5 points,price moved +44c,0,44,44,0,3615,3615,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA3,UTSA wins by over 2.5 points,price moved -31c,81,50,-31,22,3472,3450,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA3,UTSA wins by over 2.5 points,volume spike x157.8,81,50,-31,22,3472,3450,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA2,UTSA wins by over 1.5 points,price moved +59c,0,59,59,0,3539,3539,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU2,Colorado St. wins by over 1.5 points,price moved +26c,17,43,26,114,4896,4782,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU2,Colorado St. wins by over 1.5 points,volume spike x42.9,17,43,26,114,4896,4782,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU3,Colorado St. wins by over 2.5 points,price moved +20c,14,34,20,64,522,458,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU3,Colorado St. wins by over 2.5 points,volume spike x8.2,14,34,20,64,522,458,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU4,Colorado St. wins by over 3.5 points,price moved +19c,11,30,19,10011,12198,2187,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU5,Colorado St. wins by over 4.5 points,price moved +28c,0,28,28,0,329,329,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU6,Colorado St. wins by over 5.5 points,price moved +24c,9,33,24,6000,6054,54,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU7,Colorado St. wins by over 6.5 points,price moved +16c,8,24,16,2674,3357,683,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU10,Colorado St. wins by over 9.5 points,price moved +6c,5,11,6,18798,19189,391,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU11,Colorado St. wins by over 10.5 points,price moved +12c,0,12,12,0,62,62,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU12,Colorado St. wins by over 11.5 points,price moved +5c,3,8,5,784,794,10,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CSUUTSA-CSU14,Colorado St. wins by over 13.5 points,price moved +5c,3,8,5,27981,28910,929,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU46,Ohio St. wins by over 45.5 points,volume spike x3.4,8,12,4,302,1015,713,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU42,Ohio St. wins by over 41.5 points,volume spike x3.0,14,16,2,463,1391,928,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU39,Ohio St. wins by over 38.5 points,price moved +8c,19,27,8,1000,2059,1059,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU36,Ohio St. wins by over 35.5 points,price moved +6c,25,31,6,506,1339,833,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU34,Ohio St. wins by over 33.5 points,price moved +11c,30,41,11,680,2219,1539,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU34,Ohio St. wins by over 33.5 points,volume spike x3.3,30,41,11,680,2219,1539,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU31,Ohio St. wins by over 30.5 points,price moved +5c,39,44,5,4863,11975,7112,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU28,Ohio St. wins by over 27.5 points,price moved +9c,46,55,9,322114,399333,77219,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU25,Ohio St. wins by over 24.5 points,price moved +16c,54,70,16,53185,128273,75088,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU24,Ohio St. wins by over 23.5 points,price moved +5c,59,64,5,3542,9499,5957,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU22,Ohio St. wins by over 21.5 points,price moved +5c,62,67,5,3578,8042,4464,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU15,Ohio St. wins by over 14.5 points,price moved +6c,77,83,6,432,875,443,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU14,Ohio St. wins by over 13.5 points,volume spike x11.8,82,86,4,1250,14713,13463,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU12,Ohio St. wins by over 11.5 points,volume spike x10.2,84,88,4,33,337,304,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU11,Ohio St. wins by over 10.5 points,price moved +7c,83,90,7,1182,1232,50,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILLOSU-OSU8,Ohio St. wins by over 7.5 points,price moved +5c,88,93,5,973,1036,63,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST32,Marist wins by over 31.5 points,price moved +11c,0,11,11,0,25,25,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST28,Marist wins by over 27.5 points,price moved +7c,10,17,7,112,137,25,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST24,Marist wins by over 23.5 points,price moved +11c,16,27,11,76,128,52,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST20,Marist wins by over 19.5 points,price moved +13c,23,36,13,118,170,52,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST16,Marist wins by over 15.5 points,price moved +14c,33,47,14,20,179,159,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST16,Marist wins by over 15.5 points,volume spike x8.9,33,47,14,20,179,159,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST12,Marist wins by over 11.5 points,price moved +55c,0,55,55,0,61,61,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST8,Marist wins by over 7.5 points,price moved +20c,48,68,20,9409,10268,859,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-MRST4,Marist wins by over 3.5 points,price moved +18c,60,78,18,567,1111,544,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-PRE2,Presbyterian wins by over 1.5 points,price moved -17c,30,13,-17,81,148,67,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-PRE5,Presbyterian wins by over 4.5 points,price moved +10c,0,10,10,0,17,17,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-PRE9,Presbyterian wins by over 8.5 points,price moved -6c,13,7,-6,95,131,36,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26PREMRST-PRE17,Presbyterian wins by over 16.5 points,volume spike x104.0,3,2,-1,1,104,103,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU17,San Diego St. wins by over 16.5 points,price moved +10c,0,10,10,0,62,62,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU15,San Diego St. wins by over 14.5 points,price moved +13c,0,13,13,0,71,71,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU14,San Diego St. wins by over 13.5 points,price moved +14c,0,14,14,0,87,87,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU12,San Diego St. wins by over 11.5 points,price moved +17c,0,17,17,0,1,1,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU11,San Diego St. wins by over 10.5 points,price moved +19c,0,19,19,0,2,2,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU10,San Diego St. wins by over 9.5 points,price moved +22c,0,22,22,0,2,2,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU8,San Diego St. wins by over 7.5 points,price moved +26c,0,26,26,0,146,146,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU7,San Diego St. wins by over 6.5 points,price moved +5c,25,30,5,13,14,1,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU6,San Diego St. wins by over 5.5 points,price moved +7c,26,33,7,23,125,102,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU6,San Diego St. wins by over 5.5 points,volume spike x5.4,26,33,7,23,125,102,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU5,San Diego St. wins by over 4.5 points,price moved +35c,0,35,35,0,115,115,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU4,San Diego St. wins by over 3.5 points,price moved +7c,31,38,7,28,791,763,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU4,San Diego St. wins by over 3.5 points,volume spike x28.2,31,38,7,28,791,763,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU3,San Diego St. wins by over 2.5 points,price moved +5c,40,45,5,788,2165,1377,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU2,San Diego St. wins by over 1.5 points,price moved +7c,41,48,7,44,586,542,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-SDSU2,San Diego St. wins by over 1.5 points,volume spike x13.3,41,48,7,44,586,542,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL2,Toledo wins by over 1.5 points,price moved -10c,56,46,-10,4462,6255,1793,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL5,Toledo wins by over 4.5 points,volume spike x857.2,42,38,-4,16,13715,13699,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL6,Toledo wins by over 5.5 points,price moved +6c,41,47,6,173,298,125,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL7,Toledo wins by over 6.5 points,volume spike x4.3,39,36,-3,6266,26696,20430,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL8,Toledo wins by over 7.5 points,volume spike x13.6,33,32,-1,8,109,101,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL11,Toledo wins by over 10.5 points,price moved +25c,0,25,25,0,90,90,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL12,Toledo wins by over 11.5 points,price moved +21c,0,21,21,0,601,601,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL14,Toledo wins by over 13.5 points,price moved +17c,0,17,17,0,2,2,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SDSUTOL-TOL18,Toledo wins by over 17.5 points,price moved -6c,14,8,-6,46626,73202,26576,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU55,Texas Tech wins by over 54.5 points,volume spike x23.1,8,6,-2,73,1684,1611,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU52,Texas Tech wins by over 51.5 points,price moved -5c,13,8,-5,1796,1812,16,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU49,Texas Tech wins by over 48.5 points,price moved -8c,19,11,-8,625,3043,2418,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU49,Texas Tech wins by over 48.5 points,volume spike x4.9,19,11,-8,625,3043,2418,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU46,Texas Tech wins by over 45.5 points,price moved -8c,23,15,-8,91,347,256,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU46,Texas Tech wins by over 45.5 points,volume spike x3.8,23,15,-8,91,347,256,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU42,Texas Tech wins by over 41.5 points,price moved -9c,32,23,-9,181,3266,3085,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU42,Texas Tech wins by over 41.5 points,volume spike x18.0,32,23,-9,181,3266,3085,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU39,Texas Tech wins by over 38.5 points,price moved -7c,38,31,-7,2059,10471,8412,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU39,Texas Tech wins by over 38.5 points,volume spike x5.1,38,31,-7,2059,10471,8412,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU34,Texas Tech wins by over 33.5 points,price moved -19c,54,35,-19,70266,102532,32266,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU31,Texas Tech wins by over 30.5 points,price moved -16c,62,46,-16,3976,8940,4964,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU28,Texas Tech wins by over 27.5 points,price moved -12c,70,58,-12,3354,5799,2445,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU25,Texas Tech wins by over 24.5 points,price moved -10c,75,65,-10,209,3224,3015,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU25,Texas Tech wins by over 24.5 points,volume spike x15.4,75,65,-10,209,3224,3015,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU24,Texas Tech wins by over 23.5 points,price moved -24c,78,54,-24,378,2326,1948,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU24,Texas Tech wins by over 23.5 points,volume spike x6.2,78,54,-24,378,2326,1948,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SHSUTTU-TTU22,Texas Tech wins by over 21.5 points,price moved -8c,80,72,-8,1366,2938,1572,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX21,Texas wins by over 20.5 points,price moved +8c,15,23,8,40274,43436,3162,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX18,Texas wins by over 17.5 points,price moved +10c,20,30,10,60362,66159,5797,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX17,Texas wins by over 16.5 points,price moved +10c,23,33,10,13190,13835,645,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX15,Texas wins by over 14.5 points,price moved +11c,25,36,11,3464,10577,7113,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX15,Texas wins by over 14.5 points,volume spike x3.1,25,36,11,3464,10577,7113,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX14,Texas wins by over 13.5 points,price moved +12c,28,40,12,22168,32066,9898,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX12,Texas wins by over 11.5 points,price moved +8c,33,41,8,1151,3608,2457,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX12,Texas wins by over 11.5 points,volume spike x3.1,33,41,8,1151,3608,2457,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX11,Texas wins by over 10.5 points,price moved +10c,33,43,10,9191,36163,26972,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX11,Texas wins by over 10.5 points,volume spike x3.9,33,43,10,9191,36163,26972,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX10,Texas wins by over 9.5 points,price moved +10c,37,47,10,53612,83901,30289,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX8,Texas wins by over 7.5 points,price moved +12c,38,50,12,81374,282322,200948,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX8,Texas wins by over 7.5 points,volume spike x3.5,38,50,12,81374,282322,200948,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX7,Texas wins by over 6.5 points,price moved +13c,45,58,13,113969,242154,128185,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX6,Texas wins by over 5.5 points,price moved +9c,50,59,9,947729,1706746,759017,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX5,Texas wins by over 4.5 points,price moved +11c,52,63,11,451935,689013,237078,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX4,Texas wins by over 3.5 points,price moved +12c,55,67,12,55643,139802,84159,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX3,Texas wins by over 2.5 points,price moved +8c,63,71,8,157043,200461,43418,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TEX2,Texas wins by over 1.5 points,price moved +11c,62,73,11,11483,17399,5916,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN2,Tennessee wins by over 1.5 points,price moved -9c,34,25,-9,7502,8334,832,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN3,Tennessee wins by over 2.5 points,price moved -10c,32,22,-10,11269,19219,7950,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN4,Tennessee wins by over 3.5 points,price moved -10c,28,18,-10,3397,5323,1926,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN5,Tennessee wins by over 4.5 points,price moved -8c,24,16,-8,1396,3639,2243,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN6,Tennessee wins by over 5.5 points,price moved -7c,23,16,-7,3125,8339,5214,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN7,Tennessee wins by over 6.5 points,price moved -8c,22,14,-8,9204,13837,4633,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN10,Tennessee wins by over 9.5 points,price moved -8c,15,7,-8,4479,5723,1244,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN11,Tennessee wins by over 10.5 points,price moved -5c,12,7,-5,533,615,82,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN12,Tennessee wins by over 11.5 points,price moved +8c,0,8,8,0,1227,1227,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TEXTENN-TENN17,Tennessee wins by over 16.5 points,volume spike x12.7,6,5,-1,1255,15980,14725,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNHSHU-SHU24,Sacred Heart wins by over 23.5 points,price moved +5c,9,14,5,25,32,7,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNHSHU-SHU20,Sacred Heart wins by over 19.5 points,volume spike x10.0,15,16,1,90,901,811,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNHSHU-SHU16,Sacred Heart wins by over 15.5 points,volume spike x48.4,20,21,1,25,1210,1185,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNHSHU-SHU12,Sacred Heart wins by over 11.5 points,volume spike x3.2,29,25,-4,358,1158,800,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNHSHU-SHU4,Sacred Heart wins by over 3.5 points,price moved +5c,42,47,5,11801,13165,1364,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNHSHU-UNH2,New Hampshire wins by over 1.5 points,price moved -6c,46,40,-6,617,948,331,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV31,UNLV wins by over 30.5 points,price moved -5c,13,8,-5,47118,47178,60,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV25,UNLV wins by over 24.5 points,price moved -5c,18,13,-5,12208,12319,111,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV24,UNLV wins by over 23.5 points,price moved +20c,0,20,20,0,98,98,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV22,UNLV wins by over 21.5 points,price moved +21c,0,21,21,0,134,134,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV21,UNLV wins by over 20.5 points,price moved -11c,31,20,-11,2,90,88,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV21,UNLV wins by over 20.5 points,volume spike x45.0,31,20,-11,2,90,88,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV18,UNLV wins by over 17.5 points,price moved -10c,37,27,-10,7,1124,1117,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV18,UNLV wins by over 17.5 points,volume spike x160.6,37,27,-10,7,1124,1117,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV17,UNLV wins by over 16.5 points,price moved -12c,42,30,-12,723,3391,2668,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV17,UNLV wins by over 16.5 points,volume spike x4.7,42,30,-12,723,3391,2668,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV15,UNLV wins by over 14.5 points,volume spike x15.8,44,40,-4,1877,29620,27743,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV14,UNLV wins by over 13.5 points,price moved -5c,49,44,-5,837508,1068666,231158,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV12,UNLV wins by over 11.5 points,volume spike x41.9,54,51,-3,1041,43643,42602,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV11,UNLV wins by over 10.5 points,price moved -5c,56,51,-5,460,1230,770,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV10,UNLV wins by over 9.5 points,price moved -6c,59,53,-6,4484,5073,589,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV8,UNLV wins by over 7.5 points,price moved -19c,64,45,-19,17,1504,1487,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV8,UNLV wins by over 7.5 points,volume spike x88.5,64,45,-19,17,1504,1487,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV7,UNLV wins by over 6.5 points,volume spike x35.3,70,72,2,119,4204,4085,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV6,UNLV wins by over 5.5 points,price moved +63c,0,63,63,0,4265,4265,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV5,UNLV wins by over 4.5 points,price moved +67c,0,67,67,0,317,317,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV3,UNLV wins by over 2.5 points,price moved +66c,0,66,66,0,6,6,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-UNLV2,UNLV wins by over 1.5 points,price moved +77c,0,77,77,0,100,100,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR2,Akron wins by over 1.5 points,price moved +23c,0,23,23,0,135,135,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR3,Akron wins by over 2.5 points,price moved +15c,0,15,15,0,11,11,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR4,Akron wins by over 3.5 points,price moved +18c,0,18,18,0,4,4,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR5,Akron wins by over 4.5 points,price moved +19c,0,19,19,0,31,31,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR6,Akron wins by over 5.5 points,price moved +11c,0,11,11,0,152,152,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR7,Akron wins by over 6.5 points,price moved +13c,0,13,13,0,370,370,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR8,Akron wins by over 7.5 points,price moved +6c,0,6,6,0,117,117,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR10,Akron wins by over 9.5 points,price moved +7c,0,7,7,0,172,172,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNLVAKR-AKR11,Akron wins by over 10.5 points,price moved +8c,0,8,8,0,125,125,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT28,Virginia Tech wins by over 27.5 points,price moved -6c,19,13,-6,14017,46096,32079,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT28,Virginia Tech wins by over 27.5 points,volume spike x3.3,19,13,-6,14017,46096,32079,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT25,Virginia Tech wins by over 24.5 points,volume spike x18.8,24,22,-2,139,2611,2472,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT22,Virginia Tech wins by over 21.5 points,price moved -7c,31,24,-7,770,1018,248,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT21,Virginia Tech wins by over 20.5 points,price moved -6c,35,29,-6,978,5209,4231,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT21,Virginia Tech wins by over 20.5 points,volume spike x5.3,35,29,-6,978,5209,4231,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT18,Virginia Tech wins by over 17.5 points,volume spike x9.3,43,40,-3,1779,16465,14686,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT17,Virginia Tech wins by over 16.5 points,price moved -7c,46,39,-7,2723,6798,4075,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT15,Virginia Tech wins by over 14.5 points,price moved -6c,50,44,-6,84261,131451,47190,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT14,Virginia Tech wins by over 13.5 points,price moved -7c,56,49,-7,119414,165566,46152,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT12,Virginia Tech wins by over 11.5 points,price moved -6c,58,52,-6,1367,4496,3129,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT12,Virginia Tech wins by over 11.5 points,volume spike x3.3,58,52,-6,1367,4496,3129,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT11,Virginia Tech wins by over 10.5 points,price moved -5c,60,55,-5,903,5409,4506,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT11,Virginia Tech wins by over 10.5 points,volume spike x6.0,60,55,-5,903,5409,4506,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT10,Virginia Tech wins by over 9.5 points,volume spike x4.1,63,60,-3,1356,5506,4150,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT7,Virginia Tech wins by over 6.5 points,price moved -5c,71,66,-5,5236,6788,1552,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT6,Virginia Tech wins by over 5.5 points,price moved +72c,0,72,72,0,13,13,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT5,Virginia Tech wins by over 4.5 points,volume spike x16.1,75,71,-4,60,965,905,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-VT3,Virginia Tech wins by over 2.5 points,price moved +83c,0,83,83,0,144,144,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-BC2,Boston College wins by over 1.5 points,price moved +13c,0,13,13,0,266,266,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-BC3,Boston College wins by over 2.5 points,price moved +11c,0,11,11,0,3500,3500,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-BC4,Boston College wins by over 3.5 points,price moved +11c,0,11,11,0,138,138,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VTBC-BC6,Boston College wins by over 5.5 points,price moved +7c,0,7,7,0,18,18,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU28,Louisville wins by over 27.5 points,price moved -6c,17,11,-6,151,755,604,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU28,Louisville wins by over 27.5 points,volume spike x5.0,17,11,-6,151,755,604,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU25,Louisville wins by over 24.5 points,price moved -6c,20,14,-6,1,294,293,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU25,Louisville wins by over 24.5 points,volume spike x294.0,20,14,-6,1,294,293,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU24,Louisville wins by over 23.5 points,price moved -11c,26,15,-11,255,390,135,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU22,Louisville wins by over 21.5 points,price moved -6c,26,20,-6,85,669,584,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU22,Louisville wins by over 21.5 points,volume spike x7.9,26,20,-6,85,669,584,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU17,Louisville wins by over 16.5 points,price moved -13c,39,26,-13,5701,8438,2737,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU15,Louisville wins by over 14.5 points,price moved -12c,41,29,-12,40616,70245,29629,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU14,Louisville wins by over 13.5 points,price moved -17c,46,29,-17,269575,306949,37374,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU12,Louisville wins by over 11.5 points,price moved -20c,52,32,-20,53960,147747,93787,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU11,Louisville wins by over 10.5 points,price moved -13c,53,40,-13,9085,30610,21525,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU11,Louisville wins by over 10.5 points,volume spike x3.4,53,40,-13,9085,30610,21525,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU10,Louisville wins by over 9.5 points,price moved -8c,57,49,-8,26027,39695,13668,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU8,Louisville wins by over 7.5 points,price moved -15c,60,45,-15,886,7738,6852,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU8,Louisville wins by over 7.5 points,volume spike x8.7,60,45,-15,886,7738,6852,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU7,Louisville wins by over 6.5 points,price moved -15c,67,52,-15,2351,6828,4477,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU6,Louisville wins by over 5.5 points,price moved -10c,68,58,-10,379,579,200,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU5,Louisville wins by over 4.5 points,price moved -5c,71,66,-5,40,1623,1583,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU5,Louisville wins by over 4.5 points,volume spike x40.6,71,66,-5,40,1623,1583,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU4,Louisville wins by over 3.5 points,price moved -10c,75,65,-10,205,282,77,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU3,Louisville wins by over 2.5 points,price moved -8c,78,70,-8,9097,9266,169,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-LOU2,Louisville wins by over 1.5 points,price moved -7c,80,73,-7,164,434,270,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-WAKE2,Wake Forest wins by over 1.5 points,price moved +26c,0,26,26,0,511,511,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-WAKE3,Wake Forest wins by over 2.5 points,price moved +22c,0,22,22,0,272,272,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-WAKE4,Wake Forest wins by over 3.5 points,price moved +13c,0,13,13,0,55,55,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-WAKE6,Wake Forest wins by over 5.5 points,price moved +11c,0,11,11,0,427,427,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WAKELOU-WAKE7,Wake Forest wins by over 6.5 points,price moved +7c,10,17,7,131,153,22,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CLMBGTWN-GTWN14,Georgetown wins by over 13.5 points,price moved +8c,0,8,8,0,41,41,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26HCLAF-LAF25,Lafayette wins by over 24.5 points,volume spike x83.0,8,8,0,4,332,328,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26USAUK-UK18,Kentucky wins by over 17.5 points,volume spike x4.2,58,58,0,1614,6763,5149,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26USAUK-UK8,Kentucky wins by over 7.5 points,price moved +79c,0,79,79,0,37,37,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26DRKEDAV-DAV2,Davidson wins by over 1.5 points,price moved +21c,0,21,21,0,110,110,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU46,Eastern Michigan wins by over 45.5 points,volume spike x5.5,8,7,-1,15,82,67,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU15,Eastern Michigan wins by over 14.5 points,price moved +72c,0,72,72,0,85,85,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU11,Eastern Michigan wins by over 10.5 points,price moved +80c,0,80,80,0,117,117,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU10,Eastern Michigan wins by over 9.5 points,price moved +5c,79,84,5,1,152,151,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU10,Eastern Michigan wins by over 9.5 points,volume spike x152.0,79,84,5,1,152,151,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU8,Eastern Michigan wins by over 7.5 points,price moved +84c,0,84,84,0,149,149,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LINWEMU-EMU7,Eastern Michigan wins by over 6.5 points,price moved +88c,0,88,88,0,191,191,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26MONMDART-DART19,Dartmouth wins by over 18.5 points,price moved +14c,0,14,14,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26MONMDART-MONM2,Monmouth wins by over 1.5 points,price moved +40c,0,40,40,0,59,59,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26NHCMRMK-NHC3,New Haven wins by over 2.5 points,price moved +22c,0,22,22,0,105,105,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26STONFOR-STON6,Stony Brook wins by over 5.5 points,price moved +58c,0,58,58,0,56,56,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26STONFOR-FOR3,Fordham wins by over 2.5 points,price moved +24c,0,24,24,0,95,95,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNDINST-UND30,North Dakota wins by over 29.5 points,volume spike x11.1,20,21,1,68,756,688,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNDINST-UND14,North Dakota wins by over 13.5 points,price moved +62c,0,62,62,0,16,16,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNDINST-UND6,North Dakota wins by over 5.5 points,price moved +78c,0,78,78,0,103,103,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-YALE19,Yale wins by over 18.5 points,volume spike x22.5,37,33,-4,16,360,344,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-YALE11,Yale wins by over 10.5 points,volume spike x3.2,53,50,-3,1572,4966,3394,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-YALE7,Yale wins by over 6.5 points,volume spike x106.6,69,67,-2,14,1493,1479,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-YALE3,Yale wins by over 2.5 points,price moved +72c,0,72,72,0,681,681,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-COR2,Cornell wins by over 1.5 points,volume spike x13.0,19,22,3,84,1095,1011,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-COR6,Cornell wins by over 5.5 points,price moved +5c,10,15,5,21,58,37,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26YALECOR-COR10,Cornell wins by over 9.5 points,price moved +10c,0,10,10,0,193,193,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TNTCWOF-TNTC3,Tennessee Tech wins by over 2.5 points,price moved +80c,0,80,80,0,4,4,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UCLAMD-UCLA2,UCLA wins by over 1.5 points,volume spike x3.1,50,51,1,45187,139511,94324,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UCLAMD-MD5,Maryland wins by over 4.5 points,volume spike x9.8,36,32,-4,13,128,115,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UCLAMD-MD7,Maryland wins by over 6.5 points,price moved -6c,32,26,-6,298,457,159,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UCLAMD-MD11,Maryland wins by over 10.5 points,volume spike x16.5,19,16,-3,51,844,793,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26NDPUR-ND31,Notre Dame wins by over 30.5 points,volume spike x4.1,41,42,1,2617,10859,8242,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26NDPUR-ND12,Notre Dame wins by over 11.5 points,volume spike x12.1,85,85,0,27,327,300,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26NIUGAST-GAST8,Georgia St. wins by over 7.5 points,price moved +57c,0,57,57,0,16,16,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26NIUGAST-GAST7,Georgia St. wins by over 6.5 points,volume spike x11.7,62,61,-1,301,3517,3216,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ALBYPRIN-PRIN19,Princeton wins by over 18.5 points,volume spike x26.7,8,4,-4,59,1573,1514,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26HAWWYO-HAW8,Hawai'i wins by over 7.5 points,volume spike x19.6,31,28,-3,887,17423,16536,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26HAWWYO-WYO3,Wyoming wins by over 2.5 points,volume spike x6.0,42,42,0,20,120,100,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26BSUWMU-BSU10,Boise St. wins by over 9.5 points,volume spike x6.1,45,45,0,346,2118,1772,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26CONNMOH-CONN6,UConn wins by over 5.5 points,price moved +29c,0,29,29,0,328,328,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26IOWAMICH-IOWA2,Iowa wins by over 1.5 points,volume spike x3.1,31,30,-1,513,1597,1084,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26IOWAMICH-IOWA5,Iowa wins by over 4.5 points,price moved +23c,0,23,23,0,61,61,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26OKLAUGA-UGA34,Georgia wins by over 33.5 points,price moved +9c,0,9,9,0,1149,1149,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26OKLAUGA-OKLA4,Oklahoma wins by over 3.5 points,price moved +12c,0,12,12,0,56,56,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TCUUCF-TCU4,TCU wins by over 3.5 points,volume spike x3.6,47,47,0,9248,33351,24103,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TCUUCF-UCF2,UCF wins by over 1.5 points,volume spike x3.5,38,40,2,24,85,61,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TCUUCF-UCF3,UCF wins by over 2.5 points,volume spike x4.5,37,38,1,26,117,91,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UNMNMSU-UNM22,New Mexico wins by over 21.5 points,price moved +25c,0,25,25,0,19,19,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26UTAHISU-UTAH6,Utah wins by over 5.5 points,volume spike x3.1,58,59,1,798,2470,1672,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VMISAM-SAM38,Samford wins by over 37.5 points,price moved +7c,0,7,7,0,18,18,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VMISAM-SAM14,Samford wins by over 13.5 points,price moved -13c,67,54,-13,1,206,205,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VMISAM-SAM14,Samford wins by over 13.5 points,volume spike x206.0,67,54,-13,1,206,205,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VMISAM-SAM10,Samford wins by over 9.5 points,price moved -6c,73,67,-6,1,2,1,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VMISAM-VMI7,VMI wins by over 6.5 points,price moved -10c,17,7,-10,1674,3377,1703,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WCUETSU-WCU18,Western Carolina wins by over 17.5 points,price moved +8c,0,8,8,0,1100,1100,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WCUETSU-WCU14,Western Carolina wins by over 13.5 points,price moved +13c,0,13,13,0,2237,2237,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WCUETSU-ETSU3,East Tennessee St. wins by over 2.5 points,volume spike x3.3,49,48,-1,21,70,49,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WCUETSU-ETSU23,East Tennessee St. wins by over 22.5 points,price moved +6c,0,6,6,0,2202,2202,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WMDUKE-DUKE39,Duke wins by over 38.5 points,volume spike x7.3,64,65,1,20,147,127,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LAMNICH-LAM13,Lamar wins by over 12.5 points,price moved +11c,29,40,11,119,152,33,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26NCCUECU-ECU15,East Carolina wins by over 14.5 points,price moved +92c,0,92,92,0,117,117,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26URINCAT-URI17,Rhode Island wins by over 16.5 points,price moved +72c,0,72,72,0,10,10,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26VANAUB-AUB12,Auburn wins by over 11.5 points,volume spike x3.7,44,44,0,100,369,269,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILSTUNI-ILST25,Illinois St. wins by over 24.5 points,price moved -6c,38,32,-6,33,291,258,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ILSTUNI-ILST25,Illinois St. wins by over 24.5 points,volume spike x8.8,38,32,-6,33,291,258,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26WISPSU-WIS7,Wisconsin wins by over 6.5 points,volume spike x7.9,12,12,0,18,143,125,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26DELUVA-UVA10,Virginia wins by over 9.5 points,price moved +74c,0,74,74,0,18,18,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26IWTXST-TXST49,Texas St. wins by over 48.5 points,price moved +9c,0,9,9,0,200,200,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26IWTXST-TXST24,Texas St. wins by over 23.5 points,price moved +7c,61,68,7,200,228,28,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26JMUODU-JMU2,James Madison wins by over 1.5 points,price moved +67c,0,67,67,0,7,7,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26JMUODU-ODU14,Old Dominion wins by over 13.5 points,price moved +7c,0,7,7,0,2,2,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26LIUFIU-FIU18,Florida International wins by over 17.5 points,volume spike x51.0,89,91,2,2,102,100,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ETAMMCNS-MCNS24,McNeese wins by over 23.5 points,volume spike x1368.0,5,5,0,1,1368,1367,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ETAMMCNS-MCNS16,McNeese wins by over 15.5 points,price moved +17c,0,17,17,0,3984,3984,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ETAMMCNS-MCNS8,McNeese wins by over 7.5 points,price moved +35c,0,35,35,0,690,690,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ETAMMCNS-ETAM5,East Texas A&M wins by over 4.5 points,price moved +21c,0,21,21,0,19,19,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26KSUCIN-CIN3,Cincinnati wins by over 2.5 points,price moved +30c,0,30,30,0,31,31,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26MTUJVST-JVST18,Jacksonville St. wins by over 17.5 points,price moved +23c,0,23,23,0,6,6,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26MTUJVST-JVST6,Jacksonville St. wins by over 5.5 points,volume spike x3.1,59,59,0,24,74,50,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SCARALA-ALA17,Alabama wins by over 16.5 points,volume spike x4.8,41,40,-1,432,2053,1621,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26SCARALA-SCAR6,South Carolina wins by over 5.5 points,volume spike x4.8,10,10,0,37,178,141,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26USMTULN-TULN15,Tulane wins by over 14.5 points,volume spike x6.1,58,57,-1,33,201,168,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26OREUSC-USC5,USC wins by over 4.5 points,price moved +29c,0,29,29,0,55,55,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TROYUSU-TROY2,Troy wins by over 1.5 points,price moved +42c,0,42,42,0,24,24,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TROYUSU-TROY5,Troy wins by over 4.5 points,price moved +29c,0,29,29,0,20,20,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26FAUULM-FAU10,Florida Atlantic wins by over 9.5 points,price moved +55c,0,55,55,0,317,317,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TLSAARK-ARK21,Arkansas wins by over 20.5 points,price moved +22c,0,22,22,0,41,41,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26TLSAARK-TLSA10,Tulsa wins by over 9.5 points,volume spike x9.8,13,13,0,472,4641,4169,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26MASSSAC-MASS14,UMass wins by over 13.5 points,price moved +29c,0,29,29,0,52,52,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26MASSSAC-MASS8,UMass wins by over 7.5 points,volume spike x19.0,36,39,3,4,76,72,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ORSTUTEP-ORST2,Oregon St. wins by over 1.5 points,price moved -5c,84,79,-5,29,591,562,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26SEP26ORSTUTEP-ORST2,Oregon St. wins by over 1.5 points,volume spike x20.4,84,79,-5,29,591,562,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,spread,KXNCAAFSPREAD-26OCT02PSUNW-PSU10,Penn St. wins by over 9.5 points,price moved +67c,0,67,67,0,14,14,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-37,Over 36.5 points scored,price moved -13c,83,70,-13,1300,1413,113,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-46,Over 45.5 points scored,price moved -16c,64,48,-16,296,1316,1020,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-46,Over 45.5 points scored,volume spike x4.4,64,48,-16,296,1316,1020,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-49,Over 48.5 points scored,price moved -10c,57,47,-10,305,1118,813,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-49,Over 48.5 points scored,volume spike x3.7,57,47,-10,305,1118,813,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-50,Over 49.5 points scored,price moved -10c,53,43,-10,2875,6220,3345,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-51,Over 50.5 points scored,price moved -8c,51,43,-8,113931,117336,3405,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-52,Over 51.5 points scored,price moved -21c,48,27,-21,265,2184,1919,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-52,Over 51.5 points scored,volume spike x8.2,48,27,-21,265,2184,1919,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-53,Over 52.5 points scored,price moved -8c,43,35,-8,170,1478,1308,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-53,Over 52.5 points scored,volume spike x8.7,43,35,-8,170,1478,1308,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-54,Over 53.5 points scored,price moved -8c,42,34,-8,24,6670,6646,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-54,Over 53.5 points scored,volume spike x277.9,42,34,-8,24,6670,6646,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-55,Over 54.5 points scored,price moved -8c,40,32,-8,8,1192,1184,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-55,Over 54.5 points scored,volume spike x149.0,40,32,-8,8,1192,1184,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-58,Over 57.5 points scored,price moved -11c,32,21,-11,19,24,5,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BALLKENT-67,Over 66.5 points scored,price moved +19c,0,19,19,0,19,19,True,"Live: KENT 0, BALL 0 -- 5:38 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-54,Over 53.5 points scored,volume spike x319.3,78,80,2,21,6705,6684,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-57,Over 56.5 points scored,price moved +9c,68,77,9,58,81,23,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-58,Over 57.5 points scored,price moved +9c,67,76,9,388,673,285,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-59,Over 58.5 points scored,price moved +5c,64,69,5,3877,4194,317,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-60,Over 59.5 points scored,price moved +10c,58,68,10,4962,5267,305,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-63,Over 62.5 points scored,price moved +10c,52,62,10,10353,19041,8688,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-66,Over 65.5 points scored,price moved +9c,43,52,9,6771,8668,1897,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-69,Over 68.5 points scored,price moved +6c,36,42,6,824,1659,835,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-72,Over 71.5 points scored,volume spike x3.1,27,30,3,468,1457,989,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-78,Over 77.5 points scored,price moved +5c,13,18,5,286,861,575,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-78,Over 77.5 points scored,volume spike x3.0,13,18,5,286,861,575,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BUCKPITT-81,Over 80.5 points scored,price moved +5c,10,15,5,2111,2163,52,True,"Live: PITT 7, BUCK 0 -- 9:08 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-33,Over 32.5 points scored,price moved -8c,93,85,-8,2272,2479,207,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-36,Over 35.5 points scored,price moved -9c,90,81,-9,3514,4011,497,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-39,Over 38.5 points scored,price moved -7c,85,78,-7,1696,2055,359,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-42,Over 41.5 points scored,price moved -19c,80,61,-19,352,5924,5572,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-42,Over 41.5 points scored,volume spike x16.8,80,61,-19,352,5924,5572,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-45,Over 44.5 points scored,price moved -21c,74,53,-21,220,4158,3938,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-45,Over 44.5 points scored,volume spike x18.9,74,53,-21,220,4158,3938,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-48,Over 47.5 points scored,price moved -25c,70,45,-25,110,4189,4079,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-48,Over 47.5 points scored,volume spike x38.1,70,45,-25,110,4189,4079,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-51,Over 50.5 points scored,price moved -25c,61,36,-25,892,2709,1817,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-51,Over 50.5 points scored,volume spike x3.0,61,36,-25,892,2709,1817,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-52,Over 51.5 points scored,price moved -24c,58,34,-24,642,2033,1391,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-52,Over 51.5 points scored,volume spike x3.2,58,34,-24,642,2033,1391,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-53,Over 52.5 points scored,price moved -25c,56,31,-25,6367,63987,57620,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-53,Over 52.5 points scored,volume spike x10.0,56,31,-25,6367,63987,57620,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-54,Over 53.5 points scored,price moved -25c,53,28,-25,6483,59459,52976,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-54,Over 53.5 points scored,volume spike x9.2,53,28,-25,6483,59459,52976,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-55,Over 54.5 points scored,price moved -24c,50,26,-24,18792,100095,81303,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-55,Over 54.5 points scored,volume spike x5.3,50,26,-24,18792,100095,81303,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-56,Over 55.5 points scored,price moved -24c,48,24,-24,18814,145434,126620,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-56,Over 55.5 points scored,volume spike x7.7,48,24,-24,18814,145434,126620,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-57,Over 56.5 points scored,price moved -23c,45,22,-23,4871,11449,6578,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-60,Over 59.5 points scored,price moved -20c,35,15,-20,2075,2905,830,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-63,Over 62.5 points scored,price moved -18c,30,12,-18,6,57,51,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-63,Over 62.5 points scored,volume spike x9.5,30,12,-18,6,57,51,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-66,Over 65.5 points scored,price moved -15c,27,12,-15,334,1145,811,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-66,Over 65.5 points scored,volume spike x3.4,27,12,-15,334,1145,811,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-69,Over 68.5 points scored,price moved -14c,20,6,-14,6,1086,1080,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26COLOBAY-69,Over 68.5 points scored,volume spike x181.0,20,6,-14,6,1086,1080,True,"Live: BAY 0, COLO 0 -- 6:02 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-37,Over 36.5 points scored,price moved +5c,92,97,5,2105,2227,122,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-40,Over 39.5 points scored,price moved +96c,0,96,96,0,363,363,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-43,Over 42.5 points scored,price moved +6c,84,90,6,17,34,17,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-46,Over 45.5 points scored,price moved +16c,77,93,16,57,243,186,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-46,Over 45.5 points scored,volume spike x4.3,77,93,16,57,243,186,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-49,Over 48.5 points scored,price moved +13c,72,85,13,107,434,327,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-49,Over 48.5 points scored,volume spike x4.1,72,85,13,107,434,327,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-52,Over 51.5 points scored,price moved +28c,66,94,28,4260,4573,313,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-55,Over 54.5 points scored,price moved +26c,58,84,26,11588,12356,768,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-56,Over 55.5 points scored,price moved +31c,54,85,31,776,62097,61321,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-56,Over 55.5 points scored,volume spike x80.0,54,85,31,776,62097,61321,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-57,Over 56.5 points scored,price moved +32c,52,84,32,15920,98815,82895,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-57,Over 56.5 points scored,volume spike x6.2,52,84,32,15920,98815,82895,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-58,Over 57.5 points scored,price moved +29c,50,79,29,26516,102403,75887,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-58,Over 57.5 points scored,volume spike x3.9,50,79,29,26516,102403,75887,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-59,Over 58.5 points scored,price moved +32c,47,79,32,15192,150648,135456,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-59,Over 58.5 points scored,volume spike x9.9,47,79,32,15192,150648,135456,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-60,Over 59.5 points scored,price moved +32c,45,77,32,220,1481,1261,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-60,Over 59.5 points scored,volume spike x6.7,45,77,32,220,1481,1261,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-61,Over 60.5 points scored,price moved +40c,42,82,40,1262,3044,1782,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-64,Over 63.5 points scored,price moved +33c,34,67,33,73,2777,2704,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-64,Over 63.5 points scored,volume spike x38.0,34,67,33,73,2777,2704,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-67,Over 66.5 points scored,price moved +70c,0,70,70,0,3140,3140,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-70,Over 69.5 points scored,price moved +29c,22,51,29,409,1584,1175,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-70,Over 69.5 points scored,volume spike x3.9,22,51,29,409,1584,1175,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-73,Over 72.5 points scored,price moved +30c,15,45,30,14737,15565,828,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-76,Over 75.5 points scored,price moved +27c,13,40,27,301,1136,835,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-76,Over 75.5 points scored,volume spike x3.8,13,40,27,301,1136,835,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CSUUTSA-79,Over 78.5 points scored,price moved +20c,7,27,20,3376,3536,160,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ILLOSU-53,Over 52.5 points scored,volume spike x3.3,56,55,-1,13921,45506,31585,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ILLOSU-56,Over 55.5 points scored,volume spike x4.1,48,48,0,7239,29428,22189,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ILLOSU-57,Over 56.5 points scored,volume spike x16.6,45,43,-2,472,7846,7374,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ILLOSU-58,Over 57.5 points scored,volume spike x10.6,42,41,-1,295,3128,2833,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ILLOSU-59,Over 58.5 points scored,volume spike x11.6,39,37,-2,258,2996,2738,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-27,Over 26.5 points scored,price moved -6c,97,91,-6,52,386,334,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-27,Over 26.5 points scored,volume spike x7.4,97,91,-6,52,386,334,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-35,Over 34.5 points scored,price moved +80c,0,80,80,0,61,61,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-39,Over 38.5 points scored,price moved +69c,0,69,69,0,60,60,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-43,Over 42.5 points scored,price moved +5c,53,58,5,960,1582,622,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-47,Over 46.5 points scored,price moved +12c,42,54,12,20716,20980,264,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-51,Over 50.5 points scored,price moved -5c,36,31,-5,1,3,2,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26PREMRST-59,Over 58.5 points scored,price moved +17c,0,17,17,0,5,5,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-32,Over 31.5 points scored,price moved +5c,88,93,5,1300,1310,10,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-35,Over 34.5 points scored,price moved +90c,0,90,90,0,15,15,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-49,Over 48.5 points scored,price moved -5c,54,49,-5,10612,131581,120969,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-49,Over 48.5 points scored,volume spike x12.4,54,49,-5,10612,131581,120969,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-50,Over 49.5 points scored,volume spike x10.3,52,49,-3,721,7421,6700,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-51,Over 50.5 points scored,price moved -5c,50,45,-5,70132,88313,18181,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SDSUTOL-62,Over 61.5 points scored,price moved -5c,23,18,-5,291,367,76,True,"Live: TOL 0, SDSU 3 -- 8:15 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-36,Over 35.5 points scored,volume spike x3.0,93,91,-2,186,562,376,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-42,Over 41.5 points scored,price moved -6c,85,79,-6,4829,4905,76,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-45,Over 44.5 points scored,price moved -13c,81,68,-13,62,161,99,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-48,Over 47.5 points scored,price moved -18c,76,58,-18,218,330,112,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-51,Over 50.5 points scored,price moved -18c,69,51,-18,1979,2927,948,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-54,Over 53.5 points scored,price moved -16c,59,43,-16,2583,6664,4081,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-55,Over 54.5 points scored,price moved -15c,57,42,-15,2118,5547,3429,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-56,Over 55.5 points scored,price moved -15c,52,37,-15,31328,52190,20862,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-57,Over 56.5 points scored,price moved -18c,50,32,-18,12215,143064,130849,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-57,Over 56.5 points scored,volume spike x11.7,50,32,-18,12215,143064,130849,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-58,Over 57.5 points scored,price moved -16c,47,31,-16,178,11089,10911,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-58,Over 57.5 points scored,volume spike x62.3,47,31,-16,178,11089,10911,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-59,Over 58.5 points scored,price moved -13c,43,30,-13,578,3985,3407,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-59,Over 58.5 points scored,volume spike x6.9,43,30,-13,578,3985,3407,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-60,Over 59.5 points scored,price moved -6c,41,35,-6,250,5091,4841,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-60,Over 59.5 points scored,volume spike x20.4,41,35,-6,250,5091,4841,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-66,Over 65.5 points scored,volume spike x9.8,25,23,-2,10,98,88,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-69,Over 68.5 points scored,price moved +17c,0,17,17,0,106,106,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-72,Over 71.5 points scored,price moved +12c,0,12,12,0,5800,5800,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SHSUTTU-75,Over 74.5 points scored,price moved -5c,12,7,-5,5609,6663,1054,True,"Live: TTU 0, SHSU 0 -- 8:27 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-37,Over 36.5 points scored,volume spike x3.1,90,92,2,939,2914,1975,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-43,Over 42.5 points scored,price moved +6c,81,87,6,1037,2480,1443,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-46,Over 45.5 points scored,price moved +7c,73,80,7,2050,5333,3283,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-49,Over 48.5 points scored,price moved +9c,65,74,9,7354,15252,7898,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-52,Over 51.5 points scored,price moved +8c,59,67,8,17572,42769,25197,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-56,Over 55.5 points scored,price moved +8c,47,55,8,239594,304512,64918,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-57,Over 56.5 points scored,price moved +7c,45,52,7,16390,36678,20288,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-58,Over 57.5 points scored,price moved +6c,43,49,6,16343,74685,58342,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-58,Over 57.5 points scored,volume spike x4.6,43,49,6,16343,74685,58342,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-59,Over 58.5 points scored,price moved +6c,40,46,6,7010,35225,28215,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-59,Over 58.5 points scored,volume spike x5.0,40,46,6,7010,35225,28215,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-60,Over 59.5 points scored,price moved +8c,37,45,8,27383,30846,3463,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-61,Over 60.5 points scored,price moved +6c,36,42,6,3693,5636,1943,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-64,Over 63.5 points scored,price moved +5c,28,33,5,2912,9045,6133,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-64,Over 63.5 points scored,volume spike x3.1,28,33,5,2912,9045,6133,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-67,Over 66.5 points scored,price moved +5c,22,27,5,609,3827,3218,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-67,Over 66.5 points scored,volume spike x6.3,22,27,5,609,3827,3218,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TEXTENN-73,Over 72.5 points scored,volume spike x10.2,14,16,2,377,3834,3457,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-26,Over 25.5 points scored,price moved +6c,90,96,6,736,797,61,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-30,Over 29.5 points scored,price moved +37c,0,37,37,0,1711,1711,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-34,Over 33.5 points scored,price moved +49c,0,49,49,0,80,80,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-46,Over 45.5 points scored,price moved +5c,39,44,5,5273,6172,899,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-50,Over 49.5 points scored,price moved +14c,35,49,14,1251,1372,121,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-58,Over 57.5 points scored,price moved +5c,16,21,5,39,108,69,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-62,Over 61.5 points scored,price moved +9c,7,16,9,111,112,1,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNHSHU-66,Over 65.5 points scored,price moved +8c,8,16,8,255,417,162,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-35,Over 34.5 points scored,price moved +7c,90,97,7,2568,2635,67,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-44,Over 43.5 points scored,price moved +15c,74,89,15,46,85,39,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-47,Over 46.5 points scored,price moved +73c,0,73,73,0,213,213,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-50,Over 49.5 points scored,price moved +13c,61,74,13,675,895,220,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-53,Over 52.5 points scored,price moved +20c,52,72,20,19048,64004,44956,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-53,Over 52.5 points scored,volume spike x3.4,52,72,20,19048,64004,44956,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-54,Over 53.5 points scored,price moved +18c,50,68,18,8614,53156,44542,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-54,Over 53.5 points scored,volume spike x6.2,50,68,18,8614,53156,44542,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-55,Over 54.5 points scored,price moved +20c,47,67,20,713,41367,40654,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-55,Over 54.5 points scored,volume spike x58.0,47,67,20,713,41367,40654,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-56,Over 55.5 points scored,price moved +17c,43,60,17,8,525,517,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-56,Over 55.5 points scored,volume spike x65.6,43,60,17,8,525,517,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-57,Over 56.5 points scored,price moved +23c,41,64,23,112,1359,1247,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-57,Over 56.5 points scored,volume spike x12.1,41,64,23,112,1359,1247,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-58,Over 57.5 points scored,price moved +26c,38,64,26,63,3160,3097,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-58,Over 57.5 points scored,volume spike x50.2,38,64,26,63,3160,3097,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-59,Over 58.5 points scored,price moved +58c,0,58,58,0,146,146,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-62,Over 61.5 points scored,price moved +24c,29,53,24,220,4180,3960,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-62,Over 61.5 points scored,volume spike x19.0,29,53,24,220,4180,3960,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-68,Over 67.5 points scored,price moved +23c,13,36,23,2977,4525,1548,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-74,Over 73.5 points scored,price moved +12c,9,21,12,14859,15046,187,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-77,Over 76.5 points scored,price moved +11c,6,17,11,127,752,625,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNLVAKR-77,Over 76.5 points scored,volume spike x5.9,6,17,11,127,752,625,True,"Live: AKR 7, UNLV 7 -- 8:07 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-34,Over 33.5 points scored,price moved -14c,81,67,-14,3116,3431,315,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-37,Over 36.5 points scored,price moved -16c,75,59,-16,1589,3333,1744,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-40,Over 39.5 points scored,price moved -22c,69,47,-22,4614,11752,7138,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-43,Over 42.5 points scored,price moved -19c,60,41,-19,5663,25820,20157,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-43,Over 42.5 points scored,volume spike x4.6,60,41,-19,5663,25820,20157,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-46,Over 45.5 points scored,price moved -17c,52,35,-17,316078,595672,279594,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-49,Over 48.5 points scored,price moved -18c,42,24,-18,43626,90722,47096,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-52,Over 51.5 points scored,price moved -18c,34,16,-18,9716,12945,3229,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-53,Over 52.5 points scored,price moved -11c,32,21,-11,12855,16860,4005,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-54,Over 53.5 points scored,price moved -14c,30,16,-14,3750,8196,4446,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-55,Over 54.5 points scored,price moved -10c,28,18,-10,6528,9843,3315,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-56,Over 55.5 points scored,price moved -9c,23,14,-9,514,4307,3793,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-56,Over 55.5 points scored,volume spike x8.4,23,14,-9,514,4307,3793,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-57,Over 56.5 points scored,price moved -9c,22,13,-9,583,2872,2289,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-57,Over 56.5 points scored,volume spike x4.9,22,13,-9,583,2872,2289,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-58,Over 57.5 points scored,price moved -9c,21,12,-9,343,5170,4827,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-58,Over 57.5 points scored,volume spike x15.1,21,12,-9,343,5170,4827,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-61,Over 60.5 points scored,price moved -6c,15,9,-6,1344,2465,1121,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-64,Over 63.5 points scored,price moved -6c,11,5,-6,535,2752,2217,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-64,Over 63.5 points scored,volume spike x5.1,11,5,-6,535,2752,2217,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26VTBC-67,Over 66.5 points scored,price moved -5c,7,2,-5,347,380,33,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-39,Over 38.5 points scored,price moved -5c,91,86,-5,3769,5844,2075,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-42,Over 41.5 points scored,price moved -12c,85,73,-12,846,1099,253,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-45,Over 44.5 points scored,price moved -10c,82,72,-10,145,249,104,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-48,Over 47.5 points scored,price moved -9c,75,66,-9,4888,6872,1984,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-51,Over 50.5 points scored,price moved -14c,68,54,-14,1723,7556,5833,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-51,Over 50.5 points scored,volume spike x4.4,68,54,-14,1723,7556,5833,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-54,Over 53.5 points scored,price moved -16c,61,45,-16,9171,15071,5900,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-57,Over 56.5 points scored,price moved -16c,53,37,-16,33743,70275,36532,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-58,Over 57.5 points scored,price moved -18c,51,33,-18,96121,158007,61886,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-59,Over 58.5 points scored,price moved -14c,47,33,-14,13711,22317,8606,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-60,Over 59.5 points scored,price moved -16c,44,28,-16,790,2138,1348,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-61,Over 60.5 points scored,price moved -12c,42,30,-12,8,183,175,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-61,Over 60.5 points scored,volume spike x22.9,42,30,-12,8,183,175,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-62,Over 61.5 points scored,price moved -18c,41,23,-18,1808,3087,1279,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-63,Over 62.5 points scored,price moved -13c,35,22,-13,597,743,146,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-66,Over 65.5 points scored,price moved -11c,28,17,-11,1374,1445,71,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-69,Over 68.5 points scored,volume spike x13.1,23,21,-2,16,210,194,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-75,Over 74.5 points scored,price moved -10c,16,6,-10,1,315,314,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WAKELOU-75,Over 74.5 points scored,volume spike x315.0,16,6,-10,1,315,314,True,"Live: LOU 0, WAKE 0 -- 8:25 - 1st",live_score_auto,2026-09-26T16:22:35.807060+00:00
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CLMBGTWN-32,Over 31.5 points scored,volume spike x36.9,88,85,-3,10,369,359,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26HCLAF-38,Over 37.5 points scored,price moved +73c,0,73,73,0,334,334,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26HCLAF-54,Over 53.5 points scored,price moved -9c,38,29,-9,49,86,37,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26HCLAF-66,Over 65.5 points scored,price moved +12c,0,12,12,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26USAUK-41,Over 40.5 points scored,price moved +84c,0,84,84,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26USAUK-53,Over 52.5 points scored,volume spike x1237.2,56,55,-1,34,42065,42031,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26USAUK-54,Over 53.5 points scored,volume spike x90.3,54,53,-1,454,40990,40536,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26USAUK-55,Over 54.5 points scored,volume spike x5.0,49,49,0,10176,50411,40235,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26USAUK-56,Over 55.5 points scored,volume spike x397.0,46,46,0,101,40101,40000,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26DRKEDAV-54,Over 53.5 points scored,price moved +5c,58,63,5,17092,17684,592,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26LEHPENN-29,Over 28.5 points scored,price moved +95c,0,95,95,0,11,11,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26LINWEMU-31,Over 30.5 points scored,volume spike x47.3,96,95,-1,51,2414,2363,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26LINWEMU-49,Over 48.5 points scored,price moved +5c,57,62,5,85,98,13,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MONMDART-49,Over 48.5 points scored,price moved +61c,0,61,61,0,193,193,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MONMDART-69,Over 68.5 points scored,price moved +14c,0,14,14,0,581,581,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NHCMRMK-35,Over 34.5 points scored,price moved +69c,0,69,69,0,1370,1370,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NHCMRMK-39,Over 38.5 points scored,price moved -5c,58,53,-5,418,438,20,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NHCMRMK-55,Over 54.5 points scored,price moved +18c,0,18,18,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NHCMRMK-59,Over 58.5 points scored,price moved +12c,0,12,12,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NHCMRMK-67,Over 66.5 points scored,price moved -6c,11,5,-6,353,356,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26STONFOR-62,Over 61.5 points scored,price moved -16c,38,22,-16,94,186,92,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26STONFOR-66,Over 65.5 points scored,price moved +17c,0,17,17,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26STONFOR-70,Over 69.5 points scored,price moved +12c,0,12,12,0,3,3,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26STONFOR-74,Over 73.5 points scored,price moved -8c,12,4,-8,49,103,54,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26YALECOR-47,Over 46.5 points scored,price moved +59c,0,59,59,0,16,16,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TNTCWOF-43,Over 42.5 points scored,price moved +61c,0,61,61,0,635,635,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TNTCWOF-51,Over 50.5 points scored,price moved +39c,0,39,39,0,295,295,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UCLAMD-54,Over 53.5 points scored,volume spike x8.1,57,56,-1,2145,17390,15245,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CHATCIT-44,Over 43.5 points scored,price moved +55c,0,55,55,0,5,5,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NDPUR-56,Over 55.5 points scored,volume spike x4.0,56,56,0,477,1885,1408,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NIUGAST-59,Over 58.5 points scored,volume spike x24.1,45,44,-1,13,313,300,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ALBYPRIN-42,Over 41.5 points scored,price moved +53c,0,53,53,0,20,20,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26BSUWMU-52,Over 51.5 points scored,price moved +48c,0,48,48,0,300,300,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26IOWAMICH-40,Over 39.5 points scored,volume spike x3.9,47,48,1,5575,21763,16188,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MISSFLA-78,Over 77.5 points scored,volume spike x9.9,15,12,-3,228,2249,2021,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RMUBUFF-47,Over 46.5 points scored,volume spike x4.4,51,50,-1,225,997,772,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RMUBUFF-48,Over 47.5 points scored,price moved +46c,0,46,46,0,23,23,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26STNHOHIO-32,Over 31.5 points scored,price moved +96c,0,96,96,0,1,1,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26UNMNMSU-59,Over 58.5 points scored,price moved +26c,0,26,26,0,25,25,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WEBBMRSH-52,Over 51.5 points scored,price moved +6c,54,60,6,42098,44053,1955,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WEBBMRSH-56,Over 55.5 points scored,volume spike x5812.0,48,51,3,1,5812,5811,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WEBBMRSH-68,Over 67.5 points scored,volume spike x11.0,18,22,4,6,66,60,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WMDUKE-52,Over 51.5 points scored,volume spike x5.2,78,77,-1,187,971,784,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WMDUKE-58,Over 57.5 points scored,volume spike x4.7,62,62,0,221,1038,817,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WMDUKE-67,Over 66.5 points scored,price moved +36c,0,36,36,0,5050,5050,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NCCUECU-54,Over 53.5 points scored,price moved +5c,57,62,5,229,291,62,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NCCUECU-60,Over 59.5 points scored,price moved +45c,0,45,45,0,67,67,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TXSOALCN-51,Over 50.5 points scored,price moved +66c,0,66,66,0,630,630,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TXSOALCN-55,Over 54.5 points scored,price moved -5c,57,52,-5,50,11303,11253,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TXSOALCN-55,Over 54.5 points scored,volume spike x226.1,57,52,-5,50,11303,11253,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ILSTUNI-63,Over 62.5 points scored,price moved +8c,27,35,8,1,29,28,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NEBMSU-51,Over 50.5 points scored,volume spike x80.0,46,45,-1,1,80,79,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NEBMSU-52,Over 51.5 points scored,price moved +42c,0,42,42,0,25,25,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26USFBGSU-52,Over 51.5 points scored,price moved +41c,0,41,41,0,41,41,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26WISPSU-42,Over 41.5 points scored,volume spike x6.7,57,57,0,15,100,85,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26IWTXST-83,Over 82.5 points scored,price moved +17c,0,17,17,0,86,86,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26JMUODU-55,Over 54.5 points scored,price moved +21c,0,21,21,0,187,187,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26CMUMIA-50,Over 49.5 points scored,volume spike x6.2,63,63,0,26,161,135,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26AAMUFAMU-52,Over 51.5 points scored,volume spike x313.2,46,48,2,11,3445,3434,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26EIUSDST-58,Over 57.5 points scored,price moved +40c,0,40,40,0,850,850,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26KENNARST-63,Over 62.5 points scored,price moved +27c,0,27,27,0,170,170,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26OKSTWVU-51,Over 50.5 points scored,price moved +76c,0,76,76,0,40,40,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SCSTCOOK-53,Over 52.5 points scored,price moved +64c,0,64,64,0,124,124,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26SIUMURR-47,Over 46.5 points scored,price moved +67c,0,67,67,0,18,18,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26APPNCST-59,Over 58.5 points scored,price moved +44c,0,44,44,0,10,10,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ARIZWSU-49,Over 48.5 points scored,volume spike x7.6,49,49,0,397,3010,2613,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ARIZWSU-52,Over 51.5 points scored,volume spike x7.2,43,41,-2,11,79,68,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26OREUSC-64,Over 63.5 points scored,volume spike x3.6,46,45,-1,3398,12247,8849,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26OREUSC-67,Over 66.5 points scored,volume spike x9.3,38,38,0,26,243,217,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26TXAMLSU-56,Over 55.5 points scored,volume spike x13.5,42,40,-2,24,324,300,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MIZZMSST-62,Over 61.5 points scored,volume spike x3.4,44,43,-1,37,127,90,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MOSUSMU-43,Over 42.5 points scored,price moved +93c,0,93,93,0,1,1,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MOSUSMU-49,Over 48.5 points scored,price moved +79c,0,79,79,0,10,10,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26ORSTUTEP-53,Over 52.5 points scored,price moved +58c,0,58,58,0,102,102,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26MONTUCD-58,Over 57.5 points scored,volume spike x18.2,59,59,0,24,436,412,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RICEFRES-46,Over 45.5 points scored,price moved +44c,0,44,44,0,9,9,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RICEFRES-47,Over 46.5 points scored,price moved +41c,0,41,41,0,9,9,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RICEFRES-48,Over 47.5 points scored,price moved +38c,0,38,38,0,8,8,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RICEFRES-49,Over 48.5 points scored,price moved +34c,0,34,34,0,8,8,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26RICEFRES-61,Over 60.5 points scored,price moved +12c,0,12,12,0,1,1,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26SEP26NAUMTST-78,Over 77.5 points scored,price moved +13c,0,13,13,0,13,13,False,,,
+2026-09-26T16:22:35.807060+00:00,cfb,total,KXNCAAFTOTAL-26OCT02PITTVT-59,Over 58.5 points scored,price moved +49c,0,49,49,0,288,288,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261310PITDET-DET4,Detroit wins by over 3.5 runs?,price moved +18c,0,18,18,0,2149,2149,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261310PITDET-DET3,Detroit wins by over 2.5 runs?,volume spike x6.9,25,27,2,158,1093,935,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261310PITDET-DET2,Detroit wins by over 1.5 runs?,volume spike x25.3,35,35,0,2065,52293,50228,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261310PITDET-PIT4,Pittsburgh wins by over 3.5 runs?,price moved +19c,0,19,19,0,406,406,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261507CINTOR-CIN3,Cincinnati wins by over 2.5 runs?,volume spike x3.9,21,20,-1,34,134,100,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261605LADSF-SF4,San Francisco wins by over 3.5 runs?,price moved +5c,0,5,5,0,15,15,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261605NYMWSH-WSH2,Washington wins by over 1.5 runs?,volume spike x3.4,33,34,1,1419,4762,3343,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261610ATLMIA-MIA3,Miami wins by over 2.5 runs?,volume spike x31.8,22,23,1,44,1399,1355,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261610ATLMIA-MIA2,Miami wins by over 1.5 runs?,volume spike x9.9,30,31,1,216,2139,1923,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261610ATLMIA-ATL2,Atlanta wins by over 1.5 runs?,volume spike x21.6,39,39,0,797,17249,16452,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261610TEXMIN-TEX3,Texas wins by over 2.5 runs?,price moved +31c,0,31,31,0,925,925,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP261915TBPHI-TB4,Tampa Bay wins by over 3.5 runs?,price moved +18c,0,18,18,0,125,125,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,spread,KXMLBSPREAD-26SEP262040AZSD-SD2,San Diego wins by over 1.5 runs?,volume spike x6.9,33,34,1,245,1683,1438,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261310PITDET-4,Over 3.5 runs scored,volume spike x5.6,91,93,2,3289,18306,15017,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261310PITDET-7,Over 6.5 runs scored,volume spike x3.5,73,73,0,162,569,407,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261507CINTOR-7,Over 6.5 runs scored,volume spike x22.1,65,66,1,14,310,296,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261507CINTOR-8,Over 7.5 runs scored,volume spike x3.4,54,56,2,12294,42031,29737,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261507CINTOR-9,Over 8.5 runs scored,volume spike x16.1,44,46,2,110,1769,1659,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261605NYMWSH-3,Over 2.5 runs scored,volume spike x26.8,97,97,0,20,535,515,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261605NYMWSH-5,Over 4.5 runs scored,volume spike x4.2,87,87,0,381,1606,1225,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261605NYMWSH-7,Over 6.5 runs scored,volume spike x8.9,70,69,-1,1264,11264,10000,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261605NYMWSH-10,Over 9.5 runs scored,volume spike x47.6,38,40,2,159,7574,7415,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261605NYMWSH-11,Over 10.5 runs scored,volume spike x4.0,31,31,0,130,514,384,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261910STLMIL-3,Over 2.5 runs scored,price moved +95c,0,95,95,0,10,10,False,,,
+2026-09-26T16:22:35.807060+00:00,mlb,total,KXMLBTOTAL-26SEP261910STLMIL-10,Over 9.5 runs scored,volume spike x38.7,32,32,0,162,6266,6104,False,,,
+2026-09-26T16:22:35.807060+00:00,soccer,epl,KXEPLGAME-26OCT10IPSFUL-IPS,Ipswich Town wins,price moved +37c,0,37,37,0,7,7,False,,,
+2026-09-26T16:22:35.807060+00:00,soccer,bundesliga,KXBUNDESLIGAGAME-26OCT10FCABMU-BMU,Bayern Munich wins,volume spike x3.2,80,80,0,18,58,40,False,,,
