@@ -305,6 +305,38 @@
     margin-bottom: 14px;
   }
   .sharp-note strong { color: var(--text); }
+
+  .guide-section { margin-bottom: 26px; }
+  .guide-h {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 8px 0;
+  }
+  .guide-intro {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+  .guide-p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    margin: 0 0 10px 0;
+  }
+  .guide-p:last-child { margin-bottom: 0; }
+  .guide-p strong { color: var(--text); }
+  .guide-list { margin: 0 0 4px 0; padding-left: 20px; }
+  .guide-list li { font-size: 13.5px; line-height: 1.6; color: var(--text-dim); margin-bottom: 7px; }
+  .guide-list li:last-child { margin-bottom: 0; }
+  .guide-list strong { color: var(--text); }
+  .guide-example-caption {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    line-height: 1.4;
+    margin: -4px 0 16px 2px;
+  }
 </style>
 </head>
 <body>
@@ -323,6 +355,7 @@
     <button data-tab="mlb">MLB</button>
     <button data-tab="soccer">Soccer</button>
     <button data-tab="tennis">Tennis</button>
+    <button data-tab="guide">Guide</button>
   </nav>
 </header>
 
@@ -392,7 +425,7 @@
     document.querySelectorAll("nav.tabs button").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-tab") === tab);
     });
-    toolbarEl.style.display = tab === "moves" || tab === "sharp" || tab === "live" ? "none" : "flex";
+    toolbarEl.style.display = tab === "moves" || tab === "sharp" || tab === "live" || tab === "guide" ? "none" : "flex";
     render();
     loadTab(tab);
   }
@@ -457,6 +490,11 @@
   }
 
   function loadTab(tab) {
+    if (tab === "guide") {
+      // Static content, no network fetch -- render straight away.
+      render();
+      return;
+    }
     if (state.cache[tab]) {
       render();
     } else {
@@ -542,6 +580,8 @@
       renderLiveMoves(state.cache.live || null);
     } else if (state.tab === "sharp") {
       renderSharp(state.cache.sharp || null);
+    } else if (state.tab === "guide") {
+      renderGuide();
     } else {
       var data = state.cache[state.tab];
       renderSport(state.tab, data ? data.rows : null, data ? data.opening : null);
@@ -814,6 +854,160 @@
     var html =
       note +
       rows.map(function (m) { return renderMoveCard(m, findCoMovedMarketTypes(rows, m)); }).join("");
+    contentEl.innerHTML = html;
+  }
+
+  // Static, hand-written content -- no network fetch. Illustrates the badges
+  // and card layout with a few fabricated example moves (clearly labeled
+  // "Example:") run through the same renderMoveCard() used everywhere else,
+  // so the pictures here can never drift out of sync with the real styling.
+  // A single fake matchup is seeded into state.matchupMap so those examples
+  // show a team-vs-team line too, just like a real card would.
+  function renderGuide() {
+    if (!state.matchupMap) state.matchupMap = {};
+    state.matchupMap["nfl|26OCT01METCOM"] = ["Meteors", "Comets"];
+
+    var exampleAnatomy = {
+      sport: "nfl",
+      market_type: "spread",
+      market_ticker: "KXNFLSPREAD-26OCT01METCOM-MET3",
+      title: "Example: Meteors win by over 3.5 points",
+      reason: "price moved +22c",
+      price_delta_cents: 22,
+      prev_price_cents: 41,
+      curr_price_cents: 63,
+      prev_volume: 12400,
+      curr_volume: 45900,
+      volume_delta: 33500,
+      logged_at: new Date().toISOString(),
+      is_live: false,
+      explanation:
+        "Meteors' starting QB was ruled out with an injury shortly before kickoff (researched from the injury report).",
+      explanation_source: "example",
+    };
+
+    var exampleSteam = {
+      sport: "mlb",
+      market_type: "total",
+      market_ticker: "KXMLBTOTAL-26OCT01METCOM-85",
+      title: "Example: Over 8.5 runs scored",
+      reason: "volume spike x18.4",
+      price_delta_cents: -1,
+      prev_price_cents: 47,
+      curr_price_cents: 46,
+      prev_volume: 40,
+      curr_volume: 780,
+      volume_delta: 740,
+      logged_at: new Date().toISOString(),
+      is_live: false,
+      explanation: null,
+    };
+
+    var exampleLive = {
+      sport: "nfl",
+      market_type: "total",
+      market_ticker: "KXNFLTOTAL-26OCT01METCOM-445",
+      title: "Example: Over 44.5 points scored",
+      reason: "price moved -6c",
+      price_delta_cents: -6,
+      prev_price_cents: 58,
+      curr_price_cents: 52,
+      prev_volume: 9000,
+      curr_volume: 9400,
+      volume_delta: 400,
+      logged_at: new Date().toISOString(),
+      is_live: true,
+      explanation: "Live: MET 17, COM 14 -- 9:52 - 3rd",
+      explanation_source: "live_score_auto",
+    };
+
+    var exampleCoMoved = {
+      sport: "nfl",
+      market_type: "spread",
+      market_ticker: "KXNFLSPREAD-26OCT01METCOM-MET7",
+      title: "Example: Meteors win by over 7.5 points",
+      reason: "price moved +14c",
+      price_delta_cents: 14,
+      prev_price_cents: 38,
+      curr_price_cents: 52,
+      prev_volume: 5200,
+      curr_volume: 9100,
+      volume_delta: 3900,
+      logged_at: new Date().toISOString(),
+      is_live: false,
+      explanation: null,
+    };
+
+    var html = "";
+
+    html +=
+      '<div class="guide-intro">This dashboard watches Kalshi’s sports prediction markets and flags the moments where a price or its trading volume moves enough to be worth a second look. "Sharp money" is trading-floor slang for informed, professional positioning — as opposed to "public" or "square" money, casual bets placed on gut feel or a favorite team. Nobody hands you a list of who’s trading, so this dashboard infers the signal from the pattern of prices and volume instead. Here’s how to read it.</div>';
+
+    html += '<div class="guide-section">';
+    html += '<div class="guide-h">Kalshi prices are probabilities</div>';
+    html +=
+      '<div class="guide-p">Every price on Kalshi is in cents, and it doubles as an implied probability: a contract trading at 63¢ means the market currently thinks that outcome is about a 63% chance. That’s different from sportsbook odds (like -150 or +130), so a move from 20¢ to 40¢ isn’t "+20" in any betting sense — it’s the market’s implied probability for that outcome literally doubling. Keep that in mind whenever you’re sizing up how big a price move actually is.</div>';
+    html += "</div>";
+
+    html += '<div class="guide-section">';
+    html += '<div class="guide-h">Anatomy of a move card</div>';
+    html += '<div class="guide-p">Every flagged move on this dashboard uses the same card. Here’s a real one, annotated:</div>';
+    html += renderMoveCard(exampleAnatomy, []);
+    html +=
+      '<ul class="guide-list">' +
+      "<li><strong>Sport &amp; market badges</strong> — which sport, and which kind of market (Game/moneyline, Spread, or Total).</li>" +
+      "<li><strong>Team matchup</strong> — resolved from Kalshi’s own ticker data, since a spread or total line only carries its own strike (e.g. “over 3.5 points”) with no team names attached otherwise.</li>" +
+      "<li><strong>Reason line</strong> — why this fired: either <em>“price moved &plusmn;Nc”</em> (the price itself jumped at least " +
+      "5¢ since the last check) or <em>“volume spike ×N”</em> (this cycle’s new trading volume was at least 3× everything traded before it, and the market had at least 50 contracts of volume already — to keep razor-thin markets from triggering on noise).</li>" +
+      "<li><strong>Price and volume, before &rarr; after</strong> — the actual numbers behind the flag, so you can judge the move’s real size and liquidity yourself instead of just trusting the label.</li>" +
+      "<li><strong>“Why did this move?”</strong> — a plain-language explanation where one exists (researched news, or the live score for an in-progress game). Says “Not yet researched” rather than guessing when nothing’s been found — nothing here is ever fabricated.</li>" +
+      "</ul>";
+    html += "</div>";
+
+    html += '<div class="guide-section">';
+    html += '<div class="guide-h">Three ways to look at the same data</div>';
+    html +=
+      '<ul class="guide-list">' +
+      "<li><strong>Notable Moves</strong> — every flagged move, newest first, across every sport. Good for scanning everything as it happens. Live-game moves are left out here on purpose (see Live, below) since they’d otherwise flood this feed.</li>" +
+      "<li><strong>Sharp Money</strong> — a curated, ranked view of the last 48 hours, split into two honestly-separate signals: <strong>Biggest re-pricings</strong> (fast, decisive price jumps on real volume — “the market found out something”) and <strong>Heaviest quiet volume</strong> (big volume that didn’t move the price much — size getting absorbed quietly). It can’t tell you which side is “the sharps” — there’s no bet-count or account data behind these prices — so treat it as a starting point for your own research, not a verdict.</li>" +
+      "<li><strong>Live</strong> — the same move-card feed, filtered to games actually in progress right now. Expand “Why did this move?” on any of these and you’ll get the live score instead of researched news, so you can see the score and the price reaction together.</li>" +
+      "</ul>";
+    html += "</div>";
+
+    html += '<div class="guide-section">';
+    html += '<div class="guide-h">Badges &amp; signals</div>';
+
+    html += renderMoveCard(exampleSteam, []);
+    html +=
+      '<div class="guide-example-caption">🔥 <strong>Steam</strong> — a volume spike that fired <em>without</em> also tripping the price-move threshold. Heavy size came in, but the book barely budged the price — money getting absorbed quietly instead of pushing the line, which some read as a stealthier, sharper signal than a loud price jump.</div>';
+
+    html += renderMoveCard(exampleLive, []);
+    html +=
+      '<div class="guide-example-caption">🔴 <strong>Live</strong> — the game was in progress when this fired. The explanation is the live score (pulled from ESPN), not researched news — nearly every live price wiggle is just the score changing, so this saves you from digging for a news explanation that doesn’t exist. Tennis isn’t covered; CFB and soccer are best-effort.</div>';
+
+    html += renderMoveCard(exampleCoMoved, ["Total"]);
+    html +=
+      '<div class="guide-example-caption">🔗 <strong>Moved together</strong> — another market on the <em>same game</em> (here, the Total) also flagged a move within a few hours of this one. Two independent markets moving together on one game is a stronger tell than either alone — it’s less likely to be noise on a single contract.</div>';
+    html += "</div>";
+
+    html += '<div class="guide-section">';
+    html += '<div class="guide-h">Reading it like a tracker, not a tip sheet</div>';
+    html +=
+      '<ul class="guide-list">' +
+      "<li><strong>Look for confirmation, not one card.</strong> A price move, backed by real volume, with another market on the same game moving too (🔗), is a lot more interesting than any single flag in isolation.</li>" +
+      "<li><strong>Quiet volume can be the earlier tell.</strong> A 🔥 Steam flag with the price barely moved means size is arriving before the price has caught up to it — worth watching that market for a re-pricing afterward.</li>" +
+      "<li><strong>Check “Why did this move?” before reading too much into it.</strong> If it’s a researched news explanation, that information is already public — the move is the market catching up to news, not getting ahead of it. An unexplained move with real volume behind it is the more interesting case: the market may be pricing in something before it’s public.</li>" +
+      "<li><strong>Mind the liquidity floor.</strong> Sharp Money only counts volume spikes on markets that already had 50+ contracts traded, and re-pricings need that same floor on the current side — a big percentage swing on a handful of contracts in a dead market isn’t meaningful.</li>" +
+      "<li><strong>Remember prices are probabilities.</strong> Compare moves in probability terms (63¢ &rarr; 41¢ is a ~22-point probability swing), not like traditional betting odds.</li>" +
+      "</ul>";
+    html += "</div>";
+
+    html += '<div class="guide-section">';
+    html += '<div class="guide-h">What this can’t tell you</div>';
+    html +=
+      '<div class="guide-p">This dashboard only sees aggregate price and volume — never who’s trading, how many separate people are behind a move, or their account history, so it genuinely can’t distinguish one confident large trader from a pile of public money hitting the same side at once. Kalshi is also its own regulated exchange, not a sportsbook — its prices can and do diverge from Vegas lines. And as always: this is informational only, not betting advice. A flagged move is a clue worth looking into, never a signal to act on, and any real money involved is your own decision and your own risk.</div>';
+    html += "</div>";
+
     contentEl.innerHTML = html;
   }
 
