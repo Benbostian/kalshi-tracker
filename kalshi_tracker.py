@@ -21,6 +21,7 @@ leagues.
 Usage:
     python3 kalshi_tracker.py run                    # one tracking cycle, all configured sports
     python3 kalshi_tracker.py run --sport nfl         # one sport only (repeatable flag)
+    python3 kalshi_tracker.py backfill-clv            # grade settled markets against previously-flagged moves
     python3 kalshi_tracker.py verify                  # confirm every configured ticker still resolves
     python3 kalshi_tracker.py list-series             # dump raw /series?category=Sports (discovery aid)
     python3 kalshi_tracker.py list-series --contains NFL
@@ -46,6 +47,7 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 PRICE_LOG_PATH = DATA_DIR / "price_log.csv"
 MOVES_LOG_PATH = DATA_DIR / "notable_moves.csv"
 SNAPSHOT_CACHE_PATH = DATA_DIR / "last_snapshot.json"
+CLV_LOG_PATH = DATA_DIR / "clv_outcomes.csv"
 
 # ---------------------------------------------------------------------------
 # Supabase ingest (optional) -- the live data store behind the dashboard.
@@ -60,6 +62,30 @@ SNAPSHOT_CACHE_PATH = DATA_DIR / "last_snapshot.json"
 SUPABASE_INGEST_URL = "https://mwfaxyqprmveviqdcrcj.supabase.co/functions/v1/ingest-tracker-data"
 SUPABASE_INGEST_TOKEN_ENV = "KALSHI_INGEST_TOKEN"
 SUPABASE_BATCH_SIZE = 500
+
+# ---------------------------------------------------------------------------
+# Closing-line-value (CLV) backtest
+#
+# Grades each previously-flagged notable move once its market settles: did
+# the direction of the move end up matching the eventual result ("confirmed"),
+# or did the market go the other way ("reversed")? This is the cheapest
+# possible signal-quality check -- it doesn't require any external odds
+# data, just watching Kalshi's own markets through to settlement -- and lays
+# the groundwork for the sharper Pinnacle-reference-line comparison that's
+# next on the list (see PROJECT_LOG.md).
+#
+# Deliberately a simple binary-outcome grade, not a true dollar-value CLV
+# calculation: "did this move point at the side that actually won" rather
+# than "how much better was this price than the closing price". Good enough
+# to start telling real signal from noise across a season; can be refined
+# later without a schema change (clv_status/settlement_price_cents are
+# generic enough to support a fancier grading rule down the line).
+# ---------------------------------------------------------------------------
+CLV_BACKFILL_BATCH_SIZE = 200
+CLV_LOG_HEADER = [
+    "checked_at_utc", "market_ticker", "sport", "reason", "price_delta_cents",
+    "settlement_result", "settlement_price_cents", "clv_status",
+]
 
 # Notable-move thresholds -- tune these once you've seen a week or two of
 # real data and know what's noise vs. signal for each market type.
@@ -441,6 +467,23 @@ def get_market_candlesticks(series_ticker, market_ticker, start_ts, end_ts, peri
     return data.get("candlesticks") or []
 
 
+def get_market(ticker):
+    """GET /markets/{ticker} -- single market detail (status/result), used
+    by the closing-line-value (CLV) backfill below to check whether a
+    previously-flagged market has settled and what it resolved to.
+    NOTE: this was written against Kalshi's documented v2 schema (status
+    becomes "settled"/"finalized" and result becomes "yes"/"no" once
+    resolved) -- the sandbox this was built in couldn't reach Kalshi's API
+    to confirm that shape against a real settled market (network egress
+    blocked). Run `backfill-clv` once real games have settled and eyeball
+    a row in data/clv_outcomes.csv or the notable_moves table; if
+    clv_status is staying "pending" for markets you know have finished,
+    or landing on "void" when they shouldn't, check the raw status/result
+    fields here and adjust _settlement_from_market() below to match."""
+    data = _get(f"/markets/{ticker}")
+    return data.get("market")
+
+
 def get_trades(ticker=None, min_ts=None, max_ts=None, limit=200):
     """GET /markets/trades -- raw fills, useful for volume detail beyond what
     the market snapshot's volume_fp gives you."""
@@ -569,6 +612,127 @@ def _post_batch_to_supabase(table, rows):
             print(f"[warn] Supabase ingest failed for {table}: {e}", file=sys.stderr)
 
 
+def _post_json_to_supabase(table, op, **extra):
+    """Low-level helper for the CLV backfill's two non-insert ops
+    (select_pending_clv / update_clv). Unlike _post_batch_to_supabase (a
+    fire-and-forget bulk insert that silently no-ops without a token), this
+    returns the parsed JSON response -- select_pending_clv has to hand rows
+    back to the caller -- and raises if KALSHI_INGEST_TOKEN isn't set, since
+    the CLV backfill has nothing useful to do without Supabase."""
+    token = os.environ.get(SUPABASE_INGEST_TOKEN_ENV)
+    if not token:
+        raise RuntimeError(f"{SUPABASE_INGEST_TOKEN_ENV} not set -- CLV backfill needs Supabase access")
+    body = {"table": table, "op": op, **extra}
+    req = urllib.request.Request(
+        SUPABASE_INGEST_URL, data=json.dumps(body).encode("utf-8"), method="POST",
+        headers={
+            "Content-Type": "application/json",
+            "x-ingest-token": token,
+            "User-Agent": USER_AGENT,
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"Supabase {op} failed (HTTP {e.code}): {detail}") from e
+    except (urllib.error.URLError, TimeoutError) as e:
+        raise RuntimeError(f"Supabase {op} failed: {e}") from e
+
+
+def _settlement_from_market(market):
+    """market (from get_market()) -> (result, is_final).
+    result is 'yes' / 'no' / None; is_final is True once Kalshi considers
+    the market settled/finalized (whether or not it resolved to a clean
+    yes/no -- a settled market with no result is treated as void, not left
+    pending forever). Returns (None, False) for anything still open."""
+    if not market:
+        return None, False
+    status = (market.get("status") or "").lower()
+    if status not in ("settled", "finalized"):
+        return None, False
+    result = (market.get("result") or "").lower()
+    if result in ("yes", "no"):
+        return result, True
+    return None, True  # settled/finalized but no clean result -- void
+
+
+def _grade_clv(price_delta_cents, settlement_result):
+    """The actual CLV grade: did the flagged move's direction match the
+    side that won? price_delta_cents is the move's own delta (positive =
+    price moved toward yes); settlement_result is 'yes' or 'no'. A
+    volume-spike-only move (price_delta_cents == 0, e.g. falsy/None) has no
+    direction to grade, so it's a 'push' rather than confirmed/reversed."""
+    if not price_delta_cents:
+        return "push"
+    moved_toward_yes = price_delta_cents > 0
+    return "confirmed" if moved_toward_yes == (settlement_result == "yes") else "reversed"
+
+
+def backfill_clv_outcomes(batch_size=CLV_BACKFILL_BATCH_SIZE):
+    """Check back on notable_moves rows still sitting at clv_status='pending'
+    (Supabase-side; the edge function only surfaces ones old enough that
+    their game could plausibly be over) and grade any whose market has
+    since settled. Safe to run every cycle -- markets that are still open
+    just come back up again next time, still 'pending'. Requires
+    KALSHI_INGEST_TOKEN; skips (with a warning) rather than failing the
+    whole run if it's not set, same as the rest of the Supabase posting."""
+    try:
+        resp = _post_json_to_supabase("notable_moves", "select_pending_clv", limit=batch_size)
+    except RuntimeError as e:
+        print(f"[warn] CLV backfill skipped: {e}", file=sys.stderr)
+        return []
+
+    pending = resp.get("rows") or []
+    if not pending:
+        print("[clv] no pending moves old enough to check yet.")
+        return []
+
+    now = datetime.now(timezone.utc)
+    settlement_cache = {}  # market_ticker -> (result, is_final), reused across rows sharing a ticker
+    updates = []
+    graded = []
+
+    for row in pending:
+        ticker = row.get("market_ticker")
+        if not ticker:
+            continue
+        if ticker not in settlement_cache:
+            try:
+                settlement_cache[ticker] = _settlement_from_market(get_market(ticker))
+            except RuntimeError as e:
+                print(f"[warn] CLV settlement check failed for {ticker}: {e}", file=sys.stderr)
+                settlement_cache[ticker] = (None, False)
+
+        result, is_final = settlement_cache[ticker]
+        if not is_final:
+            continue  # still open (or the lookup failed) -- stays 'pending', retried next run
+
+        settlement_price = None if result is None else (100 if result == "yes" else 0)
+        clv_status = "void" if result is None else _grade_clv(row.get("price_delta_cents"), result)
+
+        updates.append({
+            "id": row["id"],
+            "clv_status": clv_status,
+            "settlement_price_cents": settlement_price,
+            "clv_checked_at": now.isoformat(),
+        })
+        graded.append((ticker, row.get("reason"), clv_status))
+        _append_csv(CLV_LOG_PATH, CLV_LOG_HEADER, [
+            now.isoformat(), ticker, row.get("sport"), row.get("reason"),
+            row.get("price_delta_cents"), result, settlement_price, clv_status,
+        ])
+
+    if updates:
+        _post_json_to_supabase("notable_moves", "update_clv", rows=updates)
+
+    print(f"[clv] checked {len(pending)} pending move(s) old enough to grade; resolved {len(updates)}.")
+    for ticker, reason, status in graded:
+        print(f"  - {ticker} ({reason}): {status}")
+    return graded
+
+
 def track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves, supabase_price_rows,
                   live_games=None):
     ticker = market.get("ticker")
@@ -680,6 +844,13 @@ def main():
 
     sub.add_parser("verify", help="confirm every configured series ticker still resolves")
 
+    backfill_p = sub.add_parser(
+        "backfill-clv",
+        help="check settled markets and grade previously-flagged moves' outcomes (closing-line-value backtest)",
+    )
+    backfill_p.add_argument("--batch-size", type=int, default=CLV_BACKFILL_BATCH_SIZE,
+                             help=f"max pending moves to check per run (default: {CLV_BACKFILL_BATCH_SIZE})")
+
     list_p = sub.add_parser("list-series", help="dump raw /series?category=Sports (discovery aid, see NOTE above)")
     list_p.add_argument("--contains", help="only print tickers containing this substring (case-insensitive)")
 
@@ -687,6 +858,9 @@ def main():
 
     if args.command == "run":
         run_tracking_cycle(sports=args.sport)
+
+    elif args.command == "backfill-clv":
+        backfill_clv_outcomes(batch_size=args.batch_size)
 
     elif args.command == "verify":
         results = verify_all_configured_series()
