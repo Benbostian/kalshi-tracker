@@ -39,6 +39,17 @@ jobs:
         env:
           KALSHI_INGEST_TOKEN: ${{ secrets.KALSHI_INGEST_TOKEN }}
 
+      - name: Backfill closing-line-value outcomes
+        # Grades previously-flagged moves once their market settles (see
+        # backfill_clv_outcomes() in kalshi_tracker.py). Uses the same
+        # ingest token/edge function as the step above. continue-on-error
+        # for the same reason as the verify step: a Kalshi hiccup here
+        # shouldn't fail the whole hourly run.
+        run: python3 kalshi_tracker.py backfill-clv
+        env:
+          KALSHI_INGEST_TOKEN: ${{ secrets.KALSHI_INGEST_TOKEN }}
+        continue-on-error: true
+
       - name: Commit updated data files
         run: |
           git config user.name "kalshi-tracker-bot"
