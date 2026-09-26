@@ -365,14 +365,9 @@
 
   var state = {
     tab: "moves",
-    cache: {}, // tab -> rows ("live" cache holds merged rows across all sports)
+    cache: {}, // tab -> rows ("live" cache holds notable_moves rows where is_live=true, like moves/sharp)
     matchupMap: null, // "sport|dateteamchunk" -> "Team A vs Team B", built from game-level rows
   };
-
-  // Sports combined into the "Live" tab (today's games). Per-sport tabs show
-  // only strictly-future games so the two stay mutually exclusive, per the
-  // request to "keep live games and future games separate."
-  var LIVE_SPORTS = ["nfl", "cfb", "mlb", "soccer", "tennis"];
 
   // ---- disclaimer dismiss (per-browser convenience only) ----
   try {
@@ -397,7 +392,7 @@
     document.querySelectorAll("nav.tabs button").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-tab") === tab);
     });
-    toolbarEl.style.display = tab === "moves" || tab === "sharp" ? "none" : "flex";
+    toolbarEl.style.display = tab === "moves" || tab === "sharp" || tab === "live" ? "none" : "flex";
     render();
     loadTab(tab);
   }
@@ -493,21 +488,17 @@
         return results[0];
       });
     } else if (tab === "live") {
+      // Same notable_moves feed as Notable Moves/Sharp Money, filtered down
+      // to games currently in progress (see is_live in kalshi_tracker.py),
+      // and rendered with the same move-card style as Sharp Money -- the
+      // score sits right in the "Why did this move?" dropdown (live_score_auto),
+      // next to the price/volume signal that triggered the flag.
       req = Promise.all([
-        Promise.all(
-          LIVE_SPORTS.map(function (sport) {
-            return supaFetch(sportQueryUrl(sport));
-          })
-        ),
-        Promise.all(
-          LIVE_SPORTS.map(function (sport) {
-            return supaFetch(sportQueryUrl(sport, "opening_market_snapshot"));
-          })
-        ),
+        supaFetch("notable_moves?select=*&is_live=eq.true&order=logged_at.desc&limit=200"),
+        state.matchupMap ? Promise.resolve(state.matchupMap) : fetchMatchupMap(),
       ]).then(function (results) {
-        var rows = [].concat.apply([], results[0]);
-        var openingRows = [].concat.apply([], results[1]);
-        return { rows: rows, opening: buildOpeningMap(openingRows) };
+        state.matchupMap = results[1];
+        return results[0];
       });
     } else {
       req = Promise.all([
@@ -548,8 +539,7 @@
     if (state.tab === "moves") {
       renderMoves(state.cache.moves || null);
     } else if (state.tab === "live") {
-      var live = state.cache.live;
-      renderLive(live ? live.rows : null, live ? live.opening : null);
+      renderLiveMoves(state.cache.live || null);
     } else if (state.tab === "sharp") {
       renderSharp(state.cache.sharp || null);
     } else {
@@ -769,8 +759,9 @@
         return { ticker: ticker, rows: events[ticker], date: dateFromTicker(ticker) };
       })
       .filter(function (ev) {
-        // Future only -- today's games live on the "Live" tab instead, and
-        // past/settled games aren't useful here either.
+        // Future only -- today's/in-progress games surface on the "Live" tab
+        // instead (once they've thrown a flagged move), and past/settled
+        // games aren't useful here either.
         if (ev.date && ev.date.getTime() <= todayUTCMs()) return false;
         if (activeOnly && !ev.rows.some(function (r) { return (r.volume || 0) > 0; })) return false;
         if (query) {
@@ -787,7 +778,7 @@
       });
 
     if (cards.length === 0) {
-      contentEl.innerHTML = '<div class="state-msg">No upcoming games. Try clearing the filter, turning off "Traded only", or check the Live tab for today\'s games.</div>';
+      contentEl.innerHTML = '<div class="state-msg">No upcoming games. Try clearing the filter, turning off "Traded only", or check the Live tab for today\'s flagged moves.</div>';
       return;
     }
 
@@ -798,59 +789,32 @@
       .join("");
   }
 
-  // Today's games only, combined across every sport -- kept separate from
-  // the per-sport tabs (which show future-only games) per the request to
-  // "keep live games and future games separate."
-  function renderLive(rows, opening) {
+  // Today's live games, shown as notable-move cards -- same style as Sharp
+  // Money (renderMoveCard + the 🔗 co-moved signal), scoped to is_live=true
+  // rows instead of a ranked 48h pool. The live score rides along in each
+  // card's "Why did this move?" dropdown (explanation_source = 'live_score_auto'
+  // in kalshi_tracker.py), right next to whatever price/volume signal
+  // triggered the flag -- no separate score lookup needed.
+  function renderLiveMoves(rows) {
     if (rows === null) {
       contentEl.innerHTML = '<div class="state-msg">loading…</div>';
       return;
     }
-
-    var query = searchEl.value.trim().toLowerCase();
-    var activeOnly = activeOnlyEl.checked;
-    var todayMs = todayUTCMs();
-
-    var events = {};
-    var order = [];
-    rows.forEach(function (r) {
-      var key = r.sport + "|" + r.event_ticker;
-      if (!events[key]) {
-        events[key] = { sport: r.sport, ticker: r.event_ticker, rows: [] };
-        order.push(key);
-      }
-      events[key].rows.push(r);
-    });
-
-    var cards = order
-      .map(function (key) {
-        var ev = events[key];
-        ev.date = dateFromTicker(ev.ticker);
-        return ev;
-      })
-      .filter(function (ev) {
-        if (!ev.date || ev.date.getTime() !== todayMs) return false;
-        if (activeOnly && !ev.rows.some(function (r) { return (r.volume || 0) > 0; })) return false;
-        if (query) {
-          var hay = ev.rows.map(function (r) { return (r.title || "").toLowerCase(); }).join(" ");
-          if (hay.indexOf(query) === -1) return false;
-        }
-        return true;
-      })
-      .sort(function (a, b) {
-        return a.sport.localeCompare(b.sport) || a.ticker.localeCompare(b.ticker);
-      });
-
-    if (cards.length === 0) {
-      contentEl.innerHTML = '<div class="state-msg">No games live today. Try turning off "Traded only", or check a sport tab for upcoming games.</div>';
+    if (rows.length === 0) {
+      contentEl.innerHTML =
+        '<div class="state-msg">No games live right now. Check back once something kicks off, or see the Notable Moves tab for everything else.</div>';
       return;
     }
 
-    contentEl.innerHTML = cards
-      .map(function (ev) {
-        return renderEventCard(ev, opening);
-      })
-      .join("");
+    var note =
+      '<div class="sharp-note">' +
+      "Notable moves flagged while these games are actively in progress -- score and possession swings move these prices constantly, so expect steady churn here. Expand “Why did this move?” on any card for the live score." +
+      "</div>";
+
+    var html =
+      note +
+      rows.map(function (m) { return renderMoveCard(m, findCoMovedMarketTypes(rows, m)); }).join("");
+    contentEl.innerHTML = html;
   }
 
   function renderEventCard(ev, opening) {
