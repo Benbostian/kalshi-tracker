@@ -25629,3 +25629,155 @@ logged_at_utc,sport,market_type,market_ticker,title,reason,prev_price_cents,curr
 2026-09-28T02:23:30.624959+00:00,tennis,wta_match,KXWTAMATCH-26SEP27LAZJIA-JIA,Tian Jialin wins,volume spike x3.5,16,16,0,16,56,40,False,,,
 2026-09-28T02:23:30.624959+00:00,tennis,wta_match,KXWTAMATCH-26SEP27YASWAN-WAN,Jiayi Wang wins,volume spike x3.2,15,15,0,681,2193,1512,False,,,
 2026-09-28T02:23:30.624959+00:00,tennis,wta_match,KXWTAMATCH-26SEP27ZHAWOL-WOL,Vivian Wolff wins,volume spike x16.7,67,67,0,144,2407,2263,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,game,KXNFLGAME-26SEP27LARDEN-DEN,Denver wins,price moved +23c,14,37,23,14552013,25614412,11062399,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,game,KXNFLGAME-26SEP27LARDEN-LAR,Los Angeles R wins,price moved -22c,86,64,-22,16745434,26683645,9938211,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-DEN4,DEN Broncos wins by over 3.5 points?,price moved +15c,7,22,15,297613,478926,181313,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-DEN3,DEN Broncos wins by over 2.5 points?,price moved +20c,10,30,20,280068,406254,126186,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-DEN2,DEN Broncos wins by over 1.5 points?,price moved +20c,11,31,20,638030,727247,89217,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR2,LA Rams wins by over 1.5 points?,price moved -19c,84,65,-19,2000452,2244849,244397,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR3,LA Rams wins by over 2.5 points?,price moved -15c,80,65,-15,1006022,1334096,328074,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR4,LA Rams wins by over 3.5 points?,price moved -62c,76,14,-62,673276,1079153,405877,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR5,LA Rams wins by over 4.5 points?,price moved -62c,76,14,-62,194653,335541,140888,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR6,LA Rams wins by over 5.5 points?,price moved -55c,70,15,-55,157545,282269,124724,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR7,LA Rams wins by over 6.5 points?,price moved -56c,62,6,-56,704563,986412,281849,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR8,LA Rams wins by over 7.5 points?,price moved -55c,59,4,-55,497608,705270,207662,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR10,LA Rams wins by over 9.5 points?,price moved -45c,50,5,-45,499214,676725,177511,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR11,LA Rams wins by over 10.5 points?,price moved -45c,46,1,-45,647303,798335,151032,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR14,LA Rams wins by over 13.5 points?,price moved -31c,32,1,-31,700214,793513,93299,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR15,LA Rams wins by over 14.5 points?,price moved -30c,31,1,-30,96799,144311,47512,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR17,LA Rams wins by over 16.5 points?,price moved -20c,21,1,-20,71358,102962,31604,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR18,LA Rams wins by over 17.5 points?,price moved -6c,8,2,-6,53105,65048,11943,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26SEP27LARDEN-LAR21,LA Rams wins by over 20.5 points?,price moved -15c,16,1,-15,180634,200083,19449,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04ARINYG-ARI3,ARI Cardinals wins by over 2.5 points?,price moved +44c,0,44,44,0,455,455,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04GBTB-TB3,TB Buccaneers wins by over 2.5 points?,price moved -8c,40,32,-8,7310,7325,15,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04GBTB-TB2,TB Buccaneers wins by over 1.5 points?,price moved -10c,44,34,-10,44195,44200,5,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04JACCIN-CIN18,CIN Bengals wins by over 17.5 points?,price moved -6c,14,8,-6,30929,32246,1317,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04LARPHI-LAR11,LA Rams wins by over 10.5 points?,price moved -30c,41,11,-30,8276,8323,47,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04LARPHI-LAR7,LA Rams wins by over 6.5 points?,price moved +33c,18,51,33,30609,30610,1,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04MIAMIN-MIN4,MIN Vikings wins by over 3.5 points?,price moved +31c,48,79,31,6637,6746,109,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04KCLV-KC10,KC Chiefs wins by over 9.5 points?,price moved +18c,18,36,18,7289,7313,24,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04KCLV-KC5,KC Chiefs wins by over 4.5 points?,volume spike x7.6,47,49,2,57,435,378,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04KCLV-KC4,KC Chiefs wins by over 3.5 points?,volume spike x3.8,53,53,0,18,68,50,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04KCLV-KC3,KC Chiefs wins by over 2.5 points?,price moved +61c,0,61,61,0,15,15,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04KCLV-LV3,LV Raiders wins by over 2.5 points?,price moved +18c,0,18,18,0,1,1,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04DETCAR-DET5,DET Lions wins by over 4.5 points?,price moved +44c,0,44,44,0,614,614,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04DETCAR-DET3,DET Lions wins by over 2.5 points?,price moved -17c,72,55,-17,5,445,440,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,spread,KXNFLSPREAD-26OCT04DETCAR-DET3,DET Lions wins by over 2.5 points?,volume spike x89.0,72,55,-17,5,445,440,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-28,Full Game: over 27.5 points scored?,price moved +9c,90,99,9,59260,62789,3529,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-31,Full Game: over 30.5 points scored?,price moved +20c,79,99,20,47180,57729,10549,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-34,Full Game: over 33.5 points scored?,price moved +34c,65,99,34,72102,110446,38344,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-37,Full Game: over 36.5 points scored?,price moved +47c,52,99,47,325631,471130,145499,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-40,Full Game: over 39.5 points scored?,price moved +63c,36,99,63,348272,611589,263317,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-43,Full Game: over 42.5 points scored?,price moved +70c,29,99,70,409921,695587,285666,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-44,Full Game: over 43.5 points scored?,price moved +79c,20,99,79,723184,865470,142286,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-45,Full Game: over 44.5 points scored?,price moved +80c,19,99,80,1098215,1392577,294362,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-46,Full Game: over 45.5 points scored?,price moved +85c,14,99,85,317975,483775,165800,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-47,Full Game: over 46.5 points scored?,price moved +82c,17,99,82,142414,250954,108540,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-48,Full Game: over 47.5 points scored?,price moved +85c,14,99,85,54927,212093,157166,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-48,Full Game: over 47.5 points scored?,volume spike x3.9,14,99,85,54927,212093,157166,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-49,Full Game: over 48.5 points scored?,price moved +85c,14,99,85,61863,195718,133855,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-49,Full Game: over 48.5 points scored?,volume spike x3.2,14,99,85,61863,195718,133855,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-52,Full Game: over 51.5 points scored?,price moved +57c,8,65,57,42257,116538,74281,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-55,Full Game: over 54.5 points scored?,price moved +57c,3,60,57,42557,102555,59998,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-58,Full Game: over 57.5 points scored?,price moved +16c,1,17,16,20315,48396,28081,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26SEP27LARDEN-61,Full Game: over 60.5 points scored?,price moved +9c,1,10,9,60957,72476,11519,True,"Live: DEN 23, LAR 26 -- 3:38 - 4th",live_score_auto,2026-09-28T03:24:38.544636+00:00
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26OCT04GBTB-44,Full Game: over 43.5 points scored?,price moved +5c,38,43,5,59737,59848,111,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26OCT04GBTB-53,Full Game: over 52.5 points scored?,price moved +10c,6,16,10,7792,7875,83,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26OCT04NYJCHI-37,Full Game: over 36.5 points scored?,price moved -7c,83,76,-7,11780,11781,1,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26OCT04LACSEA-29,Full Game: over 28.5 points scored?,price moved +13c,78,91,13,18898,18958,60,False,,,
+2026-09-28T03:24:38.544636+00:00,nfl,total,KXNFLTOTAL-26OCT04LACSEA-32,Full Game: over 31.5 points scored?,price moved +6c,77,83,6,33911,33964,53,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT02MTSTIDHO-IDHO,Idaho wins,price moved +6c,8,14,6,957,963,6,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03FORLEH-LEH,Lehigh wins,price moved -12c,91,79,-12,707,707,0,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03DAYDRKE-DAY,Dayton wins,price moved -10c,84,74,-10,51,51,0,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03WMUBUFF-WMU,Western Michigan wins,volume spike x4.6,86,84,-2,11,51,40,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03PENNDART-DART,Dartmouth wins,price moved +59c,7,66,59,235,236,1,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03INSTSDAK-INST,Indiana St. wins,price moved +12c,0,12,12,0,8,8,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03NAUIDST-IDST,Idaho St. wins,price moved -12c,88,76,-12,25,31,6,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03NAUIDST-NAU,Northern Arizona wins,price moved +42c,0,42,42,0,23,23,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03WEBCP-CP,Cal Poly wins,price moved -21c,65,44,-21,15,22,7,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT03WEBCP-WEB,Weber St. wins,price moved +21c,41,62,21,2,4,2,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10CCARMRSH-CCAR,Coastal Carolina wins,price moved +42c,0,42,42,0,1,1,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10DUKEGT-DUKE,Duke wins,price moved +8c,58,66,8,1,4,3,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10INDNEB-NEB,Nebraska wins,price moved +31c,10,41,31,129,129,0,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10LSUUK-LSU,LSU wins,price moved +18c,69,87,18,26,37,11,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10MOHMASS-MASS,UMass wins,price moved +40c,0,40,40,0,2,2,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10UCFOKST-OKST,Oklahoma St. wins,price moved +12c,64,76,12,378,416,38,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10UCLAORE-ORE,Oregon wins,price moved +10c,60,70,10,2286,2294,8,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,game,KXNCAAFGAME-26OCT10AFANIU-NIU,Northern Illinois wins,price moved +44c,0,44,44,0,2,2,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT01UNTTLSA-TLSA21,Tulsa wins by over 20.5 points,price moved +9c,0,9,9,0,142,142,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT01UNTTLSA-TLSA18,Tulsa wins by over 17.5 points,price moved +12c,0,12,12,0,226,226,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT01UNTTLSA-TLSA14,Tulsa wins by over 13.5 points,price moved +17c,0,17,17,0,75,75,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT01UNTTLSA-UNT15,North Texas wins by over 14.5 points,price moved +8c,0,8,8,0,806,806,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT02PSUNW-PSU7,Penn St. wins by over 6.5 points,price moved -8c,47,39,-8,2058,2120,62,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03MICHMINN-MICH5,Michigan wins by over 4.5 points,volume spike x3.2,54,53,-1,17,54,37,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03MSUWIS-MSU11,Michigan St. wins by over 10.5 points,price moved +8c,0,8,8,0,11,11,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03NDUNC-ND25,Notre Dame wins by over 24.5 points,price moved +6c,40,46,6,81,512,431,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03NDUNC-ND25,Notre Dame wins by over 24.5 points,volume spike x6.3,40,46,6,81,512,431,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03TOLBALL-TOL21,Toledo wins by over 20.5 points,price moved +49c,0,49,49,0,100,100,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03CALUNLV-CAL14,California wins by over 13.5 points,price moved +21c,0,21,21,0,45,45,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03CALUNLV-CAL6,California wins by over 5.5 points,price moved +36c,0,36,36,0,26,26,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03CALUNLV-CAL3,California wins by over 2.5 points,price moved +5c,42,47,5,0,111,111,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03FLAMIZZ-FLA21,Florida wins by over 20.5 points,price moved +15c,0,15,15,0,321,321,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03FLAMIZZ-FLA14,Florida wins by over 13.5 points,price moved +8c,28,36,8,177,739,562,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03FLAMIZZ-FLA14,Florida wins by over 13.5 points,volume spike x4.2,28,36,8,177,739,562,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03ODUGAST-GAST4,Georgia St. wins by over 3.5 points,price moved +41c,0,41,41,0,9,9,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03OHIOKENT-OHIO6,Ohio wins by over 5.5 points,price moved -5c,53,48,-5,570,3445,2875,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03OHIOKENT-OHIO6,Ohio wins by over 5.5 points,volume spike x6.0,53,48,-5,570,3445,2875,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03OHIOKENT-OHIO5,Ohio wins by over 4.5 points,price moved -5c,53,48,-5,505,5374,4869,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03OHIOKENT-OHIO5,Ohio wins by over 4.5 points,volume spike x10.6,53,48,-5,505,5374,4869,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03UVAFSU-UVA17,Virginia wins by over 16.5 points,volume spike x26.5,13,13,0,2,53,51,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03UKSCAR-UK18,Kentucky wins by over 17.5 points,price moved -18c,23,5,-18,2,95,93,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03UKSCAR-UK18,Kentucky wins by over 17.5 points,volume spike x47.5,23,5,-18,2,95,93,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03ORSTCSU-ORST21,Oregon St. wins by over 20.5 points,price moved +17c,0,17,17,0,73,73,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03ORSTCSU-ORST10,Oregon St. wins by over 9.5 points,price moved +39c,0,39,39,0,45,45,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03BYUTCU-BYU14,BYU wins by over 13.5 points,price moved +11c,31,42,11,457,758,301,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03ULMUSA-USA12,South Alabama wins by over 11.5 points,price moved +56c,0,56,56,0,25,25,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03WASHUSC-USC11,USC wins by over 10.5 points,price moved +47c,0,47,47,0,27,27,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03INDRUTG-IND12,Indiana wins by over 11.5 points,price moved +87c,0,87,87,0,365,365,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,spread,KXNCAAFSPREAD-26OCT03CINARIZ-CIN8,Cincinnati wins by over 7.5 points,price moved +14c,2,16,14,1,6,5,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,total,KXNCAAFTOTAL-26OCT03OSUIOWA-28,Over 27.5 points scored,price moved +93c,0,93,93,0,108,108,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,total,KXNCAAFTOTAL-26OCT03ARKTXAM-52,Over 51.5 points scored,price moved +50c,0,50,50,0,19,19,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,total,KXNCAAFTOTAL-26OCT03UTSARICE-55,Over 54.5 points scored,price moved +52c,0,52,52,0,182,182,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,total,KXNCAAFTOTAL-26OCT03INDRUTG-38,Over 37.5 points scored,price moved +92c,0,92,92,0,48,48,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,total,KXNCAAFTOTAL-26OCT03TXSTSDSU-58,Over 57.5 points scored,price moved +50c,0,50,50,0,400,400,False,,,
+2026-09-28T03:24:38.544636+00:00,cfb,total,KXNCAAFTOTAL-26OCT03CINARIZ-55,Over 54.5 points scored,volume spike x112.1,53,51,-2,9,1009,1000,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP291700CWSHOU-CWS,Chicago WS wins,volume spike x7.8,47,46,-1,148,1156,1008,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP292000BOSNYY-BOS,Boston wins,volume spike x13.8,43,42,-1,73,1005,932,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP292200CHCSD-CHC,Chicago C wins,volume spike x4.0,47,46,-1,259,1031,772,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP292200CHCSD-SD,San Diego wins,volume spike x5.2,55,55,0,300,1575,1275,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP301400PHIATL-ATL,Atlanta wins,price moved -42c,94,52,-42,54,192,138,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP301400PHIATL-ATL,Atlanta wins,volume spike x3.6,94,52,-42,54,192,138,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP301700CWSHOU-CWS,Chicago WS wins,price moved +46c,0,46,46,0,225,225,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP301700CWSHOU-HOU,Houston wins,price moved -26c,87,61,-26,2,39,37,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP302000BOSNYY-NYY,New York Y wins,price moved +59c,0,59,59,0,300,300,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP302200CHCSD-CHC,Chicago C wins,price moved -5c,49,44,-5,114,181,67,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,game,KXMLBGAME-26SEP302200CHCSD-SD,San Diego wins,price moved +60c,0,60,60,0,89,89,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,spread,KXMLBSPREAD-26SEP291400PHIATL-ATL2,Atlanta wins by over 1.5 runs?,price moved +42c,0,42,42,0,15,15,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,spread,KXMLBSPREAD-26SEP291400PHIATL-PHI2,Philadelphia wins by over 1.5 runs?,price moved +27c,0,27,27,0,32,32,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,spread,KXMLBSPREAD-26SEP291700CWSHOU-HOU2,Houston wins by over 1.5 runs?,price moved +38c,0,38,38,0,76,76,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,spread,KXMLBSPREAD-26SEP292200CHCSD-CHC2,Chicago C wins by over 1.5 runs?,price moved +35c,0,35,35,0,27,27,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,total,KXMLBTOTAL-26SEP292000BOSNYY-7,Over 6.5 runs scored,price moved +49c,0,49,49,0,20,20,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,total,KXMLBTOTAL-26SEP292000BOSNYY-8,Over 7.5 runs scored,price moved +36c,0,36,36,0,15,15,False,,,
+2026-09-28T03:24:38.544636+00:00,mlb,total,KXMLBTOTAL-26SEP292200CHCSD-9,Over 8.5 runs scored,price moved +37c,0,37,37,0,15,15,False,,,
+2026-09-28T03:24:38.544636+00:00,soccer,mls,KXMLSGAME-26OCT10MIADCU-DCU,DC United wins,price moved +5c,14,19,5,94,208,114,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27HANMAC-HAN,Yannick Hanfmann wins,volume spike x3.8,56,53,-3,38646,145364,106718,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27MOCFAR-FAR,Jaime Faria wins,volume spike x7.3,68,70,2,1773,12873,11100,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27RIGDUC-DUC,James Duckworth wins,volume spike x21.5,90,92,2,1077,23188,22111,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27SVAKOV-SVA,Zachary Svajda wins,volume spike x5.5,62,60,-2,11182,61282,50100,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27TSINIS-TSI,Stefanos Tsitsipas wins,price moved +18c,81,99,18,123869,463877,340008,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27TSINIS-TSI,Stefanos Tsitsipas wins,volume spike x3.7,81,99,18,123869,463877,340008,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP27TSINIS-NIS,Yoshihito Nishioka wins,price moved -18c,19,1,-18,380764,947342,566578,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,atp_match,KXATPMATCH-26SEP28CUIALT-ALT,Daniel Altmaier wins,volume spike x9.5,73,74,1,3391,32336,28945,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27DARLEM-DAR,Harriet Dart wins,volume spike x3.1,87,85,-2,14380,44312,29932,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27DARLEM-LEM,Tiphanie Lemaitre wins,volume spike x37.1,15,16,1,1758,65253,63495,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27HODBAI-HOD,Mina Hodzic wins,volume spike x8.1,26,28,2,2359,19177,16818,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27HODBAI-BAI,Zhuoxuan Bai wins,volume spike x24.2,76,74,-2,1049,25365,24316,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27JACZON-JAC,Elsa Jacquemot wins,volume spike x4.7,84,82,-2,216,1011,795,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27JACZON-ZON,Zongyu Li wins,volume spike x20.0,18,18,0,32,640,608,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27RENYEX-YEX,Yexin Ma wins,price moved -6c,62,56,-6,604,4180,3576,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27RENYEX-YEX,Yexin Ma wins,volume spike x6.9,62,56,-6,604,4180,3576,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27SHIFRU-FRU,Linda Fruhvirtova wins,price moved +85c,0,85,85,0,101,101,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27ZHAWOL-ZHA,Carol Zhao wins,price moved -18c,34,16,-18,423,1811,1388,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27ZHAWOL-ZHA,Carol Zhao wins,volume spike x4.3,34,16,-18,423,1811,1388,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27ZHAWOL-WOL,Vivian Wolff wins,price moved +19c,67,86,19,2407,30833,28426,False,,,
+2026-09-28T03:24:38.544636+00:00,tennis,wta_match,KXWTAMATCH-26SEP27ZHAWOL-WOL,Vivian Wolff wins,volume spike x12.8,67,86,19,2407,30833,28426,False,,,
