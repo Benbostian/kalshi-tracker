@@ -3973,3 +3973,5 @@ checked_at_utc,market_ticker,sport,reason,price_delta_cents,settlement_result,se
 2026-09-29T17:23:33.787869+00:00,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA21,cfb,price moved -13c,-13,no,0,confirmed
 2026-09-29T18:28:38.845699+00:00,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA21,cfb,volume spike x31.2,-13,no,0,confirmed
 2026-09-29T18:28:38.845699+00:00,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA18,cfb,price moved -21c,-21,no,0,confirmed
+2026-09-29T19:25:06.388519+00:00,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA18,cfb,volume spike x21.2,-21,no,0,confirmed
+2026-09-29T19:25:06.388519+00:00,KXNCAAFSPREAD-26SEP26CSUUTSA-UTSA17,cfb,price moved -22c,-22,no,0,confirmed
