@@ -4007,3 +4007,5 @@ checked_at_utc,market_ticker,sport,reason,price_delta_cents,settlement_result,se
 2026-09-30T10:26:14.098027+00:00,KXNCAAFSPREAD-26SEP26ILLOSU-OSU46,cfb,volume spike x3.4,4,no,0,reversed
 2026-09-30T11:23:16.614780+00:00,KXNCAAFSPREAD-26SEP26ILLOSU-OSU42,cfb,volume spike x3.0,2,no,0,reversed
 2026-09-30T11:23:16.614780+00:00,KXNCAAFSPREAD-26SEP26ILLOSU-OSU39,cfb,price moved +8c,8,no,0,reversed
+2026-09-30T12:33:39.937561+00:00,KXNCAAFSPREAD-26SEP26ILLOSU-OSU36,cfb,price moved +6c,6,no,0,reversed
+2026-09-30T12:33:39.937561+00:00,KXNCAAFSPREAD-26SEP26ILLOSU-OSU34,cfb,price moved +11c,11,no,0,reversed
