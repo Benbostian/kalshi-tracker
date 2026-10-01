@@ -18,13 +18,42 @@ and the "run: verify" CLI command) -- re-run that check periodically, since
 Kalshi adds and retires series over time, especially for in-season soccer
 leagues.
 
+Player props (added 2026-10-01, NFL only so far) are a separate pipeline --
+see PROP_SERIES_TICKERS_BY_SPORT and run_prop_tracking_cycle()/the
+"run-props" CLI command below. They're kept deliberately separate from the
+game/spread/total pipeline above:
+
+  - Volume: a single NFL game can carry 80+ individual player-prop markets
+    for one stat alone (e.g. receiving yards, one market per player per
+    yardage threshold). Across ~15 tracked prop categories and 16 games/week
+    that's thousands of markets -- far more than game/spread/total ever
+    produced -- so props log to their own CSV files/Supabase market_type
+    values ("prop_<stat>") and poll on their own (less frequent) schedule
+    rather than piling onto the hourly game-line run.
+  - Dashboard safety: index.html's game-listing queries already filter
+    price_log-derived views to market_type=eq.game (see sportQueryUrl()), so
+    prop_* rows in price_log are invisible there -- safe. But its
+    notable_moves feed queries (Notable Moves / Sharp Money / Live tabs) do
+    NOT filter by market_type at all, so posting prop "notable moves" into
+    that same table would immediately flood the live dashboard with
+    untuned, high-volume prop noise. run_prop_tracking_cycle() therefore
+    logs prop price snapshots to Supabase (safe, filtered out) but keeps
+    prop notable-move rows LOCAL ONLY (data/notable_moves_props.csv) unless
+    you pass post_moves_to_supabase=True / --post-moves -- flip that once
+    there's real data to tune PROP_PRICE_MOVE_THRESHOLD_CENTS/
+    PROP_MIN_VOLUME_FOR_SPIKE against, and once there's a dashboard surface
+    (new tab, or a market_type filter added to the existing feed queries)
+    designed for prop moves specifically.
+
 Usage:
     python3 kalshi_tracker.py run                    # one tracking cycle, all configured sports
     python3 kalshi_tracker.py run --sport nfl         # one sport only (repeatable flag)
-    python3 kalshi_tracker.py backfill-clv            # grade settled markets against previously-flagged moves
     python3 kalshi_tracker.py verify                  # confirm every configured ticker still resolves
     python3 kalshi_tracker.py list-series             # dump raw /series?category=Sports (discovery aid)
     python3 kalshi_tracker.py list-series --contains NFL
+    python3 kalshi_tracker.py run-props               # one player-prop tracking cycle (NFL only so far)
+    python3 kalshi_tracker.py run-props --post-moves  # also post prop notable-moves to Supabase (see note above)
+    python3 kalshi_tracker.py verify-props             # confirm every configured prop series ticker still resolves
 """
 
 import argparse
@@ -47,7 +76,14 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 PRICE_LOG_PATH = DATA_DIR / "price_log.csv"
 MOVES_LOG_PATH = DATA_DIR / "notable_moves.csv"
 SNAPSHOT_CACHE_PATH = DATA_DIR / "last_snapshot.json"
-CLV_LOG_PATH = DATA_DIR / "clv_outcomes.csv"
+
+# Player-prop pipeline gets its own CSV files and snapshot cache -- entirely
+# separate from the game/spread/total files above, on purpose (see module
+# docstring). Same schema/headers, just kept apart so the proven game-line
+# pipeline's files never balloon in size or interleave with prop volume.
+PROP_PRICE_LOG_PATH = DATA_DIR / "price_log_props.csv"
+PROP_MOVES_LOG_PATH = DATA_DIR / "notable_moves_props.csv"
+PROP_SNAPSHOT_CACHE_PATH = DATA_DIR / "last_snapshot_props.json"
 
 # ---------------------------------------------------------------------------
 # Supabase ingest (optional) -- the live data store behind the dashboard.
@@ -63,35 +99,21 @@ SUPABASE_INGEST_URL = "https://mwfaxyqprmveviqdcrcj.supabase.co/functions/v1/ing
 SUPABASE_INGEST_TOKEN_ENV = "KALSHI_INGEST_TOKEN"
 SUPABASE_BATCH_SIZE = 500
 
-# ---------------------------------------------------------------------------
-# Closing-line-value (CLV) backtest
-#
-# Grades each previously-flagged notable move once its market settles: did
-# the direction of the move end up matching the eventual result ("confirmed"),
-# or did the market go the other way ("reversed")? This is the cheapest
-# possible signal-quality check -- it doesn't require any external odds
-# data, just watching Kalshi's own markets through to settlement -- and lays
-# the groundwork for the sharper Pinnacle-reference-line comparison that's
-# next on the list (see PROJECT_LOG.md).
-#
-# Deliberately a simple binary-outcome grade, not a true dollar-value CLV
-# calculation: "did this move point at the side that actually won" rather
-# than "how much better was this price than the closing price". Good enough
-# to start telling real signal from noise across a season; can be refined
-# later without a schema change (clv_status/settlement_price_cents are
-# generic enough to support a fancier grading rule down the line).
-# ---------------------------------------------------------------------------
-CLV_BACKFILL_BATCH_SIZE = 200
-CLV_LOG_HEADER = [
-    "checked_at_utc", "market_ticker", "sport", "reason", "price_delta_cents",
-    "settlement_result", "settlement_price_cents", "clv_status",
-]
-
 # Notable-move thresholds -- tune these once you've seen a week or two of
 # real data and know what's noise vs. signal for each market type.
 PRICE_MOVE_THRESHOLD_CENTS = 5      # yes-price move of >= 5c since the last logged snapshot
 VOLUME_SPIKE_MULTIPLIER = 3.0       # this cycle's new volume >= 3x the prior total
 MIN_VOLUME_FOR_SPIKE = 50           # ignore spike math on razor-thin markets
+
+# Separate (looser-on-volume, slightly wider-on-price) thresholds for player
+# props: individual prop markets trade far less than game/spread/total lines
+# (a deep "QB 4+ passing TDs" market might see single-digit contract volume
+# all week), so MIN_VOLUME_FOR_SPIKE=50 would silence spike detection almost
+# entirely, and prop bid/ask spreads run wider, so small last-price jitter is
+# more often noise than signal. Starting guesses only -- retune once real
+# prop data has accumulated, same as the note above for the main thresholds.
+PROP_PRICE_MOVE_THRESHOLD_CENTS = 7
+PROP_MIN_VOLUME_FOR_SPIKE = 15
 
 # ---------------------------------------------------------------------------
 # Series tickers by sport
@@ -145,6 +167,54 @@ SERIES_TICKERS_BY_SPORT = {
 
 # Confirmed to exist but not part of the original sport list -- uncomment if
 # you want it later: "nba": {"game": "KXNBAGAME"}
+
+# ---------------------------------------------------------------------------
+# Player-prop series tickers by sport
+#
+# NFL only so far -- CFB equivalents (likely a different prefix, e.g.
+# KXNCAAF...) haven't been investigated yet; that's tracked as an open
+# question in PROJECT_LOG.md.
+#
+# Curated on 2026-10-01 from the full GET /series?category=Sports catalog
+# (3,950 series total, 354 under the KXNFL* prefix alone -- most of them
+# team-level props, season-long leader/award markets, draft/combine/coaching
+# specials, or quarter/half game-line variants, NOT per-game player props).
+# Each ticker below was individually confirmed via GET /events?series_ticker=
+# ...&status=open on 2026-10-01 to (a) actually resolve and (b) return real,
+# currently-open per-player markets for this week's games (sample checked:
+# Pittsburgh @ Cleveland, 2026-10-01) -- e.g. KXNFLPASSYDS-26OCT01PITCLE-
+# CLEDWATSON4-125 = "Deshaun Watson: 125+ passing yards". The market
+# ticker's event-date-teams segment (the "26OCT01PITCLE" part) is in the
+# exact same position/format as the game/spread/total tickers, so
+# parse_teams_from_ticker() below works on prop tickers unchanged.
+#
+# A handful of similarly-named series turned up in the catalog but returned
+# zero open events when checked (likely deprecated/renamed duplicates, or
+# props that only get posted for certain game types) -- left out for now,
+# worth re-checking later: KXNFLANYTD, KXNFLGAMETD, KXNFLLONGESTREC,
+# KXNFLSACK/KXNFLGAMESACK, KXNFLINT, KXNFLTKL, KXNFL2TD, KXNFLNEXTTD,
+# KXNFLGAMEFG. (KXNFLFG turned out to be a TEAM prop -- "Cleveland: 1+ Field
+# Goals" -- not a player prop, so it's excluded on purpose, not by omission.)
+# ---------------------------------------------------------------------------
+PROP_SERIES_TICKERS_BY_SPORT = {
+    "nfl": {
+        "passyds": "KXNFLPASSYDS",     # Passing Yards
+        "passtds": "KXNFLPASSTDS",     # Passing Touchdowns
+        "passint": "KXNFLPASSINT",     # Passing Interceptions (thrown)
+        "passcomp": "KXNFLPASSCOMP",   # Passing Completions
+        "passatt": "KXNFLPASSATT",     # Passing Attempts
+        "rshyds": "KXNFLRSHYDS",       # Rushing Yards
+        "rshatt": "KXNFLRSHATT",       # Rushing Attempts
+        "longrsh": "KXNFLLONGRSH",     # Longest Rush
+        "recyds": "KXNFLRECYDS",       # Receiving Yards
+        "rec": "KXNFLREC",             # Receptions
+        "longrec": "KXNFLLONGREC",     # Longest Reception
+        "rryds": "KXNFLRRYDS",         # Rushing + Receiving Yards combined
+        "td": "KXNFLTD",               # Anytime/multi touchdowns (player + D/ST)
+        "firsttd": "KXNFLFIRSTTD",     # First touchdown scorer of the game
+        "ffpts": "KXNFLFFPTS",         # Player fantasy points, this game
+    },
+}
 
 # ---------------------------------------------------------------------------
 # Team code -> full name maps (best-effort helper for readable logs/alerts).
@@ -213,6 +283,11 @@ def parse_teams_from_ticker(ticker, sport=None):
     club codes, country codes, or player surnames instead of 3-letter codes.
     Always sanity-check the output against the market/event title before
     relying on it.
+
+    Works unchanged on player-prop tickers too (e.g.
+    'KXNFLPASSYDS-26OCT01PITCLE-CLEDWATSON4-125') -- the event-date-teams
+    segment is always parts[1], regardless of how many more '-'-separated
+    segments (player code, threshold) follow it.
     """
     if not ticker:
         return []
@@ -422,6 +497,23 @@ def verify_all_configured_series():
     return results
 
 
+def verify_all_configured_prop_series():
+    """Same as verify_all_configured_series() but for PROP_SERIES_TICKERS_BY_SPORT.
+    A series resolving here only confirms the series itself exists -- it
+    doesn't confirm there are currently open per-game markets under it (some
+    prop series are seasonal/sparse); see the CLI 'verify-props' output."""
+    results = {}
+    for sport, tickers in PROP_SERIES_TICKERS_BY_SPORT.items():
+        for label, ticker in tickers.items():
+            series = verify_series(ticker)
+            results[f"{sport}.{label}"] = {
+                "ticker": ticker,
+                "exists": series is not None,
+                "title": series.get("title") if series else None,
+            }
+    return results
+
+
 def get_events_for_series(series_ticker, status="open", with_nested_markets=True):
     """GET /events -- nested markets inline, one paginated call per series."""
     events = []
@@ -465,23 +557,6 @@ def get_market_candlesticks(series_ticker, market_ticker, start_ts, end_ts, peri
     params = {"start_ts": start_ts, "end_ts": end_ts, "period_interval": period_interval}
     data = _get(f"/series/{series_ticker}/markets/{market_ticker}/candlesticks", params)
     return data.get("candlesticks") or []
-
-
-def get_market(ticker):
-    """GET /markets/{ticker} -- single market detail (status/result), used
-    by the closing-line-value (CLV) backfill below to check whether a
-    previously-flagged market has settled and what it resolved to.
-    NOTE: this was written against Kalshi's documented v2 schema (status
-    becomes "settled"/"finalized" and result becomes "yes"/"no" once
-    resolved) -- the sandbox this was built in couldn't reach Kalshi's API
-    to confirm that shape against a real settled market (network egress
-    blocked). Run `backfill-clv` once real games have settled and eyeball
-    a row in data/clv_outcomes.csv or the notable_moves table; if
-    clv_status is staying "pending" for markets you know have finished,
-    or landing on "void" when they shouldn't, check the raw status/result
-    fields here and adjust _settlement_from_market() below to match."""
-    data = _get(f"/markets/{ticker}")
-    return data.get("market")
 
 
 def get_trades(ticker=None, min_ts=None, max_ts=None, limit=200):
@@ -542,18 +617,18 @@ def _flatten_markets_from_events(events):
     return flat
 
 
-def _load_last_snapshot():
-    if SNAPSHOT_CACHE_PATH.exists():
+def _load_last_snapshot(path=SNAPSHOT_CACHE_PATH):
+    if path.exists():
         try:
-            return json.loads(SNAPSHOT_CACHE_PATH.read_text())
+            return json.loads(path.read_text())
         except (json.JSONDecodeError, OSError):
             return {}
     return {}
 
 
-def _save_snapshot(snapshot):
+def _save_snapshot(snapshot, path=SNAPSHOT_CACHE_PATH):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    SNAPSHOT_CACHE_PATH.write_text(json.dumps(snapshot))
+    path.write_text(json.dumps(snapshot))
 
 
 def _append_csv(path, header, row):
@@ -612,129 +687,10 @@ def _post_batch_to_supabase(table, rows):
             print(f"[warn] Supabase ingest failed for {table}: {e}", file=sys.stderr)
 
 
-def _post_json_to_supabase(table, op, **extra):
-    """Low-level helper for the CLV backfill's two non-insert ops
-    (select_pending_clv / update_clv). Unlike _post_batch_to_supabase (a
-    fire-and-forget bulk insert that silently no-ops without a token), this
-    returns the parsed JSON response -- select_pending_clv has to hand rows
-    back to the caller -- and raises if KALSHI_INGEST_TOKEN isn't set, since
-    the CLV backfill has nothing useful to do without Supabase."""
-    token = os.environ.get(SUPABASE_INGEST_TOKEN_ENV)
-    if not token:
-        raise RuntimeError(f"{SUPABASE_INGEST_TOKEN_ENV} not set -- CLV backfill needs Supabase access")
-    body = {"table": table, "op": op, **extra}
-    req = urllib.request.Request(
-        SUPABASE_INGEST_URL, data=json.dumps(body).encode("utf-8"), method="POST",
-        headers={
-            "Content-Type": "application/json",
-            "x-ingest-token": token,
-            "User-Agent": USER_AGENT,
-        },
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"Supabase {op} failed (HTTP {e.code}): {detail}") from e
-    except (urllib.error.URLError, TimeoutError) as e:
-        raise RuntimeError(f"Supabase {op} failed: {e}") from e
-
-
-def _settlement_from_market(market):
-    """market (from get_market()) -> (result, is_final).
-    result is 'yes' / 'no' / None; is_final is True once Kalshi considers
-    the market settled/finalized (whether or not it resolved to a clean
-    yes/no -- a settled market with no result is treated as void, not left
-    pending forever). Returns (None, False) for anything still open."""
-    if not market:
-        return None, False
-    status = (market.get("status") or "").lower()
-    if status not in ("settled", "finalized"):
-        return None, False
-    result = (market.get("result") or "").lower()
-    if result in ("yes", "no"):
-        return result, True
-    return None, True  # settled/finalized but no clean result -- void
-
-
-def _grade_clv(price_delta_cents, settlement_result):
-    """The actual CLV grade: did the flagged move's direction match the
-    side that won? price_delta_cents is the move's own delta (positive =
-    price moved toward yes); settlement_result is 'yes' or 'no'. A
-    volume-spike-only move (price_delta_cents == 0, e.g. falsy/None) has no
-    direction to grade, so it's a 'push' rather than confirmed/reversed."""
-    if not price_delta_cents:
-        return "push"
-    moved_toward_yes = price_delta_cents > 0
-    return "confirmed" if moved_toward_yes == (settlement_result == "yes") else "reversed"
-
-
-def backfill_clv_outcomes(batch_size=CLV_BACKFILL_BATCH_SIZE):
-    """Check back on notable_moves rows still sitting at clv_status='pending'
-    (Supabase-side; the edge function only surfaces ones old enough that
-    their game could plausibly be over) and grade any whose market has
-    since settled. Safe to run every cycle -- markets that are still open
-    just come back up again next time, still 'pending'. Requires
-    KALSHI_INGEST_TOKEN; skips (with a warning) rather than failing the
-    whole run if it's not set, same as the rest of the Supabase posting."""
-    try:
-        resp = _post_json_to_supabase("notable_moves", "select_pending_clv", limit=batch_size)
-    except RuntimeError as e:
-        print(f"[warn] CLV backfill skipped: {e}", file=sys.stderr)
-        return []
-
-    pending = resp.get("rows") or []
-    if not pending:
-        print("[clv] no pending moves old enough to check yet.")
-        return []
-
-    now = datetime.now(timezone.utc)
-    settlement_cache = {}  # market_ticker -> (result, is_final), reused across rows sharing a ticker
-    updates = []
-    graded = []
-
-    for row in pending:
-        ticker = row.get("market_ticker")
-        if not ticker:
-            continue
-        if ticker not in settlement_cache:
-            try:
-                settlement_cache[ticker] = _settlement_from_market(get_market(ticker))
-            except RuntimeError as e:
-                print(f"[warn] CLV settlement check failed for {ticker}: {e}", file=sys.stderr)
-                settlement_cache[ticker] = (None, False)
-
-        result, is_final = settlement_cache[ticker]
-        if not is_final:
-            continue  # still open (or the lookup failed) -- stays 'pending', retried next run
-
-        settlement_price = None if result is None else (100 if result == "yes" else 0)
-        clv_status = "void" if result is None else _grade_clv(row.get("price_delta_cents"), result)
-
-        updates.append({
-            "id": row["id"],
-            "clv_status": clv_status,
-            "settlement_price_cents": settlement_price,
-            "clv_checked_at": now.isoformat(),
-        })
-        graded.append((ticker, row.get("reason"), clv_status))
-        _append_csv(CLV_LOG_PATH, CLV_LOG_HEADER, [
-            now.isoformat(), ticker, row.get("sport"), row.get("reason"),
-            row.get("price_delta_cents"), result, settlement_price, clv_status,
-        ])
-
-    if updates:
-        _post_json_to_supabase("notable_moves", "update_clv", rows=updates)
-
-    print(f"[clv] checked {len(pending)} pending move(s) old enough to grade; resolved {len(updates)}.")
-    for ticker, reason, status in graded:
-        print(f"  - {ticker} ({reason}): {status}")
-    return graded
-
-
 def track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves, supabase_price_rows,
-                  live_games=None):
+                  live_games=None, price_log_path=PRICE_LOG_PATH,
+                  price_move_threshold=PRICE_MOVE_THRESHOLD_CENTS,
+                  min_volume_for_spike=MIN_VOLUME_FOR_SPIKE):
     ticker = market.get("ticker")
     title = market.get("title") or market.get("_event_title")
     yes_bid = _cents(market.get("yes_bid_dollars"))
@@ -760,7 +716,7 @@ def track_market(sport, market_type, series_ticker, market, last_snapshot, now, 
         market.get("_event_ticker"), title, team_codes, yes_bid, yes_ask,
         last_price, volume, open_interest, status,
     ]
-    _append_csv(PRICE_LOG_PATH, PRICE_LOG_HEADER, price_row)
+    _append_csv(price_log_path, PRICE_LOG_HEADER, price_row)
     supabase_price_rows.append(_row_to_supabase_dict(PRICE_LOG_HEADER, price_row))
 
     prev = last_snapshot.get(ticker) if ticker else None
@@ -769,7 +725,7 @@ def track_market(sport, market_type, series_ticker, market, last_snapshot, now, 
         prev_volume = prev.get("volume", 0) or 0
         volume_delta = volume - prev_volume
 
-        if abs(price_delta) >= PRICE_MOVE_THRESHOLD_CENTS:
+        if abs(price_delta) >= price_move_threshold:
             moves.append(_move_row(now, sport, market_type, ticker, title,
                                     f"price moved {price_delta:+d}c", prev["price"], last_price,
                                     price_delta, prev_volume, volume, volume_delta,
@@ -777,7 +733,7 @@ def track_market(sport, market_type, series_ticker, market, last_snapshot, now, 
                                     explanation_source=move_explanation_source,
                                     explanation_updated_at=move_explanation_updated_at))
 
-        if volume >= MIN_VOLUME_FOR_SPIKE and prev_volume > 0:
+        if volume >= min_volume_for_spike and prev_volume > 0:
             if volume_delta >= prev_volume * (VOLUME_SPIKE_MULTIPLIER - 1):
                 spike_x = volume / prev_volume if prev_volume else 0
                 moves.append(_move_row(now, sport, market_type, ticker, title,
@@ -830,6 +786,66 @@ def run_tracking_cycle(sports=None):
     return moves
 
 
+def run_prop_tracking_cycle(sports=None, post_moves_to_supabase=False):
+    """Same shape as run_tracking_cycle(), but walks PROP_SERIES_TICKERS_BY_SPORT
+    instead, tags market_type as f"prop_{label}" (e.g. "prop_passyds"), and
+    uses the separate prop CSV files/snapshot cache/thresholds defined above.
+
+    Price snapshots always post to Supabase's price_log (tagged prop_*) --
+    that's safe, since the dashboard's game-listing queries already filter
+    to market_type=eq.game and never see these rows. Notable-move rows are
+    logged locally (data/notable_moves_props.csv) always, but only posted to
+    Supabase's notable_moves table -- where they'd show up immediately on
+    the live Notable Moves / Sharp Money / Live feeds, which don't filter by
+    market_type at all -- when post_moves_to_supabase=True. See the module
+    docstring for why that's off by default.
+    """
+    sports = sports or list(PROP_SERIES_TICKERS_BY_SPORT.keys())
+    now = datetime.now(timezone.utc)
+    last_snapshot = _load_last_snapshot(PROP_SNAPSHOT_CACHE_PATH)
+    moves = []
+    supabase_price_rows = []
+
+    for sport in sports:
+        tickers = PROP_SERIES_TICKERS_BY_SPORT.get(sport)
+        if not tickers:
+            print(f"[warn] unknown prop sport '{sport}', skipping", file=sys.stderr)
+            continue
+        live_games = fetch_live_games(sport)
+        for label, series_ticker in tickers.items():
+            market_type = f"prop_{label}"
+            try:
+                events = get_events_for_series(series_ticker, status="open", with_nested_markets=True)
+            except RuntimeError as e:
+                print(f"[warn] {sport}/{market_type} ({series_ticker}): {e}", file=sys.stderr)
+                continue
+            for market in _flatten_markets_from_events(events):
+                track_market(sport, market_type, series_ticker, market, last_snapshot, now, moves,
+                              supabase_price_rows, live_games=live_games,
+                              price_log_path=PROP_PRICE_LOG_PATH,
+                              price_move_threshold=PROP_PRICE_MOVE_THRESHOLD_CENTS,
+                              min_volume_for_spike=PROP_MIN_VOLUME_FOR_SPIKE)
+
+    _save_snapshot(last_snapshot, PROP_SNAPSHOT_CACHE_PATH)
+    for move in moves:
+        _append_csv(PROP_MOVES_LOG_PATH, MOVES_LOG_HEADER, move)
+
+    _post_batch_to_supabase("price_log", supabase_price_rows)
+    if post_moves_to_supabase:
+        _post_batch_to_supabase("notable_moves", [_row_to_supabase_dict(MOVES_LOG_HEADER, m) for m in moves])
+    elif moves:
+        print(f"[info] {len(moves)} prop notable move(s) logged to {PROP_MOVES_LOG_PATH.name} only "
+              f"(not posted to Supabase -- pass post_moves_to_supabase=True / --post-moves once ready).",
+              file=sys.stderr)
+
+    print(f"[{now.isoformat()}] logged prop snapshot; {len(moves)} notable move(s) flagged "
+          f"({'posted to Supabase' if post_moves_to_supabase else 'local only'}).")
+    for move in moves:
+        print(f"  - {move[3]} ({move[4]}): {move[5]}")
+
+    return moves
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -844,23 +860,22 @@ def main():
 
     sub.add_parser("verify", help="confirm every configured series ticker still resolves")
 
-    backfill_p = sub.add_parser(
-        "backfill-clv",
-        help="check settled markets and grade previously-flagged moves' outcomes (closing-line-value backtest)",
-    )
-    backfill_p.add_argument("--batch-size", type=int, default=CLV_BACKFILL_BATCH_SIZE,
-                             help=f"max pending moves to check per run (default: {CLV_BACKFILL_BATCH_SIZE})")
-
     list_p = sub.add_parser("list-series", help="dump raw /series?category=Sports (discovery aid, see NOTE above)")
     list_p.add_argument("--contains", help="only print tickers containing this substring (case-insensitive)")
+
+    run_props_p = sub.add_parser("run-props", help="run one player-prop tracking cycle and log a snapshot")
+    run_props_p.add_argument("--sport", action="append", choices=list(PROP_SERIES_TICKERS_BY_SPORT.keys()),
+                              help="limit to one sport (repeatable); default: all configured prop sports")
+    run_props_p.add_argument("--post-moves", action="store_true",
+                              help="also post prop notable-moves to Supabase's notable_moves table "
+                                   "(off by default -- see module docstring for why)")
+
+    sub.add_parser("verify-props", help="confirm every configured prop series ticker still resolves")
 
     args = parser.parse_args()
 
     if args.command == "run":
         run_tracking_cycle(sports=args.sport)
-
-    elif args.command == "backfill-clv":
-        backfill_clv_outcomes(batch_size=args.batch_size)
 
     elif args.command == "verify":
         results = verify_all_configured_series()
@@ -883,6 +898,21 @@ def main():
             print(f"{ticker}\t{s.get('title')}")
         print(f"\n({len(series)} series returned by the API -- this endpoint appears capped, see NOTE above "
               f"SERIES_TICKERS_BY_SPORT)", file=sys.stderr)
+
+    elif args.command == "run-props":
+        run_prop_tracking_cycle(sports=args.sport, post_moves_to_supabase=args.post_moves)
+
+    elif args.command == "verify-props":
+        results = verify_all_configured_prop_series()
+        bad = {k: v for k, v in results.items() if not v["exists"]}
+        for key, info in results.items():
+            flag = "OK" if info["exists"] else "MISSING"
+            print(f"[{flag}] {key}: {info['ticker']}  {info.get('title') or ''}")
+        if bad:
+            print(f"\n{len(bad)} prop ticker(s) failed to resolve -- fix PROP_SERIES_TICKERS_BY_SPORT.",
+                  file=sys.stderr)
+            sys.exit(1)
+        print("\nAll configured prop series tickers verified OK.")
 
 
 if __name__ == "__main__":
