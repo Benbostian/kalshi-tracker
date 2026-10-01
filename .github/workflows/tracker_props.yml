@@ -1,0 +1,55 @@
+name: Kalshi player-prop tracker
+
+on:
+  schedule:
+    # Every 4 hours, deliberately NOT hourly like tracker.yml -- a single
+    # NFL game alone carries 80+ individual player-prop markets for just one
+    # stat, so this pipeline produces far more rows per cycle than the
+    # game/spread/total tracker. Less frequent polling keeps data/*_props.csv
+    # (and the git history of this repo) from ballooning. See the note at
+    # the top of kalshi_tracker.py for the full rationale.
+    - cron: "17 */4 * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  track-props:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Verify configured prop series tickers
+        # Informational only -- don't let one retired/renamed prop ticker
+        # block the run. Check the Actions log occasionally and fix
+        # PROP_SERIES_TICKERS_BY_SPORT if this goes red.
+        run: python3 kalshi_tracker.py verify-props
+        continue-on-error: true
+
+      - name: Run player-prop tracking cycle
+        # KALSHI_INGEST_TOKEN authorizes posting price rows to the Supabase
+        # edge function behind the dashboard (prop price rows are tagged
+        # market_type=prop_* and are filtered out of every dashboard view
+        # today -- see kalshi_tracker.py's module docstring). Deliberately
+        # NOT passing --post-moves yet: prop notable-moves stay local-only
+        # (data/notable_moves_props.csv) until there's enough real data to
+        # tune the prop-specific move thresholds and a dashboard surface
+        # designed for them. Add --post-moves here once that's ready.
+        run: python3 kalshi_tracker.py run-props
+        env:
+          KALSHI_INGEST_TOKEN: ${{ secrets.KALSHI_INGEST_TOKEN }}
+
+      - name: Commit updated prop data files
+        run: |
+          git config user.name "kalshi-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Update player-prop tracker data"
+          git push
