@@ -8,7 +8,7 @@ on:
     # game/spread/total tracker. Less frequent polling keeps data/*_props.csv
     # (and the git history of this repo) from ballooning. See the note at
     # the top of kalshi_tracker.py for the full rationale.
-    - cron: "17 */4 * * *"
+    - cron: "20 12,23 * * 4"
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 permissions:
