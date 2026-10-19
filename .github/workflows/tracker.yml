@@ -5,7 +5,7 @@ on:
     # Hourly, off the top of the hour. Runs year-round; the sports without
     # open markets just log nothing that cycle (see PROJECT_LOG.md setup
     # checklist re: seasons).
-    - cron: "7 * * * *"
+    - cron: "15 12,23 * * 4"
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 permissions:
